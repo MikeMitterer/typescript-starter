@@ -11,4 +11,4 @@ coverage
 .idea/typescript-compiler.xml
 
 tests/*.js
-tests/*.js.map
+tests/*.js.mappackage-lock.json
