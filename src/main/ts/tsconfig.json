@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "outDir": "../../../dist/main/ts",
+        "module": "umd",
+        "target": "es6",
+        "sourceMap": true,
+        "inlineSources": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "removeComments": false,
+        "moduleResolution": "node",
+        "declaration": true
+    },
+
+    "exclude": [
+        "node_modules",
+        "bower_components",
+        "dist"
+    ]
+}
