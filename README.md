@@ -1,1 +1,23 @@
-../../DevDoku/languages/typescript/README.typescript.md
+# TypeScript
+> [Understanding TypeScript - Udemy](https://www.udemy.com/understanding-typescript/learn/v4/overview)
+
+## Install
+    
+    sudo npm install npm@latest -g
+    npm install -g typescript
+    
+### Packages
+
+    npm install <package> [--save-dev]
+         
+    npm install @types/mocha --save-dev
+    npm install lite-server --save-dev
+     
+## WebStorm
+
+In Languages & Frameworks / TypeScript den richtigen Interpreter einstellen
+
+`source/tsconfig.json` ist wichtig da hier als output-dir `dist` spezifiziert wird
+ 
+ 
+     

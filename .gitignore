@@ -12,3 +12,4 @@ coverage
 
 tests/*.js
 tests/*.js.mappackage-lock.json
+package-lock.json
