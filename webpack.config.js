@@ -7,26 +7,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
 
 function isDevEnvironment() {
-    return true; // process.env.NODE_ENV === 'development';
+    return (process.env.NODE_ENV || 'development') === 'development';
 }
 
 module.exports = {
     context: __dirname,
     mode: process.env.NODE_ENV || 'development',
-    //devtool: isDevEnvironment() ? 'inline-source-map' : false,
-    devtool: 'inline-source-map',
+    devtool: isDevEnvironment() ? 'inline-source-map' : false,
     entry: {
-        app: path.resolve(__dirname,        'src/main/ts/index.ts'),
-        polyfills: path.resolve(__dirname,  'src/main/ts/polyfills.ts'),
-        vendor: path.resolve(__dirname,     'src/main/ts/vendor.ts')
+        app: path.resolve(__dirname, 'src/main/ts/index.ts'),
+        polyfills: path.resolve(__dirname, 'src/main/ts/polyfills.ts'),
+        vendor: path.resolve(__dirname, 'src/main/ts/vendor.ts')
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: "/"
+        publicPath: "/",
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ]
+        extensions: ['.tsx', '.ts', '.js']
     },
     module: {
         rules: [
@@ -71,14 +70,12 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
 
         // clean dist folder
-        new CleanWebpackPlugin(['dist'], {
-            
-        }),
+        new CleanWebpackPlugin(['dist'], {}),
 
         new ExtractTextPlugin({
             filename: "[name].css"
         }),
-        
+
         new HtmlWebpackPlugin({
             filename: 'index.html',
             templateParameters: {
@@ -86,7 +83,7 @@ module.exports = {
             },
             hash: true,
             template: path.resolve(__dirname, 'src/web/index.ejs'),
-            favicon: path.resolve(__dirname,  'src/web/assets/images/favicon.ico')
+            favicon: path.resolve(__dirname, 'src/web/assets/images/favicon.ico')
         }),
         new HtmlBeautifyPlugin({
             config: {
@@ -99,7 +96,7 @@ module.exports = {
                     unformatted: ['p', 'i', 'b', 'span']
                 }
             },
-            replace: [ ' type="text/javascript"' ]
+            replace: [' type="text/javascript"']
         }),
     ],
 
