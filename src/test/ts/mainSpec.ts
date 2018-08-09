@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import { endsWith } from "../../main/ts/main";
+import {endsWith} from "../../main/ts/main";
 
 describe('main', function () {
     describe('#endsWith()', function () {

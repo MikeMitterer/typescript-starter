@@ -1,9 +1,9 @@
 {
+    "compileOnSave": true,
     "compilerOptions": {
-        "outDir": "./dist",
-        "module": "umd",
+        "outDir": "./build",
+        "module": "commonjs",
         "target": "es6",
-        "compileOnSave": true,
         "sourceMap": true,
         "inlineSources": true,
         "noImplicitAny": true,
@@ -20,6 +20,6 @@
     "exclude": [
         "node_modules",
         "bower_components",
-        "dist"
+        "build"
     ]
 }

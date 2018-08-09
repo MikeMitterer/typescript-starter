@@ -1,18 +1,7 @@
 import "mocha";
 import * as assert from "assert";
-import { SmokeTest } from "../../main/ts";
 
 describe("index", () => {
-
-    it("should say 'hello world'", () => {
-
-        SmokeTest.helloWorld6();
-        assert.ok(true);
-
-        SmokeTest.sayMyName();
-
-        // assert.equal(giveAge(), 98)
-    });
 
     it("Number should be 28", function () {
         let numberToTest = "28";

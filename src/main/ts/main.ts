@@ -1,3 +1,15 @@
+export module SmokeTest {
+
+    //noinspection JSUnusedGlobalSymbols
+    export function helloWorld6() {
+        console.log("Hello World 2");
+    }
+
+    export function sayMyName() {
+        console.log("Hello Mike");
+    }
+}
+
 /// Hallo Testsr
 export function endsWith(str:string, suffix:string) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;

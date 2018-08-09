@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "outDir": "../../../dist/main/ts",
-        "module": "umd",
+        "outDir": "../../../ts",
+        "module": "commonjs",
         "target": "es6",
         "sourceMap": true,
         "inlineSources": true,
