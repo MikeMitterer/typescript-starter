@@ -1,6 +1,6 @@
 import "mocha";
 import * as assert from "assert";
-import {giveAge, returnGerdasName, SmokeTest} from "../../main/ts/main";
+import { giveAge, returnGerdasName, SmokeTest } from "../../main/ts/main";
 
 describe("Some main functions", () => {
 
@@ -14,7 +14,7 @@ describe("Some main functions", () => {
     });
 
 
-    it("should say Gerda",() => {
-        assert.equal(returnGerdasName(),"Gerda")
+    it("should say Gerda", () => {
+        assert.equal(returnGerdasName(), "Gerda")
     })
 })

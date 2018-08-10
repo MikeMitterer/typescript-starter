@@ -38,8 +38,8 @@ module.exports = {
             {
                 test: /\.tsx?$/,
 
-                // ts-loader
-                loader: 'awesome-typescript-loader'
+                loader: 'ts-loader'
+                // loader: 'awesome-typescript-loader'
             },
             {
                 test: /\.scss$/,
@@ -73,7 +73,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
 
         // clean dist folder
-        new CleanWebpackPlugin(['dist', 'types'], {}),
+        new CleanWebpackPlugin(['dist', 'types', 'build'], {}),
 
         new ExtractTextPlugin({
             filename: "[name].css"

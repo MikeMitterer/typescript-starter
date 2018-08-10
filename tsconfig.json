@@ -1,26 +1,28 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
-        "outDir": "./build",
-        "module": "commonjs",
-        "target": "es6",
-        "sourceMap": true,
-        "inlineSources": true,
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "noUnusedParameters": true,
-        "noUnusedLocals": true,
-        "noEmitOnError": true,
-        "strictNullChecks": true,
-        "preserveConstEnums":true,
-        "removeComments": false,
-        "moduleResolution": "node",
-        "strict": true,
-        "declaration": true,
-        "declarationDir": "./dist/types"
-    },
-    "include": [
-      "src/main/ts",
-      "src/test/ts"
-    ]
+  "compileOnSave" :   true,
+  "compilerOptions" : {
+    "outDir" :                       "./build",
+    "module" :                       "ESNext",
+    "target" :                       "es6",
+    "sourceMap" :                    true,
+    "inlineSources" :                true,
+    "noImplicitAny" :                true,
+    "noImplicitThis" :               true,
+    "noUnusedParameters" :           true,
+    "noUnusedLocals" :               true,
+    "noEmitOnError" :                true,
+    "strictNullChecks" :             true,
+    "preserveConstEnums" :           true,
+    "removeComments" :               false,
+    "experimentalDecorators" :       true,
+    "emitDecoratorMetadata" :        true,
+    "allowSyntheticDefaultImports" : true,
+    "moduleResolution" :             "node",
+    "strict" :                       true,
+    "declaration" :                  true,
+    "declarationDir" :               "types"
+  },
+  "include" :         [
+    "src/main/ts"
+  ]
 }
