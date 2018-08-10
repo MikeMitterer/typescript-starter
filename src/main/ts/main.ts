@@ -6,11 +6,11 @@ export module SmokeTest {
     }
 
     export function sayMyName() {
-        console.log("Hello Mike");
+        console.log("Hello Mike44");
     }
 }
 
-/// Hallo Testsr
+/// Hallo Tester
 export function endsWith(str:string, suffix:string) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "../../../ts",
+        "outDir": "../../../tsx",
         "module": "commonjs",
         "target": "es6",
         "sourceMap": true,

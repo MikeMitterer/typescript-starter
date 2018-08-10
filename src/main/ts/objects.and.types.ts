@@ -6,7 +6,7 @@ export const userName = {
 };
 
 /**
- * Type-Safe definition eines Objects
+ * Type-Safe definition eines Objects-
  *
  * Das Objekt hat zwei parameter: name + age
  */

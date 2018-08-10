@@ -20,6 +20,7 @@
     "@types/mocha": "^2.2.48",
     "@types/node": "^7.0.69",
     "autoprefixer": "^8.6.3",
+    "awesome-typescript-loader": "^5.2.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",

@@ -12,8 +12,8 @@ export function sayMyName(): string {
 export function main(): void {
     console.log(`index.ts invoked - ${sayMyName()}`);
 
-    (document.querySelector("#tstest") as HTMLElement).onclick = (): void => {
-        alert("Hi Mike!");
+    (document.querySelector("#tstest") as HTMLElement).onclick = (event: MouseEvent): void => {
+        alert(`Hi Mike, event '${event.type}' occurred!!`);
     };
 }
 

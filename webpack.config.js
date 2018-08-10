@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const package = require('./package');
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -35,8 +36,10 @@ module.exports = {
                 loader: 'tslint-loader'
             },
             {
-                test: /\.ts$/,
-                loader: 'ts-loader'
+                test: /\.tsx?$/,
+
+                // ts-loader
+                loader: 'awesome-typescript-loader'
             },
             {
                 test: /\.scss$/,
@@ -70,7 +73,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
 
         // clean dist folder
-        new CleanWebpackPlugin(['dist'], {}),
+        new CleanWebpackPlugin(['dist', 'types'], {}),
 
         new ExtractTextPlugin({
             filename: "[name].css"
@@ -79,7 +82,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             templateParameters: {
-                'version': '1.0'
+                'version': package.version
             },
             hash: true,
             template: path.resolve(__dirname, 'src/web/index.ejs'),

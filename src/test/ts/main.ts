@@ -1,6 +1,6 @@
 import "mocha";
 import * as assert from "assert";
-import {returnGerdasName, SmokeTest} from "../../main/ts/main";
+import {giveAge, returnGerdasName, SmokeTest} from "../../main/ts/main";
 
 describe("Some main functions", () => {
 
@@ -10,8 +10,7 @@ describe("Some main functions", () => {
         assert.ok(true);
 
         SmokeTest.sayMyName();
-
-        // assert.equal(giveAge(), 98)
+        assert.equal(giveAge(), 99)
     });
 
 

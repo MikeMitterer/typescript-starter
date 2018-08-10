@@ -15,11 +15,12 @@
         "preserveConstEnums":true,
         "removeComments": false,
         "moduleResolution": "node",
-        "strict": true
+        "strict": true,
+        "declaration": true,
+        "declarationDir": "./dist/types"
     },
-    "exclude": [
-        "node_modules",
-        "bower_components",
-        "build"
+    "include": [
+      "src/main/ts",
+      "src/test/ts"
     ]
 }
