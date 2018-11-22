@@ -1,12 +1,12 @@
 //noinspection JSUnusedGlobalSymbols
-import "../../web/assets/styles/main.scss";
-
-export function helloWorld6() {
-    console.log("Hello World 2");
-}
+import { Name } from "./address/Name";
 
 export function sayMyName(): string {
-    return "Hello Mike";
+    return "Mike";
+}
+
+export function addValues(v1: number, v2: number): number {
+    return v1 + v2;
 }
 
 export function main(): void {
@@ -15,8 +15,28 @@ export function main(): void {
     (document.querySelector("#tstest") as HTMLElement).onclick = (event: MouseEvent): void => {
         alert(`Hi Mike, event '${event.type}' occurred!!`);
     };
+
+    const divs = Array.from(document.getElementsByTagName("div"));
+
+    divs.forEach((div: HTMLDivElement) => {
+        div.addEventListener("click", (evt: MouseEvent) => {
+            evt = new MouseEvent("aaa");
+            console.log(evt);
+        });
+    });
+
+    // for(const div of divs) {
+    //     div.
+    // }
+
+    const name = new Name("Mike", "Mitterer4");
+
+    const appDiv = (document.querySelector("#app") as HTMLDivElement);
+    appDiv.textContent = name.fullname;
+
+    console.log("Done!!");
 }
 
-if (typeof window !== "undefined") {
-    main();
-}
+// if (typeof window !== "undefined") {
+//     main();
+// }

@@ -2,31 +2,43 @@ const webpack = require('webpack');
 const path = require('path');
 const package = require('./package');
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-function isDevEnvironment() {
-    return (process.env.NODE_ENV || 'development') === 'development';
-}
+const devMode = (process.env.NODE_ENV !== 'production');
 
 module.exports = {
     context: __dirname,
+
     mode: process.env.NODE_ENV || 'development',
-    devtool: isDevEnvironment() ? 'inline-source-map' : false,
+
     entry: {
-        app: path.resolve(__dirname, 'src/main/ts/index.ts'),
+        main: [
+            path.resolve(__dirname, 'src/main/ts/index.ts'),
+        ],
+        exports: [
+            path.resolve(__dirname, 'src/main/ts/exports.ts'),
+        ],
         polyfills: path.resolve(__dirname, 'src/main/ts/polyfills.ts'),
-        vendor: path.resolve(__dirname, 'src/main/ts/vendor.ts')
+        vendor: path.resolve(__dirname, 'src/main/ts/vendor.ts'),
+
+        styles: path.resolve(__dirname, 'src/web/assets/styles/main.scss'),
     },
+
     output: {
-        filename: '[name].js',
+        publicPath: "",
         path: path.resolve(__dirname, 'dist'),
-        publicPath: "/",
+        filename: "assets/js/[name].js",
+        pathinfo: true,
     },
+
+    devtool: devMode ? 'inline-source-map' : false,
+
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js', '.scss']
     },
     module: {
         rules: [
@@ -36,36 +48,49 @@ module.exports = {
                 loader: 'tslint-loader'
             },
             {
-                test: /\.tsx?$/,
-
+                test: /\.ts?$/,
                 loader: 'ts-loader'
-                // loader: 'awesome-typescript-loader'
+                //loader: 'awesome-typescript-loader'
             },
+            // {
+            //     test: require.resolve("assets/js/index.js"),
+            //     use: [
+            //         {
+            //             loader: `expose-loader`,
+            //             options: 'sayMyName'
+            //         }
+            //     ]
+            // },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({
-                    use: [{
-                        loader: "css-loader",
-                        options: {
-                            minimize: !isDevEnvironment(),
-                            sourceMap: isDevEnvironment()
+                use: [
+                    // creates style nodes from JS strings
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    {
+                        // translates CSS into CommonJS
+                        loader: "css-loader", options: {
+                            sourceMap: true
                         }
                     }, {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: isDevEnvironment()
+                        // compiles Sass to CSS, using Node Sass by default
+                        loader: "sass-loader", options: {
+                            sourceMap: true
                         }
-                    }],
-                    fallback: "style-loader"
-                })
-            },
+                    }]
+            }
+,
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'file-loader?name=assets/[name].[ext]'
             },
             {
                 test: /\.html$/,
-                loader: 'html-loader'
+                use: [
+                    {
+                        loader: "html-loader",
+                        options: { minimize: false }
+                    }
+                ]
             }
         ]
     },
@@ -75,9 +100,9 @@ module.exports = {
         // clean dist folder
         new CleanWebpackPlugin(['dist', 'types', 'build'], {}),
 
-        new ExtractTextPlugin({
-            filename: "[name].css"
-        }),
+        // new ExtractTextPlugin({
+        //     filename: "[name].css"
+        // }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -85,9 +110,22 @@ module.exports = {
                 'version': package.version
             },
             hash: true,
+            // Weitere Infos: https://goo.gl/wVG6wx
             template: path.resolve(__dirname, 'src/web/index.ejs'),
-            favicon: path.resolve(__dirname, 'src/web/assets/images/favicon.ico')
+
+            // Variablen funktionieren nicht
+            // template: '!!html-loader?interpolate!src/web/index.ejs',
+            favicon: path.resolve(__dirname, 'src/web/assets/images/favicon.ico'),
+            chunks: [ 'main', 'styles' ]
         }),
+
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: devMode ? 'assets/styles/[name].css' : 'assets/styles/[name].[hash]fn.css',
+            chunkFilename: devMode ? 'assets/styles/[id].css' : 'assets/styles/[id].[hash]cu.css',
+        }),
+
         new HtmlBeautifyPlugin({
             config: {
                 html: {
@@ -101,6 +139,8 @@ module.exports = {
             },
             replace: [' type="text/javascript"']
         }),
+
+        new LiveReloadPlugin(),
     ],
 
     optimization: {

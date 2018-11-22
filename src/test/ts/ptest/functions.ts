@@ -4,11 +4,11 @@ import {functionWithDefaultParams, functionWithOptionalParams, myCallback} from 
 import { returnMyName } from "../../../main/ts/main";
 
 describe("functions", () => {
-    it("test simple function", function () {
-        assert.equal(returnMyName(),"Mike4")
+    it("test simple function", () => {
+        assert.equal(returnMyName(), "Mike4");
     });
 
-    it("function as param", function () {
+    it("function as param", () => {
         // Prototype definition
         let callback : () => string;
 
@@ -16,7 +16,7 @@ describe("functions", () => {
         assert.equal(callback(),"Mike6")
     });
 
-    it('should check age as optional param', function () {
+    it('should check age as optional param', () => {
         assert.equal(functionWithOptionalParams("Mike", 51),
             "Hi Mike, your age is 51");
 

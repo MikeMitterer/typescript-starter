@@ -1,11 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <title>TS Starter-Template - <%= version %></title>
+    <meta charset="UTF-8">
+    <title>Title <%= version %></title>
+    <script src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
-<div id="container">
-    <span id="scss">A "Hello" from .scss!</span>
-</div>
-<button id="tstest">Hallo</button>
+${require('./_partials/nav.html')}
+<p>I'm the content!! - Index1</p>
+<div id="app">Loading...</div>
+<div id="tstest">Click me</div>
+<hr>
+Version <%= version %><br>
 </body>
 </html>

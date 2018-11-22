@@ -2,7 +2,7 @@
   "compileOnSave" :   true,
   "compilerOptions" : {
     "outDir" :                       "./build",
-    "module" :                       "ESNext",
+    "module" :                       "commonjs",
     "target" :                       "es6",
     "sourceMap" :                    true,
     "inlineSources" :                true,
@@ -23,6 +23,7 @@
     "declarationDir" :               "types"
   },
   "include" :         [
-    "src/main/ts"
+    "src/main/ts",
+    "src/test/ts"
   ]
 }

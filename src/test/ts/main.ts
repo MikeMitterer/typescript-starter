@@ -1,20 +1,20 @@
-import "mocha";
-import * as assert from "assert";
-import { giveAge, returnGerdasName, SmokeTest } from "../../main/ts/main";
+import { sayMyName } from "../../main/ts";
+import { endsWith } from "../../main/ts/main";
 
 describe("Some main functions", () => {
 
-    it("should say 'hello world'", () => {
+    test("should say Mike2", () => {
+        expect(sayMyName()).toBe("Mike");
+    })
+});
 
-        SmokeTest.helloWorld6();
-        assert.ok(true);
+describe('#endsWith()', function () {
 
-        SmokeTest.sayMyName();
-        assert.equal(giveAge(), 99)
+    it('should return true when the value ends with the suffix', function () {
+        expect(endsWith("abcd", "bcd")).toBe(true);
     });
 
-
-    it("should say Gerda", () => {
-        assert.equal(returnGerdasName(), "Gerda")
-    })
-})
+    it('should return false when the value does not end with the suffix', function () {
+        expect(endsWith("abcd","cde")).toBe(false);
+    });
+});
