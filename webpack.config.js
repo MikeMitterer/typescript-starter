@@ -7,8 +7,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const devMode = (process.env.NODE_ENV !== 'production');
+
+// This helper function is not strictly necessary.
+// I just don't like repeating the path.join a dozen times.
+function srcPath(subdir) {
+    return path.join(__dirname, "src", subdir);
+}
+
 
 module.exports = {
     context: __dirname,
@@ -38,7 +46,12 @@ module.exports = {
     devtool: devMode ? 'inline-source-map' : false,
 
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.scss']
+        extensions: ['.tsx', '.ts', '.js', '.scss'],
+        alias: {
+            "@main" : srcPath("main/ts"),
+            "@test" : srcPath("test/ts"),
+            "@images" : srcPath("web/assets/images"),
+        }
     },
     module: {
         rules: [
@@ -70,18 +83,53 @@ module.exports = {
                         // translates CSS into CommonJS
                         loader: "css-loader", options: {
                             sourceMap: true
-                        }
-                    }, {
+                        },
+                    },
+                    {
+                        // Autoprefixer usw.
+                        loader: "postcss-loader",
+                        options: {
+                            ident: 'postcss',
+                        },
+                    },
+                    {
+
                         // compiles Sass to CSS, using Node Sass by default
                         loader: "sass-loader", options: {
                             sourceMap: true
                         }
-                    }]
-            }
-,
+                    },
+                    ]
+            },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file-loader?name=assets/[name].[ext]'
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 10
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: '65-90',
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            webp: {
+                                quality: 75
+                            }
+                        }
+                    },
+                ],
             },
             {
                 test: /\.html$/,
@@ -103,6 +151,10 @@ module.exports = {
         // new ExtractTextPlugin({
         //     filename: "[name].css"
         // }),
+
+        new CopyWebpackPlugin([
+            {from:'src/web/assets/images/static',to:'assets/images/static'}
+        ]),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',

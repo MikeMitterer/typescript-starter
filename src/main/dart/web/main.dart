@@ -13,9 +13,14 @@ class Name {
 @JS('MyLib.sayMyName')
 external String sayMyName();
 
+@JS('MyLib.main')
+external void mainFromTS();
+
 void main() {
   final name = Name("Mike","Mitterer");
   querySelector('#output').text = 'Your Dart app is running. ${name.fullname}';
 
-  window.console.log(sayMyName());
+  window.console.log("From JS: ${sayMyName()}");
+
+  //mainFromTS();
 }

@@ -20,10 +20,25 @@
     "moduleResolution" :             "node",
     "strict" :                       true,
     "declaration" :                  true,
-    "declarationDir" :               "types"
+    "declarationDir" :               "types",
+
+    "baseUrl":                       "src",
+    "paths": {
+
+      //
+      // Pfade müssen auch in WebPack entsprechend definiert sein!
+      //
+      "@main/*":                     [ "main/ts/*"],
+      "@test/*":                     [ "test/ts/*"],
+      "@images/*":                   [ "web/assets/images/*"]
+    }
   },
   "include" :         [
     "src/main/ts",
-    "src/test/ts"
+    "src/test/ts",
+    "src/web/assets/images",
+
+    // Damit werden die images erkannt
+    "src/web/assets/images/typings.d.ts"
   ]
 }

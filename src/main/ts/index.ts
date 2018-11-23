@@ -1,8 +1,11 @@
 //noinspection JSUnusedGlobalSymbols
-import { Name } from "./address/Name";
+// import { cat } from "images/cat.png";
+// import * as cat from "@images/static/cat.jpg";
+import * as lambi from "@images/lambi.png";
+import { Name } from "@main/address/Name";
 
 export function sayMyName(): string {
-    return "Mike";
+    return "Mike5";
 }
 
 export function addValues(v1: number, v2: number): number {
@@ -34,9 +37,12 @@ export function main(): void {
     const appDiv = (document.querySelector("#app") as HTMLDivElement);
     appDiv.textContent = name.fullname;
 
+    const img = document.querySelector("#frontImg") as HTMLImageElement;
+    img.src = lambi;
+
     console.log("Done!!");
 }
 
-// if (typeof window !== "undefined") {
-//     main();
-// }
+if (typeof window !== "undefined") {
+    main();
+}

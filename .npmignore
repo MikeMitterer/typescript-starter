@@ -11,3 +11,4 @@ documentation
 .npmignore
 tsconfig.json
 typings
+dist/types/test

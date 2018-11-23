@@ -100,7 +100,16 @@ Nicht zu vergessen:
     class Name<T extends BaseValue | number> {
         ...
     }    
-    
+
+## NPM
+> https://medium.freecodecamp.org/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78
+
+    # Login
+    npm login
+       
+    # Publish
+    npm publish --access=public
+        
 ## WebStorm
 
 In Languages & Frameworks / TypeScript den richtigen Interpreter einstellen
