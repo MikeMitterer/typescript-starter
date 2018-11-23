@@ -104,7 +104,7 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 use: [
-                    'file-loader',
+                    'file-loader?name=assets/images/[name]-[hash:8].[ext]',
                     {
                         loader: 'image-webpack-loader',
                         options: {
