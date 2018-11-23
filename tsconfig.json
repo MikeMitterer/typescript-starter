@@ -33,6 +33,13 @@
       "@images/*":                   [ "web/assets/images/*"]
     }
   },
+  // https://github.com/s-panferov/awesome-typescript-loader
+  "awesomeTypescriptLoaderOptions": {
+    "useCache":                       true,
+    "reportFiles": [
+      "src/**/*.{ts,tsx}"
+    ]
+  },
   "include" :         [
     "src/main/ts",
     "src/test/ts",

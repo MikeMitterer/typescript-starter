@@ -1,5 +1,4 @@
 import * as assert from "assert";
-import "mocha";
 
 describe("index", () => {
 

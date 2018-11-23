@@ -15,7 +15,7 @@ export function endsWith(str: string, suffix: string) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
 
-export function giveAge(): number {
+export function giveAge9(): number {
     return 99;
 }
 

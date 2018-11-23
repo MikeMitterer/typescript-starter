@@ -1,11 +1,10 @@
-//noinspection JSUnusedGlobalSymbols
-// import { cat } from "images/cat.png";
-// import * as cat from "@images/static/cat.jpg";
 import * as lambi from "@images/lambi.png";
 import { Name } from "@main/address/Name";
+import { loggerFactory } from "@main/config/ConfigLog4j";
+import { giveAge9 } from "@main/main";
 
 export function sayMyName(): string {
-    return "Mike5";
+    return "Mike7";
 }
 
 export function addValues(v1: number, v2: number): number {
@@ -13,11 +12,18 @@ export function addValues(v1: number, v2: number): number {
 }
 
 export function main(): void {
+    // Retrieve a logger (you can decide to use it per class and/or module or just
+    // export it in the config above etc. Your loggers - your choice!).
+    // This logger will fall in the first LogGroupRule from above.
+    const logger = loggerFactory.getLogger("model.Product");
+
     console.log(`index.ts invoked - ${sayMyName()}`);
 
     (document.querySelector("#tstest") as HTMLElement).onclick = (event: MouseEvent): void => {
         alert(`Hi Mike, event '${event.type}' occurred!!`);
     };
+
+    logger.info(() => `Servus Message!!!... ${giveAge9()}`);
 
     const divs = Array.from(document.getElementsByTagName("div"));
 
@@ -40,7 +46,7 @@ export function main(): void {
     const img = document.querySelector("#frontImg") as HTMLImageElement;
     img.src = lambi;
 
-    console.log("Done!!");
+    console.log("Done!!!");
 }
 
 if (typeof window !== "undefined") {

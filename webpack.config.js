@@ -62,8 +62,8 @@ module.exports = {
             },
             {
                 test: /\.ts?$/,
-                loader: 'ts-loader'
-                //loader: 'awesome-typescript-loader'
+                //loader: 'ts-loader'
+                loader: 'awesome-typescript-loader'
             },
             // {
             //     test: require.resolve("assets/js/index.js"),
@@ -110,7 +110,7 @@ module.exports = {
                         options: {
                             mozjpeg: {
                                 progressive: true,
-                                quality: 10
+                                quality: 70
                             },
                             // optipng.enabled: false will disable optipng
                             optipng: {

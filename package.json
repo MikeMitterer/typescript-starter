@@ -18,11 +18,14 @@
     "url": "https://github.com/MikeMitterer/typescript-training"
   },
   "typings": "index.d.ts",
-  "dependencies": {},
+  "dependencies": {
+    "typescript-logging": "^0.6.3"
+  },
   "devDependencies": {
     "@types/jest": "^23.3.9",
     "@types/node": "^7.10.2",
     "autoprefixer": "^9.3.1",
+    "awesome-typescript-loader": "^5.2.1",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^0.28.11",

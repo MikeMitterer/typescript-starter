@@ -16,3 +16,4 @@ package-lock.json
 build/
 dist/
 types/
+.awcache/
