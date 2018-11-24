@@ -22,7 +22,7 @@
     "declaration" :                  true,
     "declarationDir" :               "types",
 
-    "baseUrl":                       "src",
+    "baseUrl":                       "./src",
     "paths": {
 
       //

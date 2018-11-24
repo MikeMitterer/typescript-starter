@@ -10,7 +10,7 @@
     "build": "NODE_ENV=development webpack --mode development",
     "build:prod": "NODE_ENV=production webpack --mode production",
     "test": "jest",
-    "publish-please": "publish-please",
+    "deploy": "publish-please",
     "prepublishOnly": "publish-please guard"
   },
   "repository": {

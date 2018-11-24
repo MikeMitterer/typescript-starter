@@ -4,7 +4,7 @@ import { loggerFactory } from "@main/config/ConfigLog4j";
 import { giveAge9 } from "@main/main";
 
 export function sayMyName(): string {
-    return "Mike7";
+    return "Mike";
 }
 
 export function addValues(v1: number, v2: number): number {

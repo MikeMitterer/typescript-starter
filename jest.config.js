@@ -73,7 +73,13 @@ module.exports = {
     // ],
 
     // A map from regular expressions to module names that allow to stub out resources with a single module
-    // moduleNameMapper: {},
+    "moduleNameMapper": {
+        "^@main(.*)$": "<rootDir>/src/main/ts/$1",
+        "^@images(.*)$": "<rootDir>/src/web/assets/images/$1",
+
+        // Config: https://jestjs.io/docs/en/webpack.html
+        "\.(scss)$": "identity-obj-proxy"
+    },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
     // modulePathIgnorePatterns: [],
@@ -136,8 +142,14 @@ module.exports = {
 
     // The glob patterns Jest uses to detect test files
     testMatch: [
+        // Original
         // "**/src/test/**/?(*[._])+(spec|test).[jt]s?(x)"
-        "**/src/test/**/*.[jt]s?(x)"
+
+        // Testet auch JS-Files
+        // "**/src/test/**/*.[jt]s?(x)"
+
+        // Testet nur! TS-Files
+        "**/src/test/**/*.ts?(x)"
     ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
@@ -162,6 +174,11 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     // transform: null,
+    "transform" : {
+        // Config: https://jestjs.io/docs/en/webpack.html
+        "\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$"
+            : "<rootDir>/__mocks__/fileTransformer.js",
+    }
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [

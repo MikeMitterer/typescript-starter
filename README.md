@@ -121,6 +121,19 @@ Watch funkt nicht richtig - Solution:
 Watch-Mode
 
     npm test -- --watch basics    
+    
+## Publish
+> [GitHub](https://github.com/inikulin/publish-please)
+
+Einmalig muss ein login gemacht werden
+
+    # Login
+    npm login
+    
+    # publish please
+    npm install --save-dev publish-please
+    
+        
                 
 ## WebStorm
 
