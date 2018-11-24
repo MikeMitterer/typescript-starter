@@ -62,7 +62,8 @@ module.exports = {
             },
             {
                 test: /\.ts?$/,
-                //loader: 'ts-loader'
+                // Hat probleme beim export (funkt nur einmal - dann ist Restart notwendig)
+                // loader: 'ts-loader'
                 loader: 'awesome-typescript-loader'
             },
             // {

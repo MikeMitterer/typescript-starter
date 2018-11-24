@@ -110,6 +110,18 @@ Nicht zu vergessen:
     # Publish
     npm publish --access=public
         
+## Test
+
+Läuft mit JEST
+
+Watch funkt nicht richtig - Solution:
+
+    npm r -g watchman && brew install watchman
+    
+Watch-Mode
+
+    npm test -- --watch basics    
+                
 ## WebStorm
 
 In Languages & Frameworks / TypeScript den richtigen Interpreter einstellen

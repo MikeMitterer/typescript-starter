@@ -3,7 +3,7 @@ import * as assert from "assert";
 describe("index", () => {
 
     it("Number should be 28", () => {
-        const numberToTest = "28";
+        const numberToTest = "29";
         assert.ok(String(28) === numberToTest,
             `Number was not 28 but was ${numberToTest}`);
 
