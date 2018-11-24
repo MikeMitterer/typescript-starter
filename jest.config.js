@@ -75,7 +75,7 @@ module.exports = {
     // A map from regular expressions to module names that allow to stub out resources with a single module
     "moduleNameMapper": {
         "^@main(.*)$": "<rootDir>/src/main/ts/$1",
-        "^@images(.*)$": "<rootDir>/src/web/assets/images/$1",
+        "^@images(.*)$": "<rootDir>/src/web/images/$1",
 
         // Config: https://jestjs.io/docs/en/webpack.html
         "\.(scss)$": "identity-obj-proxy"

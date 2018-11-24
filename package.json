@@ -14,7 +14,7 @@
     "build:prod": "NODE_ENV=production webpack --mode production",
     "test": "jest",
     "deploy:ts" : "npm run build:prod && tsc && rm -rf dist/types/test",
-    "deploy": "npm run deply:ts && publish-please",
+    "deploy": "npm run deploy:ts && publish-please",
     "prepublishOnly": "publish-please guard"
   },
   "files" : [
