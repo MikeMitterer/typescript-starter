@@ -24,7 +24,7 @@ module.exports = {
     mode: process.env.NODE_ENV || 'development',
 
     entry: {
-        main: [
+        index: [
             path.resolve(__dirname, 'src/main/ts/index.ts'),
         ],
         exports: [
@@ -33,13 +33,13 @@ module.exports = {
         polyfills: path.resolve(__dirname, 'src/main/ts/polyfills.ts'),
         vendor: path.resolve(__dirname, 'src/main/ts/vendor.ts'),
 
-        styles: path.resolve(__dirname, 'src/web/assets/styles/main.scss'),
+        styles: path.resolve(__dirname, 'src/web/styles/main.scss'),
     },
 
     output: {
         publicPath: "",
         path: path.resolve(__dirname, 'dist'),
-        filename: "assets/js/[name].js",
+        filename: "js/[name].js",
         pathinfo: true,
     },
 
@@ -50,7 +50,7 @@ module.exports = {
         alias: {
             "@main"   : srcPath("main/ts"),
             "@test"   : srcPath("test/ts"),
-            "@images" : srcPath("web/assets/images"),
+            "@images" : srcPath("web/images"),
         }
     },
     module: {
@@ -67,7 +67,7 @@ module.exports = {
                 loader: 'awesome-typescript-loader'
             },
             // {
-            //     test: require.resolve("assets/js/index.js"),
+            //     test: require.resolve("js/index.js"),
             //     use: [
             //         {
             //             loader: `expose-loader`,
@@ -105,7 +105,7 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 use: [
-                    'file-loader?name=assets/images/[name]-[hash:8].[ext]',
+                    'file-loader?name=images/[name]-[hash:8].[ext]',
                     {
                         loader: 'image-webpack-loader',
                         options: {
@@ -154,7 +154,7 @@ module.exports = {
         // }),
 
         new CopyWebpackPlugin([
-            {from:'src/web/assets/images/static',to:'assets/images/static'}
+            {from:'src/web/images/static',to:'images/static'}
         ]),
 
         new HtmlWebpackPlugin({
@@ -168,15 +168,15 @@ module.exports = {
 
             // Variablen funktionieren nicht
             // template: '!!html-loader?interpolate!src/web/index.ejs',
-            favicon: path.resolve(__dirname, 'src/web/assets/images/favicon.ico'),
-            chunks: [ 'main', 'styles' ]
+            favicon: path.resolve(__dirname, 'src/web/images/favicon.ico'),
+            chunks: [ 'index', 'styles' ]
         }),
 
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: devMode ? 'assets/styles/[name].css' : 'assets/styles/[name].[hash]fn.css',
-            chunkFilename: devMode ? 'assets/styles/[id].css' : 'assets/styles/[id].[hash]cu.css',
+            filename: devMode ? 'styles/[name].css' : 'styles/[name].[hash]fn.css',
+            chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[hash]cu.css',
         }),
 
         new HtmlBeautifyPlugin({

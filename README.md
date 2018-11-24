@@ -124,6 +124,7 @@ Watch-Mode
     
 ## Publish
 > [GitHub](https://github.com/inikulin/publish-please)
+> [TypeScript package to NPM](https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd)
 
 Einmalig muss ein login gemacht werden
 
@@ -133,8 +134,10 @@ Einmalig muss ein login gemacht werden
     # publish please
     npm install --save-dev publish-please
     
-        
-                
+Anzeige der Files die "gepublished" werden        
+
+    npm pack --dry-run
+                    
 ## WebStorm
 
 In Languages & Frameworks / TypeScript den richtigen Interpreter einstellen

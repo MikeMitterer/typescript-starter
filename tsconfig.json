@@ -1,7 +1,10 @@
+// -------------------------------------------------------------------------------------------------
+// Weitere Infos:
+//    https://marcobotto.com/blog/compiling-and-bundling-typescript-libraries-with-webpack/
+//
 {
   "compileOnSave" :   true,
   "compilerOptions" : {
-    "outDir" :                       "./build",
     "module" :                       "commonjs",
     "target" :                       "es6",
     "sourceMap" :                    true,
@@ -19,8 +22,11 @@
     "allowSyntheticDefaultImports" : true,
     "moduleResolution" :             "node",
     "strict" :                       true,
+
+    // wird mit tsc erstellt
     "declaration" :                  true,
-    "declarationDir" :               "types",
+    "declarationDir" :               "dist/types",
+    "outDir" :                       "./build",
 
     "baseUrl":                       "./src",
     "paths": {
@@ -30,7 +36,7 @@
       //
       "@main/*":                     [ "main/ts/*"],
       "@test/*":                     [ "test/ts/*"],
-      "@images/*":                   [ "web/assets/images/*"]
+      "@images/*":                   [ "web/images/*"]
     }
   },
   // https://github.com/s-panferov/awesome-typescript-loader
@@ -40,12 +46,12 @@
       "src/**/*.{ts,tsx}"
     ]
   },
-  "include" :         [
+  "include" : [
     "src/main/ts",
     "src/test/ts",
-    "src/web/assets/images",
+    "src/web/images",
 
     // Damit werden die images erkannt
-    "src/web/assets/images/typings.d.ts"
+    "src/web/images/typings.d.ts"
   ]
 }
