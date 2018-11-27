@@ -1,7 +1,7 @@
 {
   "name": "@mmit/typescript-starter",
   "author": "Mike Mitterer",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "This is a starter project for typescript projects",
   "license": "MIT",
   "main": "lib/index.js",
@@ -16,7 +16,7 @@
     "bundle": "NODE_ENV=development webpack --mode development",
     "bundle:prod": "NODE_ENV=production webpack --mode production",
     "test": "jest",
-    "deploy:lib": "rm -rf lib && npm run build && cat package.json | sed 's/\"(lib|dist)\\//\"/g' > lib/package.json && cp README.md lib/",
+    "deploy:lib": "rm -rf lib && npm run build && cat package.json | sed -E -e 's/\"(lib|dist)\\/*/\"/g' > lib/package.json && cp README.md lib/",
     "deploy:web": "rm -rf dist && npm run bundle && cat package.json | sed -E -e 's/\"(lib|dist)\\//\"js\\//g' > dist/package.json && cp README.md dist/",
     "deploy:web:prod": "rm -rf dist && npm run bundle:prod && cat package.json | sed -E -e 's/\"(lib|dist)\\//\"js\\//g' > dist/package.json && cp README.md dist/",
     "link": "npm run build && cd dist && npm link"

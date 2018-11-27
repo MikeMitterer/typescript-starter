@@ -53,7 +53,8 @@ function main(): void {
     const body = document.querySelector("body") as HTMLBodyElement;
     body.classList.remove("loading");
     body.classList.add("loaded");
-    console.log("Done!!!");
+
+    console.log("Done!!!!");
 }
 
 if (typeof window !== "undefined") {
