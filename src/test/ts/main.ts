@@ -1,5 +1,5 @@
-import { sayMyName } from "@main/index";
-import { endsWith } from "@main/main";
+import { sayMyName } from "../../main/ts";
+import { endsWith } from "../../main/ts/main";
 
 describe("Some main functions 1", () => {
 

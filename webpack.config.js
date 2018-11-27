@@ -17,7 +17,6 @@ function srcPath(subdir) {
     return path.join(__dirname, "src", subdir);
 }
 
-
 module.exports = {
     context: __dirname,
 
@@ -25,21 +24,19 @@ module.exports = {
 
     entry: {
         index: [
-            path.resolve(__dirname, 'src/main/ts/index.ts'),
+            path.resolve(__dirname,         'src/index.ts'),
         ],
-        exports: [
-            path.resolve(__dirname, 'src/main/ts/exports.ts'),
-        ],
-        polyfills: path.resolve(__dirname, 'src/main/ts/polyfills.ts'),
-        vendor: path.resolve(__dirname, 'src/main/ts/vendor.ts'),
 
-        styles: path.resolve(__dirname, 'src/web/styles/main.scss'),
+        polyfills: path.resolve(__dirname,  'src/main/ts/polyfills.ts'),
+        vendor: path.resolve(__dirname,     'src/main/ts/vendor.ts'),
+
+        styles: path.resolve(__dirname,     'src/site/styles/main.scss'),
     },
 
     output: {
         publicPath: "",
         path: path.resolve(__dirname, 'dist'),
-        filename: "js/[name].js",
+          filename: "js/[name].js",
         pathinfo: true,
     },
 
@@ -48,9 +45,9 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.scss'],
         alias: {
-            "@main"   : srcPath("main/ts"),
-            "@test"   : srcPath("test/ts"),
-            "@images" : srcPath("web/images"),
+            "@main"   : srcPath("lib"),
+            "@test"   : srcPath("test"),
+            "@images" : srcPath("site/images"),
         }
     },
     module: {
@@ -60,12 +57,20 @@ module.exports = {
                 enforce: 'pre',
                 loader: 'tslint-loader'
             },
+            // {
+            //     test: /\.ts?$/,
+            //     // Hat probleme beim export (funkt nur einmal - dann ist Restart notwendig)
+            //     // loader: 'ts-loader'
+            //     loader: 'awesome-typescript-loader'
+            // },
+
             {
-                test: /\.ts?$/,
-                // Hat probleme beim export (funkt nur einmal - dann ist Restart notwendig)
-                // loader: 'ts-loader'
-                loader: 'awesome-typescript-loader'
+                  // Include ts, tsx, js, and jsx files.
+                  test: /\.(ts|js)x?$/,
+                  exclude: /node_modules/,
+                  loader: 'babel-loader',
             },
+
             // {
             //     test: require.resolve("js/index.js"),
             //     use: [
@@ -147,14 +152,14 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
 
         // clean dist folder
-        new CleanWebpackPlugin(['dist', 'types', 'build'], {}),
+        new CleanWebpackPlugin(['dist', 'types', /*'build',*/ '.awcache'], {}),
 
         // new ExtractTextPlugin({
         //     filename: "[name].css"
         // }),
 
         new CopyWebpackPlugin([
-            {from:'src/web/images/static',to:'images/static'}
+            {from:'src/site/images/static',to:'images/static'}
         ]),
 
         new HtmlWebpackPlugin({
@@ -164,11 +169,11 @@ module.exports = {
             },
             hash: true,
             // Weitere Infos: https://goo.gl/wVG6wx
-            template: path.resolve(__dirname, 'src/web/index.ejs'),
+            template: path.resolve(__dirname, 'src/site/index.ejs'),
 
             // Variablen funktionieren nicht
             // template: '!!html-loader?interpolate!src/web/index.ejs',
-            favicon: path.resolve(__dirname, 'src/web/images/favicon.ico'),
+            favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
             chunks: [ 'index', 'styles' ]
         }),
 

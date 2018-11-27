@@ -1,6 +1,10 @@
-import { returnMyName } from "@main/main";
-import {functionWithDefaultParams, functionWithOptionalParams, myCallback} from "@main/ptest/functions";
 import * as assert from "assert";
+import { returnMyName } from "../../../main/ts/main";
+import {
+  functionWithDefaultParams,
+  functionWithOptionalParams,
+  myCallback,
+} from "../../../main/ts/ptest/functions";
 
 describe("functions", () => {
     it("test simple function", () => {

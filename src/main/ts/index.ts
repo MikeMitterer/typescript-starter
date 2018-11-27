@@ -1,7 +1,7 @@
-import * as lambi from "@images/lambi.png";
-import { Name } from "@main/address/Name";
-import { loggerFactory } from "@main/config/ConfigLog4j";
-import { giveAge9 } from "@main/main";
+import * as lambi from "../../site/images/lambi.png";
+import { Name } from "./address/Name";
+import { loggerFactory } from "./config/ConfigLog4j";
+import { giveAge9 } from "./main";
 
 export function sayMyName(): string {
     return "Mike";
@@ -11,7 +11,11 @@ export function addValues(v1: number, v2: number): number {
     return v1 + v2;
 }
 
-export function main(): void {
+export function multiplyValue(v1: number, v2: number): number {
+    return v1 * v2;
+}
+
+function main(): void {
     // Retrieve a logger (you can decide to use it per class and/or module or just
     // export it in the config above etc. Your loggers - your choice!).
     // This logger will fall in the first LogGroupRule from above.
@@ -23,7 +27,7 @@ export function main(): void {
         alert(`Hi Mike, event '${event.type}' occurred!!`);
     };
 
-    logger.info(() => `Servus Message!!!... ${giveAge9()}`);
+    logger.info(() => `Servus Message!!!!... ${giveAge9()}`);
 
     const divs = Array.from(document.getElementsByTagName("div"));
 
@@ -46,6 +50,9 @@ export function main(): void {
     const img = document.querySelector("#frontImg") as HTMLImageElement;
     img.src = lambi;
 
+    const body = document.querySelector("body") as HTMLBodyElement;
+    body.classList.remove("loading");
+    body.classList.add("loaded");
     console.log("Done!!!");
 }
 

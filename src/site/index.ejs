@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Title <%= version %></title>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <style>
+        .modal { display: none; }
+    </style>
+</head>
+<body class="loading">
+<div class="modal">
+    <div class="modal__header">
+        ${require('./_partials/nav.html')}
+    </div>
+    <div class="modal__content">
+        <div class="row">
+            <div class="col">
+                <p>Statisch</p>
+                <div>
+                    <img class="cat" src="images/static/cat.jpg">
+                </div>
+            </div>
+            <div class="col">
+                <p>Dynamisch über Script</p>
+                <img id="frontImg"/>
+            </div>
+        </div>
+
+        <div id="tstest">Click me</div>
+        <div class="example">Test für PREFIXER!</div>
+
+
+        <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+            sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <hr>
+
+    </div>
+    <div class="modal__footer">
+        <div id="app">Loading...</div> / <span class="version">Version <%= version %></span>
+    </div>
+</div>
+</body>

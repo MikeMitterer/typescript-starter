@@ -5,8 +5,14 @@
 {
   "compileOnSave" :   true,
   "compilerOptions" : {
+    "target" :                       "esnext",
+
+    "outDir" :                       "./lib",
+    "rootDir":                       "./src",
+    
     "module" :                       "commonjs",
-    "target" :                       "es6",
+    "moduleResolution" :             "node",
+
     "sourceMap" :                    true,
     "inlineSources" :                true,
     "noImplicitAny" :                true,
@@ -20,38 +26,59 @@
     "experimentalDecorators" :       true,
     "emitDecoratorMetadata" :        true,
     "allowSyntheticDefaultImports" : true,
-    "moduleResolution" :             "node",
+
+    // Enables emit interoperability between CommonJS and ES Modules
+    // via creation of namespace objects for all imports.
+    // Implies 'allowSyntheticDefaultImports'
+    //
+    // Import von Images funkt nicht mehr
+    // "esModuleInterop":            true,
+
+
     "strict" :                       true,
 
     // wird mit tsc erstellt
     "declaration" :                  true,
-    "declarationDir" :               "dist/types",
-    "outDir" :                       "./build",
+
+    // Hier landen die types - sonst kommen sie
+    // ins outDir
+    //
+    //"declarationDir" :               "dist",
 
     "baseUrl":                       "./src",
     "paths": {
 
-      //
-      // Pfade müssen auch in WebPack entsprechend definiert sein!
-      //
-      "@main/*":                     [ "main/ts/*"],
-      "@test/*":                     [ "test/ts/*"],
-      "@images/*":                   [ "web/images/*"]
-    }
+
+       // Pfade müssen auch in WebPack entsprechend definiert sein!
+
+       // Funktioniert nicht!
+       //  https://github.com/Microsoft/TypeScript/issues/10866
+       // "@main/*":                     [ "main/ts/*"],
+       // "@test/*":                     [ "test/ts/*"],
+       // "@images/*":                   [ "site/images/*"]
+    },
+
+    "lib": ["es2017", "dom"]
+    // "lib": [ "dom"],
+    // "types": ["node"],
+
+    // Fallback wenn nach d.ts Files gesucht wird
+    // "typeRoots": ["node_modules/@types", "src/types"]
   },
   // https://github.com/s-panferov/awesome-typescript-loader
   "awesomeTypescriptLoaderOptions": {
-    "useCache":                       true,
+    "useCache":                       false,
     "reportFiles": [
       "src/**/*.{ts,tsx}"
     ]
   },
   "include" : [
+    "src/index.ts",
     "src/main/ts",
     "src/test/ts",
-    "src/web/images",
+    "src/site/images",
 
     // Damit werden die images erkannt
-    "src/web/images/typings.d.ts"
+    "src/site/images/typings.d.ts"
   ]
 }

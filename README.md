@@ -1,4 +1,4 @@
-# TypeScript
+# TypeScript -
 > [Understanding TypeScript - Udemy](https://www.udemy.com/understanding-typescript/learn/v4/overview)
 
 ## Install
@@ -104,11 +104,28 @@ Nicht zu vergessen:
 ## NPM
 > https://medium.freecodecamp.org/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78
 
+.bashrc:
+
+    ### Environment
+    #
+    # NODE / JS / TypeScript Settings
+    #
+    
+    export PATH="$PATH:./node_modules/.bin"
+    
+    alias npx="npx --no-install"
+    alias ts="npx --no-install  babel-node --extensions \".ts, .tsx\""
+
+### Basis
+
     # Login
     npm login
        
     # Publish
     npm publish --access=public
+    
+    # Globale packages anzeigen
+    npm list -g --depth 0
         
 ## Test
 
@@ -137,6 +154,40 @@ Einmalig muss ein login gemacht werden
 Anzeige der Files die "gepublished" werden        
 
     npm pack --dry-run
+    
+### Flat TS package
+
+    # Dist-Folder wird erstellt
+    #   - im package.json werden alle Verweise auf 'dist' gelöscht
+    npm run build
+    
+    # Publish findet aus dem dist-Folder statt
+    cd dist/
+    
+    # Check ob alle Files dabei sind
+    npm pack --dry-run
+    
+    # publish ins REPO
+    npm publish --access public
+    
+Am Client
+
+    # Update des Packages
+    npm update @mike.mitterer/typescript-starter     
+         
+    # Build & Test
+    npm run build && npm run test:unit
+                
+## Babel + Node
+    
+    # Führt das Command aus    
+    ./node_modules/@babel/node/bin/babel-node.js --extensions ".ts" tools/babel-test.ts
+    ./node_modules/.bin/babel-node --extensions ".ts" tools/babel-test.ts
+    
+    # Oder - wenn der Pfad in .bashrc eingetragen ist
+    #       export PATH="$PATH:./node_modules/.bin"
+    babel-node --extensions ".ts" tools/babel-test.ts    
+    npx --no-install babel-node --extensions ".ts" tools/babel-test.ts
                     
 ## WebStorm
 

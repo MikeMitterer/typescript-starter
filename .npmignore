@@ -13,3 +13,4 @@ tsconfig.json
 typings
 dist/types/test
 *.iml
+

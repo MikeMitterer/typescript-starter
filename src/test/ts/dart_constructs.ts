@@ -1,19 +1,20 @@
+/* tslint:disable:max-classes-per-file variable-name */
 class DartSimulations1 {
-    private constructor(private _name:String) {}
 
-    public static forName(name:String) {
+    get name(): string { return this._name; }
+
+    public static forName(name: string) {
         return new DartSimulations1(name);
     }
-
-    get name(): String { return this._name; }
+    private constructor(private _name: string) {}
 }
 
 class FactoryConstructor {
-    private constructor(public readonly name:String) {}
 
-    public static forName(name:String) {
+    public static forName(name: string) {
         return new FactoryConstructor(name);
     }
+    private constructor(public readonly name: string) {}
 }
 
 describe("Simulation des factory-CTORs aus Dart", () => {

@@ -1,5 +1,5 @@
-import * as oat from "@main/objects.and.types";
 import * as assert from "assert";
+import * as oat from "../../main/ts/objects.and.types";
 
 describe("Objects and types", () => {
     it("dynamic object", () => {

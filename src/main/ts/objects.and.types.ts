@@ -1,8 +1,8 @@
-let name: string = "Mike";
+const name: string = "Mike";
 
 export const userName = {
-    name: name,
-    age: 99
+    age: 99,
+    name,
 };
 
 /**
@@ -11,8 +11,8 @@ export const userName = {
  * Das Objekt hat zwei parameter: name + age
  */
 export const userData: { name: string, age: number } = {
+      age: 99,
     name: "Gerda",
-    age: 99
 };
 
 /**
@@ -20,29 +20,29 @@ export const userData: { name: string, age: number } = {
  */
 export const complexObject: { name: string, callback: (age: number) => string } = {
     name: "Mike",
-    callback: function (age: number): string {
-        return `Age: ${age}`
-    }
-}
+    callback(age: number): string {
+        return `Age: ${age}`;
+    },
+};
 
 /**
  * Type-Aliases
  *
  * Hier steht auf der rechten Seite eigentlich kein value sondern eine Type-Definition
  */
-type ComplexObject = { name: string, data: number[]};
+interface ComplexObject { name: string; data: number[];}
 
 export const anotherComplexObject: ComplexObject = {
+  data: [4, 5, 6],
     name: "Mike",
-    data: [4, 5, 6]
 };
 
 // - Union Types -------------------------------------------------------------------------------------------------------
 
 export const myRealAge: number | string = 99;
 
-export function showMyRealAge(age: number | string) : string {
-    return typeof age == "number" ? `N: ${age}` : `S: ${age}`;
+export function showMyRealAge(age: number | string): string {
+    return typeof age === "number" ? `N: ${age}` : `S: ${age}`;
 }
 
 // - never Type --------------------------------------------------------------------------------------------------------
@@ -50,14 +50,12 @@ export function showMyRealAge(age: number | string) : string {
 /**
  * Die Funktion endet nie - deshalb der return type: never
  */
-export function neverEnds() : never {
-    throw new Error("An error occurred!")
+export function neverEnds(): never {
+    throw new Error("An error occurred!");
 }
 
 // - not nullable Types ------------------------------------------------------------------------------------------------
 
-export function tryToReturnNull(paramShouldNotBeNull : string) : string | null {
-    return paramShouldNotBeNull == "Mike" ? paramShouldNotBeNull : null;
+export function tryToReturnNull(paramShouldNotBeNull: string): string | null {
+    return paramShouldNotBeNull === "Mike" ? paramShouldNotBeNull : null;
 }
-
-
