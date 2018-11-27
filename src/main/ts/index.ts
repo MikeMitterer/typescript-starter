@@ -7,6 +7,11 @@ export function sayMyName(): string {
     return "Mike";
 }
 
+/**
+ * Zählt zweit Werte zusammen
+ * @param v1 Wert 1
+ * @param v2 Wert 2
+ */
 export function addValues(v1: number, v2: number): number {
     return v1 + v2;
 }
