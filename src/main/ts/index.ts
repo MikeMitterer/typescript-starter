@@ -9,6 +9,12 @@ export function sayMyName(): string {
 
 /**
  * Zählt zweit Werte zusammen
+ *
+ *     import * as lambi from "../../site/images/lambi.png";
+ *     ...
+ *     const img = document.querySelector("#frontImg") as HTMLImageElement;
+ *     img.src = lambi;
+ *
  * @param v1 Wert 1
  * @param v2 Wert 2
  */
@@ -24,9 +30,9 @@ function main(): void {
     // Retrieve a logger (you can decide to use it per class and/or module or just
     // export it in the config above etc. Your loggers - your choice!).
     // This logger will fall in the first LogGroupRule from above.
-    const logger = loggerFactory.getLogger("model.Product");
+    const logger = loggerFactory.getLogger("main");
 
-    console.log(`index.ts invoked - ${sayMyName()}`);
+    logger.info(`index.ts invoked - ${sayMyName()}`);
 
     (document.querySelector("#tstest") as HTMLElement).onclick = (event: MouseEvent): void => {
         alert(`Hi Mike, event '${event.type}' occurred!!`);
@@ -39,7 +45,7 @@ function main(): void {
     divs.forEach((div: HTMLDivElement) => {
         div.addEventListener("click", (evt: MouseEvent) => {
             evt = new MouseEvent("aaa");
-            console.log(evt);
+            logger.info(JSON.stringify(evt));
         });
     });
 
@@ -52,6 +58,7 @@ function main(): void {
     const appDiv = (document.querySelector("#app") as HTMLDivElement);
     appDiv.textContent = name.fullname;
 
+    logger.info(`Lambi: ${JSON.stringify(lambi)}`);
     const img = document.querySelector("#frontImg") as HTMLImageElement;
     img.src = lambi;
 
@@ -59,7 +66,8 @@ function main(): void {
     body.classList.remove("loading");
     body.classList.add("loaded");
 
-    console.log("Done!!!!");
+    // logger.info(`Done!!!! ${os.platform()}`);
+    logger.info(`Done!!!!`);
 }
 
 if (typeof window !== "undefined") {

@@ -45,8 +45,8 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.scss'],
         alias: {
-            "@main"   : srcPath("lib"),
-            "@test"   : srcPath("test"),
+            "@main"   : srcPath("main/ts"),
+            "@test"   : srcPath("test/ts"),
             "@images" : srcPath("site/images"),
         }
     },
@@ -108,34 +108,20 @@ module.exports = {
                     ]
             },
             {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+            test: /\.(png|jpg|gif)$/i,
                 use: [
-                    'file-loader?name=images/[name]-[hash:8].[ext]',
                     {
-                        loader: 'image-webpack-loader',
+                    // https://github.com/webpack-contrib/url-loader
+                    loader: 'url-loader',
                         options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 70
-                            },
-                            // optipng.enabled: false will disable optipng
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: '65-90',
-                                speed: 4
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            // the webp option will enable WEBP
-                            webp: {
-                                quality: 75
-                            }
-                        }
-                    },
-                ],
+                      // if less than 8 kb, add base64 encoded image to css
+                      limit: 8192,
+
+                      // if more than 8 kb move to this folder in build using file-loader
+                      name: "images/[name]-[hash:8].[ext]"
+                      }
+                    }
+                ]
             },
             {
                 test: /\.html$/,

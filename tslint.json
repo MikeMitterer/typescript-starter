@@ -2,6 +2,11 @@
   "extends": "tslint:recommended",
   
   "rules": {
-    "no-console": false
+    // "no-console": false
+    "no-trailing-whitespace": {
+      "severity": "off"
+    },
+    "one-line": [true, "check-catch", "check-finally", "check-open-brace", "check-whitespace"],
+    "quotemark": false
   }
 }

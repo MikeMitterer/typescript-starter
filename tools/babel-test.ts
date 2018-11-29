@@ -1,9 +1,12 @@
+/* tslint:disable:no-console */
+import * as console from 'console';
 import * as path from "path";
 
 console.log(`Hello ${path.resolve(process.cwd())}!`);
 
 function delay(milliseconds: number, count: number): Promise<number> {
-  return new Promise<number>((resolve) => {
+    // @ts-ignore (TS warns about Promise)
+    return new Promise<number>((resolve) => {
     setTimeout(() => {
       resolve(count);
     }, milliseconds);
@@ -11,6 +14,7 @@ function delay(milliseconds: number, count: number): Promise<number> {
 }
 
 // async function always returns a Promise
+// @ts-ignore (TS warns about Promise)
 async function dramaticWelcome(): Promise<void> {
   console.log("Hello");
 
