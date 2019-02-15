@@ -1,5 +1,7 @@
 {
-  "extends": "tslint:recommended",
+  "extends": [
+    "tslint:recommended"
+  ],
   
   "rules": {
     // "no-console": false
@@ -7,6 +9,9 @@
       "severity": "off"
     },
     "one-line": [true, "check-catch", "check-finally", "check-open-brace", "check-whitespace"],
-    "quotemark": false
+    "quotemark": false,
+    "explicit-override": [ true, "decorator" ],
+    "object-literal-sort-keys": false,
+    "no-any": true
   }
 }

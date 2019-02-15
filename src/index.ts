@@ -20,9 +20,10 @@ declare global {
     }
 }
 
-// (window as any).MyLib = {
-//     Name: NameToExport,
-//     addValues: addValuesToExport,
-//     // main: mainToExport,
-//     sayMyName: sayMyNameToExport,
-// };
+// tslint:disable-next-line
+(window as any).MyLib = {
+    Name: NameToExport,
+    addValues: addValuesToExport,
+    // main: mainToExport,
+    sayMyName: sayMyNameToExport,
+};

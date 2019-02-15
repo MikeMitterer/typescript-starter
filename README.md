@@ -1,5 +1,21 @@
 # TypeScript - Starter
 
+npm install url-loader --save-dev
+npm uninstall image-webpack-loader
+node build/fs-test.js
+webpack --config webpack.node.js && node build/fs-test.js
+BABEL_ENV=node webpack --config webpack.node.js && node build/fs-test.js
+type ts
+babel --extensions ".ts" tools/fs-test.ts
+babel --extensions ".ts" tools/fs-test.ts > test.js
+node test.js
+npm install -D @babel/preset-env
+webpack --config webpack.node.js && node build/fs-test.js 
+BABEL_ENV=node babel --extensions ".ts" tools/fs-test.ts tools/part/fs-part.ts 
+BABEL_ENV=node babel --extensions ".ts, .tsx" tools/fs-test.ts | node 
+BABEL_ENV=node babel --extensions ".ts, .tsx" tools | node
+BABEL_ENV=node NODE_ENV=production webpack --config webpack.node.js --mode production
+
 ## NPM
 > https://medium.freecodecamp.org/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78
 

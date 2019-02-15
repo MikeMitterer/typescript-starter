@@ -12,3 +12,7 @@ html, body {
   padding: 20px;
   text-align: center;
 }
+
+#frontImg {
+  max-width: 300px;
+}

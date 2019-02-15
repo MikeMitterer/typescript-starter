@@ -53,12 +53,12 @@ function main(): void {
     //     div.
     // }
 
-    const name = new Name("Mike", "Mitterer4");
+    const name = new Name("Mike", "Mitterer5");
 
     const appDiv = (document.querySelector("#app") as HTMLDivElement);
     appDiv.textContent = name.fullname;
 
-    logger.info(`Lambi: ${JSON.stringify(lambi)}`);
+    logger.debug(`Lambi: ${JSON.stringify(lambi)}`);
     const img = document.querySelector("#frontImg") as HTMLImageElement;
     img.src = lambi;
 
@@ -73,3 +73,43 @@ function main(): void {
 if (typeof window !== "undefined") {
     main();
 }
+
+function everythingIsReady() {
+    const logger = loggerFactory.getLogger("done");
+    logger.info(`everythingIsReady!`);
+}
+
+function domIsReady() {
+    const logger = loggerFactory.getLogger("done");
+    logger.info(`domIsReady!`);
+}
+
+// function unknownState(state: string) {
+//     const logger = loggerFactory.getLogger("state");
+//     logger.info(`unknownState: ${state}!`);
+// }
+
+// Mehr: https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState
+const domIsReadyState = setInterval(() => {
+    if (/interactive/.test(document.readyState)) {
+        clearInterval(domIsReadyState);
+        domIsReady(); // this is the function that gets called when everything is loaded
+    }
+}, 10);
+
+const everythingLoadedState = setInterval(() => {
+    if (/loaded|complete/.test(document.readyState)) {
+        clearInterval(everythingLoadedState);
+        everythingIsReady(); // this is the function that gets called when everything is loaded
+    }
+}, 10);
+
+// document.addEventListener('readystatechange', () => {
+//     if (/interactive/.test(document.readyState)) {
+//         domIsReady();
+//     } else if (/loaded|complete/.test(document.readyState)) {
+//         everythingIsReady();
+//     } else {
+//         unknownState(document.readyState);
+//     }
+// });

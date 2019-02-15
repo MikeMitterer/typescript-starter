@@ -20,7 +20,7 @@ void main() {
   final name = Name("Mike","Mitterer");
   querySelector('#output').text = 'Your Dart app is running. ${name.fullname}';
 
-  window.console.log("From JS: ${sayMyName()}");
+  window.console.log("From JS: ${sayMyName()} - output in DART!");
 
   //mainFromTS();
 }
