@@ -1,13 +1,13 @@
-export * from "./main/ts/index";
-export * from "./main/ts/address/Name";
+export * from './main/index';
+export * from './main/address/Name';
 
-import { Name as NameToExport } from "./main/ts/address/Name";
+import { Name as NameToExport } from './main/address/Name';
 
 import {
     addValues as addValuesToExport,
     // main as mainToExport,
     sayMyName as sayMyNameToExport,
-} from "./main/ts/index";
+} from './main/index';
 
 declare global {
     namespace MyLib {

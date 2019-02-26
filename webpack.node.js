@@ -34,8 +34,8 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '@main': srcPath('main/ts'),
-      '@test': srcPath('test/ts'),
+      '@main': srcPath('main'),
+      '@test': srcPath('test'),
       '@images': srcPath('site/images')
     }
   },

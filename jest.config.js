@@ -2,7 +2,7 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-    preset: "ts-jest",
+    preset: 'ts-jest',
 
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -73,12 +73,12 @@ module.exports = {
     // ],
 
     // A map from regular expressions to module names that allow to stub out resources with a single module
-    "moduleNameMapper": {
-        "^@main(.*)$": "<rootDir>/src/main/ts/$1",
-        "^@images(.*)$": "<rootDir>/src/site/images/$1",
+    moduleNameMapper: {
+        '^@main(.*)$': '<rootDir>/src/main/$1',
+        '^@images(.*)$': '<rootDir>/src/site/images/$1',
 
         // Config: https://jestjs.io/docs/en/webpack.html
-        "\.(scss)$": "identity-obj-proxy"
+        '.(scss)$': 'identity-obj-proxy',
     },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -132,7 +132,7 @@ module.exports = {
     // snapshotSerializers: [],
 
     // The test environment that will be used for testing
-    testEnvironment: "node",
+    testEnvironment: 'node',
 
     // Options that will be passed to the testEnvironment
     // testEnvironmentOptions: {},
@@ -149,7 +149,7 @@ module.exports = {
         // "**/src/test/**/*.[jt]s?(x)"
 
         // Testet nur! TS-Files
-        "**/src/test/**/*.ts?(x)"
+        '<rootDir>/src/test/**/*.ts?(x)',
     ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
@@ -174,11 +174,13 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     // transform: null,
-    "transform" : {
+    transform: {
         // Config: https://jestjs.io/docs/en/webpack.html
-        "\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$"
-            : "<rootDir>/__mocks__/fileTransformer.js",
-    }
+        '.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+            '<rootDir>/__mocks__/fileTransformer.js',
+
+        '^.+\\.(ts|tsx)$': './node_modules/ts-jest',
+    },
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
