@@ -143,7 +143,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
 
         // clean dist folder
-        new CleanWebpackPlugin(['dist', 'types', /*'build',*/ '.awcache'], {}),
+        new CleanWebpackPlugin({}),
 
         // new ExtractTextPlugin({
         //     filename: "[name].css"

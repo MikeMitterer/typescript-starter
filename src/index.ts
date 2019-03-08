@@ -10,7 +10,7 @@ import {
 } from './main/index';
 
 declare global {
-    namespace MyLib {
+    namespace TSStarter {
         export type Name = NameToExport;
         export const Name: typeof NameToExport;
 
@@ -21,7 +21,7 @@ declare global {
 }
 
 // tslint:disable-next-line
-(window as any).MyLib = {
+(window as any).TSStarter = {
     Name: NameToExport,
     addValues: addValuesToExport,
     // main: mainToExport,

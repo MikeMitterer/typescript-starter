@@ -12,9 +12,13 @@
         "object-literal-sort-keys": false,
         "no-any": true,
 
-        "interface-name": [true, "never-prefix"],
+        "interface-name": [false, "always-prefix"],
 
         "class-name": false,
+
+        "no-null-keyword": true,
+
+        "max-classes-per-file": false,
 
         "member-ordering": [
             true,

@@ -28,10 +28,6 @@ button:focus {
 }
 
 .modal__content {
-    img {
-        max-width: 250px;
-        border-radius: 5px;
-    }
 
     .toolbar {
         padding: 10px 0;
@@ -78,6 +74,12 @@ button:focus {
     align-items: flex-start; // ⇾
 
     &__header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between; // ⇾
+        align-content: space-between; // ||
+        align-items: flex-start; // ↓
     }
 
     &__content {
@@ -107,13 +109,6 @@ button:focus {
         }
 
         background-color: $sticky-color;
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start; // ⇾
-        align-content: space-between; // ||
-        align-items: center; // ↓
     }
 
     &__content {
@@ -130,6 +125,20 @@ button:focus {
         bottom: 0;
         font-size: 90%;
         width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between; // ⇾
+        align-content: space-between; // ||
+        align-items: center; // ↓
+    }
+}
+
+.demo_images {
+    img {
+        max-height: 30px;
+        border-radius: 5px;
     }
 }
 

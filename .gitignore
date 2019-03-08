@@ -18,3 +18,7 @@ dist/
 types/
 .awcache/
 lib/
+bin/
+src/**/*.js
+yarn-error.log
+doc
