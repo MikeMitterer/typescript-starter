@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const moment = require('moment');
 const package = require('./package');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,6 +11,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
+const date = moment().format('YYYY.MM.DD HH:mm');
 
 // This helper function is not strictly necessary.
 // I just don't like repeating the path.join a dozen times.
@@ -23,12 +25,15 @@ module.exports = {
     mode: process.env.NODE_ENV || 'development',
 
     entry: {
-        index: [path.resolve(__dirname, 'src/index.ts')],
+        index: [path.resolve(__dirname, 'src/browser/index.ts')],
 
-        polyfills: path.resolve(__dirname, 'src/main/polyfills.ts'),
-        vendor: path.resolve(__dirname, 'src/main/vendor.ts'),
+        polyfills: path.resolve(__dirname, 'src/browser/polyfills.ts'),
+        vendor: path.resolve(__dirname, 'src/browser/vendor.ts'),
 
-        styles: path.resolve(__dirname, 'src/site/styles/main.scss'),
+        // Wird per script-tag eingebunden (js/styles.js?...)
+        // Es kann aber auch ein import über das index.ts-File gemacht werden
+        // styles: path.resolve(__dirname, 'src/site/styles/main.scss'),
+        // styles: path.resolve(__dirname, 'src/browser/_styles.ts'),
     },
 
     output: {
@@ -38,7 +43,10 @@ module.exports = {
         pathinfo: true,
     },
 
-    devtool: devMode ? 'inline-source-map' : false,
+    // Mehr: https://webpack.js.org/configuration/devtool/#devtool
+    // devtool: devMode ? 'inline-source-map' : false,
+    devtool: devMode ? 'cheap-eval-source-map' : false,
+    // devtool: devMode ? 'eval' : false,
 
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.scss'],
@@ -88,7 +96,15 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     // creates style nodes from JS strings
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+
+                    devMode ? 'style-loader' :
+                    {
+                    loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../',
+                        }
+                    },
                     {
                         // translates CSS into CommonJS
                         loader: 'css-loader',
@@ -109,7 +125,7 @@ module.exports = {
                         options: {
                             sourceMap: true,
                         },
-                    },
+                    }
                 ],
             },
             {
@@ -145,6 +161,10 @@ module.exports = {
         // clean dist folder
         new CleanWebpackPlugin({}),
 
+        // Weitere Infos: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+        // load `moment/locale/en.js` and `moment/locale/de.js`
+        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|de/),
+
         // new ExtractTextPlugin({
         //     filename: "[name].css"
         // }),
@@ -155,6 +175,8 @@ module.exports = {
             filename: 'index.html',
             templateParameters: {
                 version: package.version,
+                devmode: devMode,
+                published: date,
             },
             hash: true,
             // Weitere Infos: https://goo.gl/wVG6wx
@@ -163,14 +185,14 @@ module.exports = {
             // Variablen funktionieren nicht
             // template: '!!html-loader?interpolate!src/web/index.ejs',
             favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
-            chunks: ['index', 'styles'],
+            chunks: devMode ? ['polyfills', 'vendor', 'index' , 'styles' ] : ['polyfills', 'vendor', 'index' ],
         }),
 
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: devMode ? 'styles/[name].css' : 'styles/[name].[hash]fn.css',
-            chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[hash]cu.css',
+            filename: devMode ? 'styles/[name].css' : 'styles/[name].[contenthash].css',
+            chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[contenthash].css',
         }),
 
         new HtmlBeautifyPlugin({
@@ -180,7 +202,7 @@ module.exports = {
                     indent_size: 4,
                     indent_with_tabs: true,
                     indent_inner_html: true,
-                    preserve_newlines: true,
+                    preserve_newlines: false,
                     unformatted: ['p', 'i', 'b', 'span'],
                 },
             },
@@ -213,3 +235,15 @@ module.exports = {
         },
     },
 };
+
+// Reminder!
+// if (devMode) {
+//     module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
+// }
+
+if (!devMode) {
+    // Mega-Hack! der public Path wird nachträglich gesetzt
+    // test: /\.scss$/ scheint die 4-te Regel zu sein
+    // module.exports.module.rules[4].use[0].options = { publicPath: '../' };
+}
+

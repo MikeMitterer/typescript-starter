@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import * as oat from '../../main/learn/objects.and.types';
+import * as oat from '../../../main/learn/objects.and.types';
 
 describe('Objects and types', () => {
     it('dynamic object', () => {

@@ -19,14 +19,12 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
 
   entry: {
-    app: [
-      path.resolve(__dirname, 'tools/fs-test.ts')
-    ]
+        app: [path.resolve(__dirname, 'src/node/index.ts')],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'fs-test.js',
-    pathinfo: true
+        path: path.resolve(__dirname, 'bin'),
+        filename: 'app.js',
+        pathinfo: true,
   },
 
   devtool: devMode ? 'inline-source-map' : false,
@@ -36,8 +34,8 @@ module.exports = {
     alias: {
       '@main': srcPath('main'),
       '@test': srcPath('test'),
-      '@images': srcPath('site/images')
-    }
+      '@images': srcPath('site/images'),
+    },
   },
 
   module: {
@@ -45,24 +43,23 @@ module.exports = {
       {
         test: /\.ts$/,
         enforce: 'pre',
-        loader: 'tslint-loader'
+        loader: 'tslint-loader',
       },
       {
         // Include ts, tsx, js, and jsx files.
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
+                loader: 'babel-loader',
+            },
+        ],
   },
   plugins: [
     // clean folders
-    new CleanWebpackPlugin(['build'], {})
-
+        new CleanWebpackPlugin({}),
   ],
   stats: {
-    colors: true
+        colors: true,
   },
   // https://webpack.js.org/configuration/externals/
-  externals: [nodeExternals()]
+    externals: [nodeExternals()],
 };

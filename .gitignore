@@ -22,3 +22,4 @@ bin/
 src/**/*.js
 yarn-error.log
 doc
+doc/

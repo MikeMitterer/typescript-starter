@@ -1,10 +1,10 @@
 import * as assert from 'assert';
-import { returnMyName } from '../../main/learn/function.exports';
+import { returnMyName } from '../../../main/learn/function.exports';
 import {
     functionWithDefaultParams,
     functionWithOptionalParams,
     myCallback,
-} from '../../main/ptest/functions';
+} from '../../../main/ptest/functions';
 
 describe('functions', () => {
     it('test simple function', () => {

@@ -25,9 +25,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src="http://localhost:35729/livereload.js"></script>
+    <%if(devmode){%><script src="http://localhost:35729/livereload.js"></script><%}%>
+
     <style>
-        .modal { display: none; }
+        .modal { opacity: 0; }
     </style>
 </head>
 <body class="loading">
@@ -60,7 +61,17 @@
             <span id="app">Loading...</span>
         </div>
         <div>
+            <div class="version_block">
             <span class="version">Version <%= version %></span>
+                <span class="separator">/</span>
+                <span class="published"><%= published %></span>
+                <span class="separator">/</span>
+            </div>
+            <% if(devmode) { %>
+                <span class="devmode">DevMode</span>
+            <% } else { %>
+                <span class="production">Production</span>
+            <% } %>
         </div>
 
     </div>

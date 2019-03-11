@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 
 @import '_normalize.css';
 @import 'reset';
@@ -9,9 +9,13 @@ $header-footer-height: 50px;
 $header-footer-padding: 10px;
 
 body {
+    background-color: #dddddd;
     background-image: url('../images/static/background.png');
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
+
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
 }
 
 .button {
@@ -57,7 +61,8 @@ button:focus {
 .modal {
     // per default auf none im HTML-File
     body.loaded & {
-        display: block;
+        opacity: 1;
+        transition: opacity 1.00s ease-in-out;
     }
 
     //height: 100%;
@@ -74,6 +79,8 @@ button:focus {
     align-items: flex-start; // ⇾
 
     &__header {
+        width: 100%;
+
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -123,7 +130,6 @@ button:focus {
 
     &__footer {
         bottom: 0;
-        font-size: 90%;
         width: 100%;
 
         display: flex;
@@ -132,6 +138,40 @@ button:focus {
         justify-content: space-between; // ⇾
         align-content: space-between; // ||
         align-items: center; // ↓
+
+        #app {
+            color: green;
+            min-width: 90px;
+            display: inline-block;
+
+            body.loading & {
+                color: initial;
+            }
+        }
+
+        .version_block {
+            display: inline-block;
+            font-size: 80%;
+
+            .published {
+                font-weight: 400;
+            }
+        }
+        .separator {
+            margin: 0 0.15em;
+        }
+
+        .devmode {
+            font-weight: bold;
+            color: red;
+        }
+
+        .production {
+            font-weight: bold;
+            color: green;
+        }
+
+
     }
 }
 

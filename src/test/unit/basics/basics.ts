@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { loggerFactory } from '../../main/config/ConfigLog4j';
+import { loggerFactory } from '../../../main/config/ConfigLog4j';
 
 class Name {
     public readonly firstname: string | null;
