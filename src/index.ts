@@ -12,7 +12,7 @@ import {
 declare global {
     namespace TSStarter {
         export type Name = NameToExport;
-        export const Name: typeof NameToExport;
+        export const name: typeof NameToExport;
 
         export const addValues: typeof addValuesToExport;
         // export const main: typeof mainToExport;

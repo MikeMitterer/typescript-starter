@@ -1,5 +1,5 @@
 {
-    "extends": ["tslint:recommended", "tslint-override"],
+    "extends": ["tslint:recommended", "tslint-override", "tslint-consistent-codestyle"],
 
     "rules": {
         // "no-console": false
@@ -20,6 +20,8 @@
 
         "max-classes-per-file": false,
 
+        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+
         "member-ordering": [
             true,
             {
@@ -35,6 +37,14 @@
                     "private-instance-method"
                 ]
             }
+        ],
+
+        // Weitere Infos: https://goo.gl/t5RYfD
+        "naming-convention": [
+            true,
+            // require leading underscores for private properties
+            // and methods, all other rules still apply
+            {"type": "member", "modifiers": "private", "leadingUnderscore": "require"}
         ]
     }
 }

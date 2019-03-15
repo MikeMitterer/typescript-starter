@@ -74,12 +74,12 @@
             // "@images/*":                   [ "site/images/*"]
         // },
 
-        "lib": ["esnext", "dom"]
+        "lib": ["esnext", "dom"],
         // "lib": [ "dom"],
         // "types": ["node"],
 
         // Fallback wenn nach d.ts Files gesucht wird
-        // "typeRoots": ["node_modules/@types", "src/types"]
+        "typeRoots": ["./src/global.d.ts", "node_modules/@types"]
     },
     // https://github.com/s-panferov/awesome-typescript-loader
     "awesomeTypescriptLoaderOptions": {
@@ -97,7 +97,7 @@
         // "src/site/images",
 
         // Damit funktioniert jest-extended
-        "src/types/global.d.ts"
+        // "src/types/global.d.ts"
     ],
     "exclude": ["lib", "node_modules"]
 }
