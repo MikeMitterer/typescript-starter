@@ -88,8 +88,7 @@
     },
     "include": [
         // "src/index.ts",
-        "src/main/**/*.ts",
-        // "test/**/*.ts"
+        "src/main/**/*.ts"
 
         // Damit werden die images erkannt
         // "src/browser/**/*.ts",
