@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { returnMyName } from '../../../main/learn/function.exports';
+import { returnMyName } from '../../../main/learn/function_exports';
 import {
     functionWithDefaultParams,
     functionWithOptionalParams,

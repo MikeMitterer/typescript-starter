@@ -1,38 +1,39 @@
-import * as assert from 'assert';
-import * as oat from '../../../main/learn/objects.and.types';
+import 'jest-extended';
+import { learn } from '../../../main';
+
+const oat = learn.objects_and_types;
 
 describe('Objects and types', () => {
     it('dynamic object', () => {
-        assert.equal(oat.userName.name, 'Mike');
+        expect(oat.userName.name).toBe('Mike');
     });
 
     it('type-save-object', () => {
-        assert.equal(oat.userData.name, 'Gerda');
+        expect(oat.userData.name).toBe('Gerda');
     });
 
     it('should return age via callback', () => {
         const person = oat.complexObject;
 
-        assert.equal(person.callback(99), 'Age: 99');
+        expect(person.callback(99)).toBe('Age: 99');
     });
 
     it('Describe your test', () => {
-        assert.deepEqual(oat.anotherComplexObject.data, [4, 5, 6]);
+        expect(oat.anotherComplexObject.data).toEqual([4, 5, 6]);
     });
 
     it('should mark the type of function param as N: or S:', () => {
-        assert.equal(oat.showMyRealAge(99), 'N: 99');
-        assert.equal(oat.showMyRealAge('99'), 'S: 99');
+        expect(oat.showMyRealAge(99)).toBe('N: 99');
+        expect(oat.showMyRealAge('99')).toBe('S: 99');
 
-        assert.equal(oat.myRealAge, '99');
+        expect(oat.myRealAge).toBe(99);
     });
 
     it('should throw and error', () => {
-        assert.throws(() => oat.neverEnds(), Error);
-        assert.throws(oat.neverEnds, Error);
+        expect(() => oat.neverEnds()).toThrowError();
     });
 
     it('should not accept null', () => {
-        assert.ok(oat.tryToReturnNull('Mike') != null);
+        expect(oat.tryToReturnNull('Mike')).not.toBeNull();
     });
 });

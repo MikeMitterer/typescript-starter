@@ -6,6 +6,12 @@
 //    https://marcobotto.com/blog/compiling-and-bundling-typescript-libraries-with-webpack/
 //
 {
+    "compilerOptions": {
+        "incremental": true,
+
+        "lib": ["esnext", "dom"]
+    },
+
     "extends": "./tsconfig.lib",
     "include": [
         // Damit werden die images erkannt

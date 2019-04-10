@@ -1,4 +1,4 @@
-import { endsWith, returnMyName } from '../../../main/learn/function.exports';
+import { endsWith, returnMyName } from '../../../../lib/learn';
 
 describe('Some main functions 1', () => {
     test('should say Mike2', () => {

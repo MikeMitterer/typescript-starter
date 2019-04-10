@@ -11,8 +11,10 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "strict": true,
+        // "incremental": true - wird in tsconfig.json spezifiziert
+        // Da sonst die lib nur teilweise generiert wird
 
+        "strict": true,
         "target": "esnext",
 
         "outDir": "./lib",
@@ -28,6 +30,7 @@
         "inlineSources": true,
         "noImplicitAny": true,
         "noImplicitThis": true,
+        "noImplicitReturns": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
         "noEmitOnError": true,
@@ -74,7 +77,7 @@
             // "@images/*":                   [ "site/images/*"]
         // },
 
-        "lib": ["esnext", "dom"],
+        "lib": ["esnext"/*, "dom"*/],
         // "lib": [ "dom"],
         // "types": ["node"],
 
