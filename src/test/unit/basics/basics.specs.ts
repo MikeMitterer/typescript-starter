@@ -1,4 +1,3 @@
-import * as assert from 'assert';
 import { loggerFactory } from '../../../main/config/ConfigLog4j';
 
 class Name {
@@ -14,10 +13,10 @@ describe('index', () => {
 
     it('Number should be 28', () => {
         const numberToTest = '28';
-        assert.ok(String(28) === numberToTest, `Number was not 28 but was ${numberToTest}`);
+        expect(numberToTest).toBe('28');
 
         const myName = 'Mike';
-        assert.equal(myName, 'Mike');
+        expect(myName).toBe('Mike');
 
         const name: string = 'Mike';
         expect(name).toBe('Mike');
@@ -25,16 +24,16 @@ describe('index', () => {
 
     it('Array', () => {
         const hobbies: number[] = [1, 2, 3];
-        assert.equal(hobbies.length, 3);
+        expect(hobbies.length).toBe(3);
 
         const names1 = ['Mike', 2];
-        assert.equal(names1.length, 2);
+        expect(names1.length).toBe(2);
     });
 
     it('Tuples', () => {
         const address: [string, number] = ['Mike', 99];
 
-        assert.equal(address.length, 2);
+        expect(address.length).toBe(2);
     });
 
     it('enum', () => {
@@ -44,21 +43,22 @@ describe('index', () => {
             BLUE = 5,
         }
 
-        // assert.equal(Color.)
+        // expect(Color.)
         const color: Color = Color.GREEN;
-        assert.equal(color, 1);
-        assert.equal(Color.BLUE, 5);
+        expect(color).toBe(1);
+        expect(Color.BLUE).toBe(5);
     });
 
     it('The car should have 4 wheels', () => {
         const car = { brand: 'Audi', wheels: 4 };
-        assert.equal(car.wheels, 4, `Number of wheels should be 4 but was ${car.wheels}`);
+        expect(car.wheels).toBe(4);
     });
 
     it('should keine Ahnung', () => {
         // const name1 = new Name("Mike");
         // expect(name1.firstname).toBe("Mike");
 
+        // tslint:disable-next-line:no-null-keyword
         const name2 = new Name(null);
         expect(name2!.firstname).toBeNull();
     });
@@ -148,6 +148,7 @@ describe('index', () => {
         // @ts-ignore
         const callable: Callable = {
             load: (): Promise<Person> => {
+                // tslint:disable-next-line:no-null-keyword
                 return new Promise<Person>(() => null);
             },
         };

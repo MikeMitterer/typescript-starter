@@ -45,6 +45,13 @@
             // require leading underscores for private properties
             // and methods, all other rules still apply
             {"type": "member", "modifiers": "private", "leadingUnderscore": "require"}
-        ]
+        ],
+
+        "linterOptions": {
+            "exclude": [
+                "lib",
+                "webpack.*.js"
+            ]
+        }
     }
 }

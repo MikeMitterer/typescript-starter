@@ -20,6 +20,10 @@ function srcPath(subdir) {
 }
 
 module.exports = {
+    // https://webpack.js.org/configuration/target/
+    //  - default "web"
+    target: 'web',
+
     context: __dirname,
 
     mode: process.env.NODE_ENV || 'development',
@@ -71,7 +75,13 @@ module.exports = {
             // },
 
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+            {
+                test: /\.tsx?$/,
+                loader: 'awesome-typescript-loader',
+
+                // Use this to point to your tsconfig.json.
+                // query: { configFileName: './tsconfig.lib.json' }
+            },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
@@ -103,7 +113,7 @@ module.exports = {
                     loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: '../',
-                        }
+                        },
                     },
                     {
                         // translates CSS into CommonJS
@@ -125,7 +135,7 @@ module.exports = {
                         options: {
                             sourceMap: true,
                         },
-                    }
+                    },
                 ],
             },
             {
@@ -246,4 +256,3 @@ if (!devMode) {
     // test: /\.scss$/ scheint die 4-te Regel zu sein
     // module.exports.module.rules[4].use[0].options = { publicPath: '../' };
 }
-

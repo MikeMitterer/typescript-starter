@@ -28,11 +28,14 @@
 
         // Essentiell damit die source-maps im Browser funktionieren
         "inlineSources": true,
+
+        // Macht nur Probleme beim Testen...
+        "noUnusedParameters": false,
+        "noUnusedLocals": false,
+
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noImplicitReturns": true,
-        "noUnusedParameters": true,
-        "noUnusedLocals": true,
         "noEmitOnError": true,
         "strictNullChecks": true,
         "preserveConstEnums": true,
@@ -54,6 +57,9 @@
         // "esModuleInterop": true,
 
         // Dient zum importieren von json-Files
+        // In der "include"-Section müssen auch die *.json-Files
+        // eingebunden werden
+        // (Sollte in tsconfig.json eingeschaltet werden (wenn notwendig)!)
         // "resolveJsonModule": true,
 
         "esModuleInterop": true,
