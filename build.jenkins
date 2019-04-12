@@ -65,7 +65,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     // Zu npmjs
-                    sh 'yarn run deploy:public && git push origin HEAD:master'
+                    sh 'yarn run deploy && git push origin HEAD:master'
 
                     // Zum LightSail-Server
                     sh 'deployWebApp.sh deploy'
