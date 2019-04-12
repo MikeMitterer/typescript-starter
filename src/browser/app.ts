@@ -1,3 +1,4 @@
+import { addValues } from '@main/math/MyMath';
 import lambi from '../site/images/lambi.png';
 import { loggerFactory } from './config/ConfigLog4j';
 
@@ -29,6 +30,9 @@ export function main(): void {
     const body = query('body') as HTMLBodyElement;
     body.classList.remove('loading');
     body.classList.add('loaded');
+
+    const result = addValues(1, 2);
+    logger.info(`The result is ${result}`);
 
     // logger.info(`Done!!!! ${os.platform()}`);
     logger.info(`Done!!!!`);

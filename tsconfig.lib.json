@@ -73,15 +73,15 @@
         //"declarationDir" :               "dist",
 
         "baseUrl": "./src",
-        // "paths": {
+        "paths": {
             // Pfade müssen auch in WebPack entsprechend definiert sein!
             // Funktioniert nicht richtig!
             //  https://github.com/Microsoft/TypeScript/issues/10866
             //
-            // "@main/*": ["main/*"]
+            "@main/*": ["main/*"]
             // "@test/*":                     [ "test/ts/*"],
             // "@images/*":                   [ "site/images/*"]
-        // },
+        },
 
         "lib": ["esnext"/*, "dom"*/],
         // "lib": [ "dom"],
