@@ -1,5 +1,5 @@
 # TypeScript - Starter
-> [Home](https://github.com/MikeMitterer/typescript-starter)
+> [Live-Example](http://tsstarter.example.mikemitterer.at/) | [GitHub-Home](https://github.com/MikeMitterer/typescript-starter)
 
 ## Klonen in neues Dir
 
