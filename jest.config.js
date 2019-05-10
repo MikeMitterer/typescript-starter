@@ -3,7 +3,7 @@
 
 // Usage:
 //      export INTEGRATION_TEST='true' && jest src/test/integration/browser/reminder.puppeteer.specs.ts
-const isIntegrationTest = process.env.INTEGRATION_TEST === 'true';
+const isE2ETest = process.env.E2E_TEST === 'true';
 
 module.exports = {
     preset: 'ts-jest',
@@ -212,7 +212,7 @@ module.exports = {
     // watchman: true,
 };
 
-if(isIntegrationTest) {
+if(isE2ETest) {
     module.exports.globalSetup = "jest-environment-puppeteer/setup";
     module.exports.globalTeardown = "jest-environment-puppeteer/teardown";
     module.exports.testEnvironment = "jest-environment-puppeteer";

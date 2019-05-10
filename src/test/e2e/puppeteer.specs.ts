@@ -7,12 +7,12 @@ import puppeteer, { Browser, Page } from 'puppeteer';
  *
  * Damit der "Compile-Prozess" vor dem Aufruf des Browsers angestoßen wird
  * muss jest wie folgt gestartet werden:
- *       export INTEGRATION_TEST='true' && jest src/test/integration/browser/reminder.puppeteer.specs.ts
+ *       export E2E_TEST='true' && jest src/test/e2e/puppeteer.specs.ts
  *
  * Mehr:
  *      https://dev.to/aalises/dealing-with-asynchrony-when-writing-end-to-end-tests-with-puppeteer--jest-n37
  */
-describe('reminder.ts', () => {
+describe('puppeteer.ts', () => {
     // const logger = loggerFactory.getLogger('test.reminder.ts');
 
     let page: Page;
@@ -39,7 +39,8 @@ describe('reminder.ts', () => {
     });
 
     test('Test in Browser', async () => {
-        await expect(await page.title()).toStartWith('Title');
+        const title = await page.title();
+        expect(title).toStartWith('✔ Title');
         // await page.setContent(
         //     `
         //         <h1>Test</h1>

@@ -35,7 +35,7 @@ export function main(): void {
     logger.info(`The result is ${result}`);
 
     QUnit.test('hello test', (assert) => {
-        assert.ok(false, 'Passed!');
+        assert.ok(true, 'Passed!');
     });
 
     // logger.info(`Done!!!! ${os.platform()}`);
