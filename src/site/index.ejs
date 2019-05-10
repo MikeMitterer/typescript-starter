@@ -25,22 +25,25 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- QUNIT -->
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+
     <%if(devmode){%><script src="http://localhost:35729/livereload.js"></script><%}%>
 
     <style>
-        .modal { opacity: 0; }
+        .layout { opacity: 0; }
     </style>
 </head>
 <body class="loading">
-<div class="modal">
-    <div class="modal__header">
+<div class="layout">
+    <div class="layout__header">
         ${require('./_partials/nav.html')}
         <div class="demo_images">
             <img class="cat" src="images/static/cat.jpg">
             <img id="frontImg"/>
         </div>
     </div>
-    <div class="modal__content">
+    <div class="layout__content">
 
         <div class="toolbar">
             <div class="button" id="tstest">Click me</div>
@@ -50,19 +53,35 @@
         
         <div class="example">Test für PREFIXER!</div>
 
-        <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-            sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        <hr>
+        <div id="unit-tests">
+            <div id="qunit"></div>
+            <div id="qunit-fixture"></div>
+        </div>
+
+        <article>
+            <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            <hr>
+        </article>
+
+        <article>
+            <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            <hr>
+        </article>
 
     </div>
-    <div class="modal__footer">
+    <div class="layout__footer">
         <div>
-            <span id="app">Loading...</span>
+            <span class="loading">Loading...</span>
         </div>
         <div>
             <div class="version_block">
-            <span class="version">Version <%= version %></span>
+                <span class="version">Version <%= version %></span>
                 <span class="separator">/</span>
                 <span class="published"><%= published %></span>
                 <span class="separator">/</span>
@@ -77,3 +96,4 @@
     </div>
 </div>
 </body>
+<script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>

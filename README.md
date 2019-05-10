@@ -1,6 +1,27 @@
 # TypeScript - Starter
 > [Live-Example](http://tsstarter.example.mikemitterer.at/) | [GitHub-Home](https://github.com/MikeMitterer/typescript-starter)
 
+## Puppeteer
+> [12 examples to play with](https://www.aymen-loukil.com/en/blog-en/google-puppeteer-tutorial-with-examples/)
+
+Read HTML: https://github.com/GoogleChrome/puppeteer/issues/2913
+
+## QUnit
+> [QUnit](http://qunitjs.com/)
+
+Install:
+    yarn add qunit @types/qunit -D
+    
+`tsconfig.json`:
+
+    {
+        include: [
+        
+            // QUnit scheint sonst nicht zu funktionieren
+            "node_modules/@types/qunit/index.d.ts"
+        ]
+    }
+
 ## Klonen in neues Dir
 
     git clone git@github.com:MikeMitterer/typescript-starter.git <new project> 
@@ -42,6 +63,11 @@
 ## Upgrade aller packages
 
     yarn-upgrade-latest
+    
+## CI
+
+    # Kill Browser
+    ps | grep -i -C 0 "[/]webpack-dev-server" | awk '{print $1}' | while read psid; do echo "kill -HUP ${psid}"; done    
 
 
 

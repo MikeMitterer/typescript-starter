@@ -20,6 +20,7 @@ function srcPath(subdir) {
 }
 
 module.exports = {
+    cache: devMode,
     // https://webpack.js.org/configuration/target/
     //  - default "web"
     target: 'web',
@@ -32,7 +33,7 @@ module.exports = {
         index: [path.resolve(__dirname, 'src/browser/index.ts')],
 
         polyfills: path.resolve(__dirname, 'src/browser/polyfills.ts'),
-        vendor: path.resolve(__dirname, 'src/browser/vendor.ts'),
+        mobile: path.resolve(__dirname, 'src/browser/mobile.ts'),
 
         // Wird per script-tag eingebunden (js/styles.js?...)
         // Es kann aber auch ein import über das index.ts-File gemacht werden
@@ -48,9 +49,12 @@ module.exports = {
     },
 
     // Mehr: https://webpack.js.org/configuration/devtool/#devtool
-    // devtool: devMode ? 'inline-source-map' : false,
-    devtool: devMode ? 'cheap-eval-source-map' : false,
     // devtool: devMode ? 'eval' : false,
+    // devtool: devMode ? 'inline-source-map' : false,
+    // devtool: devMode ? 'cheap-eval-source-map' : false,
+
+    // cheap-module-eval-source-map is the best option
+    devtool: devMode ? 'cheap-module-eval-source-map' : false,
 
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.scss'],
@@ -75,13 +79,28 @@ module.exports = {
             // },
 
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            {
-                test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader',
+            // Speed: ~3000ms (https://github.com/s-panferov/awesome-typescript-loader#loader-options)
+            // { test: /\.tsx?$/, loader: 'awesome-typescript-loader',
+            //     options: {
+            //         configFileName: path.resolve(__dirname, 'tsconfig.lib.json'),
+            //         useBabel: true,
+            //         babelCore: "@babel/core", // needed for Babel v7
+            // }},
 
-                // Use this to point to your tsconfig.json.
-                // query: { configFileName: './tsconfig.lib.json' }
-            },
+            // Speed: ~750ms
+            // { test: /\.tsx?$/, loader: 'ts-loader', options: { configFile: path.resolve(__dirname, 'tsconfig.lib.json') } },
+
+            // Speed: ~400ms
+            { test: /\.(ts|js)x?$/, exclude: /node_modules/, loader: 'babel-loader' },
+
+            // Speed: ~1000ms
+            // { test: /\.tsx?$/, use: [{ loader: 'babel-loader'}, { loader: 'ts-loader',
+            //         options: {
+            //             configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
+            //             compilerOptions: {
+            //                 incremental: true,
+            //             },
+            // }}], exclude: /node_modules/ },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
@@ -108,13 +127,14 @@ module.exports = {
                     // creates style nodes from JS strings
                     // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
 
-                    devMode ? 'style-loader' :
-                    {
-                    loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../',
-                        },
-                    },
+                    devMode
+                        ? 'style-loader'
+                        : {
+                              loader: MiniCssExtractPlugin.loader,
+                              options: {
+                                  publicPath: '../',
+                              },
+                          },
                     {
                         // translates CSS into CommonJS
                         loader: 'css-loader',
@@ -181,6 +201,8 @@ module.exports = {
 
         new CopyWebpackPlugin([{ from: 'src/site/images/static', to: 'images/static' }]),
 
+        // Multiple HTML-Pages
+        //  https://extri.co/2017/07/11/generating-multiple-html-pages-with-htmlwebpackplugin/
         new HtmlWebpackPlugin({
             filename: 'index.html',
             templateParameters: {
@@ -195,7 +217,9 @@ module.exports = {
             // Variablen funktionieren nicht
             // template: '!!html-loader?interpolate!src/web/index.ejs',
             favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
-            chunks: devMode ? ['polyfills', 'vendor', 'index' , 'styles' ] : ['polyfills', 'vendor', 'index' ],
+            chunks: devMode
+                ? ['polyfills', 'mobile', 'index', 'styles']
+                : ['polyfills', 'mobile', 'index'],
         }),
 
         new MiniCssExtractPlugin({

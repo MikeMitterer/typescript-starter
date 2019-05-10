@@ -3,10 +3,21 @@
 @import '_normalize.css';
 @import 'reset';
 
-$sticky-color: #673ab7;
+$header-color: #673ab7;
+$footer-color: $header-color;
+
 $block-color: rgba(#6844b7, 0.1);
 $header-footer-height: 50px;
 $header-footer-padding: 10px;
+
+@import 'layout';
+@import 'debug';
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/:root
+:root {
+    --vh: 1vh;
+    --content-height: calc(var(--vh, 1vh) * 100 - (#{$header-footer-height} * 2));
+}
 
 body {
     background-color: #dddddd;
@@ -31,148 +42,83 @@ button:focus {
     outline: 0;
 }
 
-.modal__content {
+#unit-tests {
+    $qunit-agent-color: #2B81AF;
+    
+    margin-top: 12px;
 
-    .toolbar {
-        padding: 10px 0;
-
-        display: flex;
-        flex-direction: row;
-
-        > * {
-            margin-right: 10px;
-        }
+    #qunit-header {
+        display: none;
     }
 
-    #tstest {
-        background-color: darkolivegreen;
-    }
-
-    #tsevent {
-        background-color: cornflowerblue;
-        color: white;
-    }
-    #tsexception {
-        background-color: orangered;
-        color: white;
-    }
+    padding-bottom: 12px;
+    border-bottom: 5px solid $qunit-agent-color;
 }
 
-.modal {
+.layout {
     // per default auf none im HTML-File
     body.loaded & {
         opacity: 1;
-        transition: opacity 0.10s ease-in-out;
-    }
+        transition: opacity 0.05s ease-in-out;
 
-    //height: 100%;
-    //left: 0;
-    //position: fixed;
-    //top: 0;
-    //width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start; // ↓
-    align-content: space-between; // =
-    align-items: flex-start; // ⇾
-
-    &__header {
-        width: 100%;
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between; // ⇾
-        align-content: space-between; // ||
-        align-items: flex-start; // ↓
+        .loading {
+            display: none;
+        }
     }
 
     &__content {
-        flex-grow: 1;
+        padding: 12px;
+        align-content: flex-start; // ||
 
-        max-height: calc(100vh - (#{$header-footer-height} * 2));
-        height: calc(100vh - (#{$header-footer-height} * 2));
+        .home,
+        .about {
+            margin-left: auto;
+            margin-right: auto;
 
-        overflow-y: scroll;
-        padding: 10px;
+            text-align: center;
+        }
+
+        #tstest {
+            background-color: darkolivegreen;
+        }
+
+        #tsevent {
+            background-color: cornflowerblue;
+            color: white;
+        }
+
+        #tsexception {
+            background-color: orangered;
+            color: white;
+        }
     }
 
     &__footer {
-    }
-
-    &__header,
-    &__footer {
-        padding: $header-footer-padding;
-
-        line-height: $header-footer-height - ($header-footer-padding * 2);
-        height: $header-footer-height;
-
         color: white;
+
         a {
             color: white;
             text-decoration: none;
         }
-
-        background-color: $sticky-color;
     }
 
-    &__content {
-        // top: $header-footer-height + ($header-footer-padding * 3);
-        // bottom: $header-footer-height + ($header-footer-padding * 3);
-        // overflow-x: auto;
-        // overflow-y: scroll;
-        // padding: 5px 10px;
-        // left: 10px;
-        // right: 10px;
-    }
+    button {
+        min-width: 30px;
+        color: #fff !important;
+        /* text-transform: uppercase; */
+        background: #ed3330;
+        padding: 5px 10px;
+        border-radius: 3px;
+        display: inline-block;
+        border: none;
+        margin: 0 5px;
 
-    &__footer {
-        bottom: 0;
-        width: 100%;
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between; // ⇾
-        align-content: space-between; // ||
-        align-items: center; // ↓
-
-        #app {
-            display: none;
-            color: green;
-            min-width: 90px;
-
-            body.loading & {
-                display: inline-block;
-                color: initial;
-            }
+        &.add {
         }
 
-        .version_block {
-            display: inline-block;
-            font-size: 80%;
-
-            .published {
-                font-weight: 400;
-            }
+        &.subtract {
+            background-color: green;
         }
-        .separator {
-            margin: 0 0.15em;
-        }
-
-        .devmode {
-            font-weight: bold;
-            color: red;
-        }
-
-        .production {
-            font-weight: bold;
-            color: green;
-        }
-
-
     }
 }
 
@@ -180,6 +126,7 @@ button:focus {
     img {
         max-height: 30px;
         border-radius: 5px;
+        margin: 0 5px;
     }
 }
 
@@ -202,77 +149,4 @@ button:focus {
     }
 }
 
-.chat {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start; // ↓
-    align-content: space-between; // =
-    align-items: flex-start; // ⇾
 
-    margin-top: 10px;
-    padding: 15px;
-    background-color: #00000017;
-    border-radius: 3px;
-
-    > * {
-        margin-bottom: 5px;
-    }
-
-    .smooth {
-        border-radius: 3px;
-    }
-
-    #output {
-        width: 100%;
-        align-self: stretch;
-        height: 15ex;
-        overflow: auto;
-        border: 2px solid gray;
-        padding: 3px 5px;
-
-        //display: flex;
-        //flex-direction: column-reverse;
-        //flex-wrap: wrap;
-        //justify-content: flex-start; // ↓
-        //// align-content: space-between; // =
-        //align-items: flex-start; // ⇾
-
-        display: flex;
-        flex-direction: column-reverse;
-        flex-wrap: nowrap;
-        justify-content: flex-start; // ⇾
-        align-content: flex-start; // ||
-        align-items: flex-start; // ↓
-
-        li {
-            // flex-grow: 1;
-            flex: 0 0 auto;
-        }
-    }
-
-    input {
-        height: 27px;
-        border: 2px solid gray;
-        padding: 3px 5px;
-    }
-
-    #username {
-    }
-
-    #input {
-        width: 100%;
-    }
-
-    #connect {
-        height: 25px;
-        background-color: red;
-    }
-
-    #send {
-        height: 25px;
-        background-color: orchid;
-        margin-bottom: inherit;
-        margin-left: 0;
-    }
-}

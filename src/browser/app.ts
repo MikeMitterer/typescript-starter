@@ -34,6 +34,10 @@ export function main(): void {
     const result = addValues(1, 2);
     logger.info(`The result is ${result}`);
 
+    QUnit.test('hello test', (assert) => {
+        assert.ok(false, 'Passed!');
+    });
+
     // logger.info(`Done!!!! ${os.platform()}`);
-    logger.info(`Done!!!!`);
+    logger.info(`Done!!!1`);
 }

@@ -1,0 +1,27 @@
+// Optionen:
+//      https://github.com/smooth-code/jest-puppeteer/tree/master/packages/jest-dev-server
+//
+module.exports = {
+    server: {
+        command: 'yarn start',
+
+        // jest-puppeteer waits until this port respond before starting the tests.
+        port: 8080,
+
+        // If the port is used, stop everything
+        usedPortAction: 'kill',
+        
+        launchTimeout: 100000,
+        debug: true,
+    },
+    launch: {
+        dumpio: true,
+        // headless: process.env.HEADLESS !== 'false',
+
+        // headless: false,
+        // devtools: true
+
+        // args: ['--lang=en-GB']
+    },
+}
+

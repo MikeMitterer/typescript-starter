@@ -83,7 +83,9 @@
             // "@images/*":                   [ "site/images/*"]
         },
 
-        "lib": ["esnext"/*, "dom"*/],
+        // 'dom' muss drin bleiben da es sonst
+        // Probleme bei compilieren mit "Puppeteer" gibt
+        "lib": ["esnext", "dom"],
         // "lib": [ "dom"],
         // "types": ["node"],
 
@@ -92,20 +94,21 @@
     },
     // https://github.com/s-panferov/awesome-typescript-loader
     "awesomeTypescriptLoaderOptions": {
-        "useCache": false,
-        "reportFiles": ["src/**/*.{ts,tsx}"]
+        "useCache": true,
+        "forceIsolatedModules": true
+        // "reportFiles": ["src/**/*.{ts,tsx}"]
     },
     "include": [
         // "src/index.ts",
-        "src/main/**/*.ts"
+        "src/main/**/*.ts",
 
         // Damit werden die images erkannt
-        // "src/browser/**/*.ts",
-        // "src/site/images/typings.d.ts",
-        // "src/site/images",
+         "src/browser/**/*.ts",
+         "src/site/images/typings.d.ts",
+         "src/site/images",
 
         // Damit funktioniert jest-extended
-        // "src/types/global.d.ts"
+        "src/types/global.d.ts"
     ],
     "exclude": ["lib", "node_modules"]
 }

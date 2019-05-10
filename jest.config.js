@@ -1,6 +1,10 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
+// Usage:
+//      export INTEGRATION_TEST='true' && jest src/test/integration/browser/reminder.puppeteer.specs.ts
+const isIntegrationTest = process.env.INTEGRATION_TEST === 'true';
+
 module.exports = {
     preset: 'ts-jest',
 
@@ -81,7 +85,8 @@ module.exports = {
         '.(scss)$': 'identity-obj-proxy',
     },
 
-    // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
+    // An array of regexp pattern strings, matched against all module paths
+    // before considered 'visible' to the module loader
     // modulePathIgnorePatterns: [],
 
     // Activates notifications for test results
@@ -135,6 +140,8 @@ module.exports = {
     // snapshotSerializers: [],
 
     // The test environment that will be used for testing
+    //      https://jestjs.io/docs/en/configuration.html#testenvironment-string
+    // testEnvironment: 'jsdom',
     testEnvironment: 'node',
 
     // Options that will be passed to the testEnvironment
@@ -152,7 +159,7 @@ module.exports = {
         // "**/src/test/**/*.[jt]s?(x)"
 
         // Testet nur! TS-Files
-        '<rootDir>/src/test/**/*.spec?(s).ts?(x)',
+        '<rootDir>/src/test/**/*.(spec|specs|test).ts?(x)',
     ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
@@ -185,12 +192,14 @@ module.exports = {
         '^.+\\.(ts|tsx)$': './node_modules/ts-jest',
     },
 
-    // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
+    // An array of regexp pattern strings that are matched against all source file paths,
+    // matched files will skip transformation
     // transformIgnorePatterns: [
     //   "/node_modules/"
     // ],
 
-    // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
+    // An array of regexp pattern strings that are matched against all
+    // modules before the module loader will automatically return a mock for them
     // unmockedModulePathPatterns: undefined,
 
     // Indicates whether each individual test should be reported during the run
@@ -202,3 +211,9 @@ module.exports = {
     // Whether to use watchman for file crawling
     // watchman: true,
 };
+
+if(isIntegrationTest) {
+    module.exports.globalSetup = "jest-environment-puppeteer/setup";
+    module.exports.globalTeardown = "jest-environment-puppeteer/teardown";
+    module.exports.testEnvironment = "jest-environment-puppeteer";
+}
