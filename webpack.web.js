@@ -87,20 +87,23 @@ module.exports = {
             //         babelCore: "@babel/core", // needed for Babel v7
             // }},
 
+            // Speed: ~1000ms
+            // { test: /\.tsx?$/, use: [{ loader: 'babel-loader'}, { loader: 'ts-loader',
+            //      options: {
+            //          configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
+            //          compilerOptions: {
+            //              incremental: true,
+            //          },
+            // }}], exclude: /node_modules/ },
+
             // Speed: ~750ms
-            // { test: /\.tsx?$/, loader: 'ts-loader', options: { configFile: path.resolve(__dirname, 'tsconfig.lib.json') } },
+            // { test: /\.tsx?$/, loader: 'ts-loader',
+            //      options: {
+            //          configFile: path.resolve(__dirname, 'tsconfig.lib.json')
+            // }},
 
             // Speed: ~400ms
             { test: /\.(ts|js)x?$/, exclude: /node_modules/, loader: 'babel-loader' },
-
-            // Speed: ~1000ms
-            // { test: /\.tsx?$/, use: [{ loader: 'babel-loader'}, { loader: 'ts-loader',
-            //         options: {
-            //             configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
-            //             compilerOptions: {
-            //                 incremental: true,
-            //             },
-            // }}], exclude: /node_modules/ },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
