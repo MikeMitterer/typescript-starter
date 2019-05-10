@@ -2,7 +2,7 @@
 // https://jestjs.io/docs/en/configuration.html
 
 // Usage:
-//      export INTEGRATION_TEST='true' && jest src/test/integration/browser/reminder.puppeteer.specs.ts
+//      E2E_TEST='true' jest src/test/e2e/puppeteer.specs.ts
 const isE2ETest = process.env.E2E_TEST === 'true';
 
 module.exports = {
