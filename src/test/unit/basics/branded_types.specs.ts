@@ -1,7 +1,7 @@
 // import 'jest-extended';
 // import { loggerFactory } from '../../main/config/ConfigLog4j';
 
-describe('branded.types', () => {
+describe('branded_types', () => {
     // const logger = loggerFactory.getLogger('test.branded.types');
 
     // beforeEach(() => {
@@ -37,14 +37,14 @@ describe('branded.types', () => {
         expect(thisIsATest()).toBe(100);
     });
 
-    function thisIsATest() {
+    function thisIsATest(): number {
         // noinspection JSUnusedLocalSymbols
         // @ts-ignore
         const val = 10 * 10;
         return val;
     }
 
-    const convertArrayToObj = (data: Array<string | string[]>) => {
+    const convertArrayToObj = (data: Array<string | string[]>): { [key: string]: string } => {
         const formattedObj: { [key: string]: string } = {};
 
         data.forEach((val) => {
@@ -63,7 +63,9 @@ describe('branded.types', () => {
         expect(obj1.A).toBe('A');
 
         const obj2 = convertArrayToObj([['A', 'B', 'C'], ['1', '2', '3']]);
+        // tslint:disable-next-line:no-string-literal
         expect(obj2['A']).toBe('A');
+        // tslint:disable-next-line:no-string-literal
         expect(obj2['B']).toBe(undefined);
         expect(obj2['1']).toBe('1');
         expect(obj2['2']).toBe(undefined);

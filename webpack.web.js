@@ -25,6 +25,8 @@ module.exports = {
     //  - default "web"
     target: 'web',
 
+    // devServer: { port: 8080 },
+
     context: __dirname,
 
     mode: process.env.NODE_ENV || 'development',

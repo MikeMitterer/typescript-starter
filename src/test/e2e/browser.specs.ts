@@ -1,3 +1,4 @@
+import 'jest-extended';
 import puppeteer, { Browser, Page } from 'puppeteer';
 
 /**
@@ -7,7 +8,7 @@ import puppeteer, { Browser, Page } from 'puppeteer';
  *
  * Damit der "Compile-Prozess" vor dem Aufruf des Browsers angestoßen wird
  * muss jest wie folgt gestartet werden:
- *       export E2E_TEST='true' && jest src/test/e2e/puppeteer.specs.ts
+ *       export E2E_TEST='true' && jest src/test/e2e/browser.specs.ts
  *
  * Mehr:
  *      https://dev.to/aalises/dealing-with-asynchrony-when-writing-end-to-end-tests-with-puppeteer--jest-n37

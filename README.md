@@ -21,6 +21,32 @@ Install:
             "node_modules/@types/qunit/index.d.ts"
         ]
     }
+    
+## Conditional imports (require)
+> [Babel Plugin Doku](https://babeljs.io/docs/en/babel-plugin-transform-inline-environment-variables)
+
+yarn add "babel-plugin-transform-inline-environment-variables" -D
+
+webpack.web.js:
+
+    process.env.REQUIRE_TARGET = 'browser';
+
+webpack.node.js:
+
+    process.env.REQUIRE_TARGET = 'node';
+
+jest.config.js:
+
+    // Basis für die "conditional" imports (bzw. require)
+    process.env.REQUIRE_TARGET = process.env.REQUIRE_TARGET ? process.env.REQUIRE_TARGET : 'node';
+
+package.json: (scheint nicht notwendig zu sein)
+
+    "browser": {
+        "./settings.node.ts": false,
+        "./settings.node.js": false
+    },
+    
 
 ## Klonen in neues Dir
 
@@ -37,6 +63,9 @@ Install:
     
     # Package-Name, Description und REPO-Url anpassen
     ws package.json
+    
+    # Deploy evtl. auf restricted umstellen
+    "deploy": "yarn run test && yarn run build && yarn version --new-version patch && yarn publish --access restricted --non-interactive",
     
     # README rudimentär anpassen (Title + Home) 
     

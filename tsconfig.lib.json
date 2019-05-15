@@ -78,19 +78,19 @@
             // Funktioniert nicht richtig!
             //  https://github.com/Microsoft/TypeScript/issues/10866
             //
-            "@main/*": ["main/*"]
+            // "@main/*": ["main/*"]
             // "@test/*":                     [ "test/ts/*"],
             // "@images/*":                   [ "site/images/*"]
         },
 
         // 'dom' muss drin bleiben da es sonst
         // Probleme bei compilieren mit "Puppeteer" gibt
-        "lib": ["esnext", "dom"],
+        "lib": ["esnext", "dom"]
         // "lib": [ "dom"],
         // "types": ["node"],
 
         // Fallback wenn nach d.ts Files gesucht wird
-        "typeRoots": ["./src/global.d.ts", "node_modules/@types"]
+        // "typeRoots": ["./src/global.d.ts", "node_modules/@types"]
     },
     // https://github.com/s-panferov/awesome-typescript-loader
     "awesomeTypescriptLoaderOptions": {
@@ -101,11 +101,6 @@
     "include": [
         // "src/index.ts",
         "src/main/**/*.ts",
-
-        // Damit werden die images erkannt
-         "src/browser/**/*.ts",
-         "src/site/images/typings.d.ts",
-         "src/site/images",
 
         // Damit funktioniert jest-extended
         "src/types/global.d.ts"

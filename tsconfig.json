@@ -20,10 +20,12 @@
 
     "extends": "./tsconfig.lib",
     "include": [
-        // Damit werden die images erkannt
-        // "src/browser/**/*.ts",
-        // "src/site/images/typings.d.ts",
-        // "src/site/images",
+        // Dieses includes müssen hier bleiben sonst kommt bei 'yarn build' die Fehlermeldung
+        //      TS6059: File '.../src/browser/app.ts' is not under 'rootDir' '.../persistence/src/main'.
+        //      'rootDir' is expected to contain all source files.
+        "src/browser/**/*.ts",
+        "src/site/images/typings.d.ts",
+        "src/site/images",
 
         // Hier werden die auch die Tests eingebunden
         // Nur damit funktioniert das überschreiben in der "prototype"-chain

@@ -3,7 +3,8 @@
 //
 module.exports = {
     server: {
-        command: 'yarn start',
+        // 'serve' öffnet nicht automatisch einen Browser-Tab
+        command: 'yarn serve',
 
         // jest-puppeteer waits until this port respond before starting the tests.
         port: 8080,

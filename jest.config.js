@@ -2,11 +2,12 @@
 // https://jestjs.io/docs/en/configuration.html
 
 // Usage:
-//      E2E_TEST='true' jest src/test/e2e/puppeteer.specs.ts
+//      E2E_TEST='true' jest src/test/e2e/browser.specs.ts
 const isE2ETest = process.env.E2E_TEST === 'true';
 
 module.exports = {
-    preset: 'ts-jest',
+    preset: "ts-jest",
+    // preset: "jest-puppeteer",
 
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -78,11 +79,11 @@ module.exports = {
 
     // A map from regular expressions to module names that allow to stub out resources with a single module
     moduleNameMapper: {
-        '^@main(.*)$': '<rootDir>/src/main/$1',
-        '^@images(.*)$': '<rootDir>/src/site/images/$1',
+        "^@images(.*)$": "<rootDir>/src/site/images/$1",
+        "^@main(.*)$": "<rootDir>/src/main/$1",
 
         // Config: https://jestjs.io/docs/en/webpack.html
-        '.(scss)$': 'identity-obj-proxy',
+        ".(scss)$": "identity-obj-proxy",
     },
 
     // An array of regexp pattern strings, matched against all module paths
@@ -134,7 +135,7 @@ module.exports = {
     // setupTestFrameworkScriptFile: null,
 
     // https://www.npmjs.com/package/jest-extended#setup
-    "setupFilesAfterEnv": [ "jest-extended" ],
+    // "setupFilesAfterEnv": [ "jest-extended" ],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
@@ -153,7 +154,7 @@ module.exports = {
     // The glob patterns Jest uses to detect test files
     testMatch: [
         // Original
-        // "**/src/test/**/?(*[._])+(spec|test).[jt]s?(x)"
+        // '**/src/test/**/?(*[._])+(spec|test).[jt]s?(x)',
 
         // Testet auch JS-Files
         // "**/src/test/**/*.[jt]s?(x)"
@@ -186,10 +187,10 @@ module.exports = {
     // transform: null,
     transform: {
         // Config: https://jestjs.io/docs/en/webpack.html
-        '.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-            '<rootDir>/__mocks__/fileTransformer.js',
+        ".(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+            "<rootDir>/__mocks__/fileTransformer.js",
 
-        '^.+\\.(ts|tsx)$': './node_modules/ts-jest',
+        "^.+\\.(ts|tsx)$": "./node_modules/ts-jest",
     },
 
     // An array of regexp pattern strings that are matched against all source file paths,

@@ -1,14 +1,30 @@
-import { addValues } from '@main/math/MyMath';
 import lambi from '../site/images/lambi.png';
 import { loggerFactory } from './config/ConfigLog4j';
+import { testQUnit } from './test/qunit.test';
 
 const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement;
 
+/**
+ * Start wird manuell durchgeführt - sonst kommt es immer wieder
+ * zu Problemen bei async-Calls!
+ *
+ * Weitere Infos:
+ *      https://api.qunitjs.com/config/QUnit.config
+ *
+ *      # Führt die Tests auf der cmdline mit puppeteer aus
+ *      yarn test:e2e -
+ */
+// @ts-ignore
+window.QUnit = { config: { autostart: false /* noglobals: true */ } };
+
+// Retrieve a logger (you can decide to use it per class and/or module or just
+// export it in the config above etc. Your loggers - your choice!).
+// This logger will fall in the first LogGroupRule from above.
+const logger = loggerFactory.getLogger('main');
+
 export function main(): void {
-    // Retrieve a logger (you can decide to use it per class and/or module or just
-    // export it in the config above etc. Your loggers - your choice!).
-    // This logger will fall in the first LogGroupRule from above.
-    const logger = loggerFactory.getLogger('main');
+    const test = QUnit.test;
+    const describe = QUnit.module;
 
     query('#tstest').onclick = (event: MouseEvent): void => {
         alert(`Hi Mike, event '${event.type}' occurred!!`);
@@ -31,12 +47,11 @@ export function main(): void {
     body.classList.remove('loading');
     body.classList.add('loaded');
 
-    const result = addValues(1, 2);
-    logger.info(`The result is ${result}`);
+    QUnit.config.testTimeout = 30000;
 
-    QUnit.test('hello test', (assert) => {
-        assert.ok(true, 'Passed!');
-    });
+    testQUnit(describe, test);
+
+    QUnit.start();
 
     // logger.info(`Done!!!! ${os.platform()}`);
     logger.info(`Done!!!1`);
