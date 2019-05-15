@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as process from 'process';
-import { loggerFactory } from '../main/config/ConfigLog4j';
+import { loggerFactory } from './config/ConfigLog4j';
 
 // import sayMyName from './fs-part';
 

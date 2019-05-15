@@ -69,6 +69,8 @@ package.json: (scheint nicht notwendig zu sein)
     
     # README rudimentär anpassen (Title + Home) 
     
+    .rsync + .deployWebApp.conf löschen
+    
     # Auf GIT pushen
     git add . && git commit -am "Initial release" && git push -u origin master       
      
