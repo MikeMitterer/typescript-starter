@@ -14,7 +14,7 @@ logger.info(pwd);
 class Name {
     constructor(public readonly firstname: string, public readonly lastname: string) {}
 
-    public get name() {
+    public get name(): string {
         return `${this.firstname} ${this.lastname}`;
     }
 }
