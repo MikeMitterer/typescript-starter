@@ -11,7 +11,7 @@
 // }
 
 /// Hallo Tester
-export function endsWith(str: string, suffix: string) {
+export function endsWith(str: string, suffix: string): boolean {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
 

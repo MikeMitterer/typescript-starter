@@ -1,4 +1,4 @@
-const name: string = "Mike";
+const name: string = 'Mike';
 
 export const userName = {
     age: 99,
@@ -10,16 +10,16 @@ export const userName = {
  *
  * Das Objekt hat zwei parameter: name + age
  */
-export const userData: { name: string, age: number } = {
-      age: 99,
-    name: "Gerda",
+export const userData: { name: string; age: number } = {
+    age: 99,
+    name: 'Gerda',
 };
 
 /**
  * Das komplexe Object hat eine Callback als zweiten parameter
  */
-export const complexObject: { name: string, callback: (age: number) => string } = {
-    name: "Mike",
+export const complexObject: { name: string; callback: (age: number) => string } = {
+    name: 'Mike',
     callback(age: number): string {
         return `Age: ${age}`;
     },
@@ -30,11 +30,14 @@ export const complexObject: { name: string, callback: (age: number) => string } 
  *
  * Hier steht auf der rechten Seite eigentlich kein value sondern eine Type-Definition
  */
-interface ComplexObject { name: string; data: number[];}
+interface ComplexObject {
+    name: string;
+    data: number[];
+}
 
 export const anotherComplexObject: ComplexObject = {
-  data: [4, 5, 6],
-    name: "Mike",
+    data: [4, 5, 6],
+    name: 'Mike',
 };
 
 // - Union Types -------------------------------------------------------------------------------------------------------
@@ -42,7 +45,7 @@ export const anotherComplexObject: ComplexObject = {
 export const myRealAge: number | string = 99;
 
 export function showMyRealAge(age: number | string): string {
-    return typeof age === "number" ? `N: ${age}` : `S: ${age}`;
+    return typeof age === 'number' ? `N: ${age}` : `S: ${age}`;
 }
 
 // - never Type --------------------------------------------------------------------------------------------------------
@@ -51,11 +54,12 @@ export function showMyRealAge(age: number | string): string {
  * Die Funktion endet nie - deshalb der return type: never
  */
 export function neverEnds(): never {
-    throw new Error("An error occurred!");
+    throw new Error('An error occurred!');
 }
 
 // - not nullable Types ------------------------------------------------------------------------------------------------
 
 export function tryToReturnNull(paramShouldNotBeNull: string): string | null {
-    return paramShouldNotBeNull === "Mike" ? paramShouldNotBeNull : null;
+    // tslint:disable-next-line
+    return paramShouldNotBeNull === 'Mike' ? paramShouldNotBeNull : null;
 }
