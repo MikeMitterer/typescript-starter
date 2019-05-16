@@ -1,7 +1,7 @@
 {
   "name": "@mmit/typescript-starter",
   "author": "Mike Mitterer",
-  "version": "0.6.9",
+  "version": "0.6.10",
   "description": "This is a starter project for typescript projects",
   "keywords": [
     "typescript"
