@@ -36,7 +36,20 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh 'yarn run lint'
+                    sh 'yarn run tc'
                     sh 'yarn run test'
+
+                    // Builds werden getestet
+                    sh 'yarn run build:ts'
+                    sh 'yarn run build:types'
+                    sh 'yarn run build:js'
+                    sh 'yarn run build:js:prod'
+                    sh 'yarn run build:babel'
+                    sh 'yarn run build:node'
+                    sh 'yarn run build:node:prod'
+                    sh 'yarn run build:web'
+                    sh 'yarn run build:web:prod'
+
                 }
             }
         }
@@ -45,9 +58,13 @@ pipeline {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
                         sh 'yarn run clean'
+                        sh 'yarn run gen:barrels'
+                        
                         sh 'yarn run build'
                         sh 'yarn run build:node'
                         sh 'yarn run build:web:prod'
+
+                        sh 'yarn run doc'
                     }
                 }
 

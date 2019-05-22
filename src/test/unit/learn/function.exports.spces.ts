@@ -1,17 +1,17 @@
-import { learn } from '../../../main';
+import { endsWith, returnMyName } from '../../../main';
 
 describe('Some main functions 1', () => {
     test('should say Mike2', () => {
-        expect(learn.function_exports.returnMyName()).toBe('Mike');
+        expect(returnMyName()).toBe('Mike');
     });
 });
 
 describe('#endsWith()', () => {
     it('should return true when the value ends with the suffix', () => {
-        expect(learn.function_exports.endsWith('abcd', 'bcd')).toBe(true);
+        expect(endsWith('abcd', 'bcd')).toBe(true);
     });
 
     it('should return false when the value does not end with the suffix', () => {
-        expect(learn.function_exports.endsWith('abcd', 'cde')).toBe(false);
+        expect(endsWith('abcd', 'cde')).toBe(false);
     });
 });

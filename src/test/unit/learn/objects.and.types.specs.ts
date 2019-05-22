@@ -1,11 +1,9 @@
 // import 'jest-extended';
-import { learn } from '../../../main';
-
-const oat = learn.objects_and_types;
+import { userName as uN } from '../../../main';
 
 describe('Objects and types', () => {
     it('dynamic object', () => {
-        expect(oat.userName.name).toBe('Mike');
+        expect(uN.name).toBe('Mike');
     });
 
     // it('type-save-object', () => {
