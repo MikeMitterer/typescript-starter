@@ -6,6 +6,10 @@
 
 Read HTML: https://github.com/GoogleChrome/puppeteer/issues/2913
 
+### Install
+
+    yarn add @types/expect-puppeteer @types/puppeteer jest-puppeteer puppeteer -D
+
 ## QUnit
 > [QUnit](http://qunitjs.com/)
 
@@ -21,7 +25,10 @@ Install:
             "node_modules/@types/qunit/index.d.ts"
         ]
     }
-    
+
+`src/types/global.d.ts`:
+
+    import 'qunit';    
 
 ## Klonen in neues Dir
 

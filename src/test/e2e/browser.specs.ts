@@ -14,6 +14,8 @@ import puppeteer, { Browser, Page } from 'puppeteer';
  *      https://dev.to/aalises/dealing-with-asynchrony-when-writing-end-to-end-tests-with-puppeteer--jest-n37
  */
 describe('puppeteer.ts', () => {
+    const TEST_PORT = 5000;
+
     // const logger = loggerFactory.getLogger('test.reminder.ts');
 
     let page: Page;
@@ -29,7 +31,7 @@ describe('puppeteer.ts', () => {
             // args: [`--window-size=${width},${height}`],
         });
         page = await browser.newPage();
-        await page.goto('http://localhost:8080/', { waitUntil: 'networkidle0' });
+        await page.goto(`http://localhost:${TEST_PORT}/`, { waitUntil: 'networkidle0' });
         await page.setViewport({ width, height });
         // await jestPuppeteer.debug();
     });
