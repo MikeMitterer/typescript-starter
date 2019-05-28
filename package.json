@@ -72,6 +72,7 @@
     "@types/ws": "^6.0.1",
     "autoprefixer": "^9.5.1",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "babel-preset-modern-browsers": "^14.0.0",
@@ -115,7 +116,6 @@
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1",
     "webpack-livereload-plugin": "^2.2.0",
-    "webpack-node-externals": "^1.7.2",
-    "winston-transport-browserconsole": "^1.0.1"
+    "webpack-node-externals": "^1.7.2"
   }
 }

@@ -186,6 +186,8 @@ module.exports = {
     // A map from regular expressions to paths to transformers
     // transform: null,
     transform: {
+        '\\.jsx?$': 'babel-jest',
+
         // Config: https://jestjs.io/docs/en/webpack.html
         ".(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
             "<rootDir>/__mocks__/fileTransformer.js",
@@ -195,8 +197,11 @@ module.exports = {
 
     // An array of regexp pattern strings that are matched against all source file paths,
     // matched files will skip transformation
+    //
+    // UNBEDINGT Notwendig für ES6 module!!!!
+    //
     // transformIgnorePatterns: [
-    //   "/node_modules/"
+    //      "<rootDir>/node_modules/(?!@mmit\/communication)"
     // ],
 
     // An array of regexp pattern strings that are matched against all
