@@ -56,6 +56,8 @@ Install:
     # Auf GIT pushen
     git add . && git commit -am "Initial release" && git push -u origin master       
      
+    LICENCE anpassen
+     
 ## Deploy-Varianten aus packages.json
 
    - yarn clean
