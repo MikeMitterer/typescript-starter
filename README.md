@@ -39,7 +39,7 @@ Install:
 
     # GH Repo anlegen e.g. ts-signer
     git remote add origin git@github.com:MikeMitterer/ts-signer.git
-
+    
     # Version auf 0.1.0 ziehen
     sed -i '' -e "s/\"version\": \".*\"/\"version\": \"0.1.0\"/" package.json | cat package.json | grep '"version'
     
@@ -47,16 +47,21 @@ Install:
     ws package.json
     
     # Deploy evtl. auf restricted umstellen
-    "deploy": "yarn run test && yarn run build && yarn version --new-version patch && yarn publish --access restricted --non-interactive",
+    "deploy": "yarn version --new-version patch && yarn publish --access restricted --non-interactive",
+    "deploy": "yarn version --new-version patch && yarn publish --access public --non-interactive",
     
     # README rudimentär anpassen (Title + Home) 
+    Repo bei README einfügen
     
-    .rsync + .deployWebApp.conf löschen
-    
+    # .rsync, .deployWebApp.conf, tools, TODO löschen
+    rm -rf .rsync tools TODO     
+
+    LICENCE anpassen
+
+    build.jenkins anpassen
+        
     # Auf GIT pushen
     git add . && git commit -am "Initial release" && git push -u origin master       
-     
-    LICENCE anpassen
      
 ## Deploy-Varianten aus packages.json
 
