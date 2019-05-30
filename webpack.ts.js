@@ -85,7 +85,6 @@ module.exports = {
                     options: {
                         configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
                         compilerOptions: {
-                            incremental: true,
                             "rootDir": "./src/main",
                             "sourceMap": true,
                         },
