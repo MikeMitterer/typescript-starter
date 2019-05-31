@@ -2,7 +2,7 @@
 // import { loggerFactory } from '../../main/config/ConfigLog4j';
 
 describe('branded_types', () => {
-    // const logger = loggerFactory.getLogger('test.branded.types');
+    // const logger = LoggerFactory.getLogger('test.branded.types');
 
     // beforeEach(() => {
     // });

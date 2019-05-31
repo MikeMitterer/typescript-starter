@@ -29,7 +29,7 @@
     "build:web:prod": "rm -rf dist && NODE_ENV=production webpack --config webpack.web.js --mode production",
     "deploy": "yarn version --new-version patch && yarn publish --non-interactive",
     "lint": "tslint --project tsconfig.json",
-    "test": "yarn run test:unit && yarn run test:e2e",
+    "test": "yarn run gen:barrels && yarn run test:unit && yarn run test:e2e",
     "test:unit": "jest --colors src/test/unit",
     "test:integration": "jest --colors --runInBand --detectOpenHandles src/test/integration",
     "test:e2e": "E2E_TEST='true' jest --colors --runInBand --detectOpenHandles src/test/e2e",
@@ -46,11 +46,9 @@
     "url": "https://github.com/MikeMitterer/typescript-training"
   },
   "dependencies": {
+    "@mmit/logging": "^0.1.3",
     "global": "^4.3.2",
-    "moment": "^2.24.0",
-    "ntl": "^3.2.4",
-    "typescript-collections": "1.3.2",
-    "typescript-logging": "^0.6.3"
+    "typescript-collections": "1.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -92,6 +90,7 @@
     "jest-puppeteer": "^4.2.0",
     "jest-resolve": "^24.8.0",
     "mini-css-extract-plugin": "^0.7.0",
+    "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "postcss": "^7.0.16",
     "postcss-loader": "^3.0.0",
@@ -103,7 +102,7 @@
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.2",
-    "ts-loader": "^6.0.1",
+    "ts-loader": "^6.0.2",
     "ts-node": "^8.2.0",
     "tslint": "^5.17.0",
     "tslint-consistent-codestyle": "^1.15.1",

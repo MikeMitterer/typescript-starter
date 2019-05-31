@@ -59,6 +59,8 @@ Install:
     LICENCE anpassen
 
     build.jenkins anpassen
+    
+    Check ob die default-Dependencies benötigt werden
         
     # Auf GIT pushen
     git add . && git commit -am "Initial release" && git push -u origin master       

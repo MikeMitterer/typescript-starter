@@ -16,7 +16,7 @@ import puppeteer, { Browser, Page } from 'puppeteer';
 describe('puppeteer.ts', () => {
     const TEST_PORT = 5000;
 
-    // const logger = loggerFactory.getLogger('test.reminder.ts');
+    // const logger = LoggerFactory.getLogger('test.reminder.ts');
 
     let page: Page;
     let browser: Browser;

@@ -1,5 +1,5 @@
+import { LoggerFactory } from '@mmit/logging';
 import lambi from '../site/images/lambi.png';
-import { loggerFactory } from './config/ConfigLog4j';
 import { testQUnit } from './test/qunit.test';
 
 const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement;
@@ -20,7 +20,7 @@ window.QUnit = { config: { autostart: false /* noglobals: true */ } };
 // Retrieve a logger (you can decide to use it per class and/or module or just
 // export it in the config above etc. Your loggers - your choice!).
 // This logger will fall in the first LogGroupRule from above.
-const logger = loggerFactory.getLogger('main');
+const logger = LoggerFactory.getLogger('main');
 
 export function main(): void {
     const test = QUnit.test;
