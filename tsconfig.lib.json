@@ -41,7 +41,7 @@
         "noImplicitReturns": true,
         "noEmitOnError": true,
         "strictNullChecks": true,
-        "preserveConstEnums": true,
+        "preserveConstEnums": false,
         "removeComments": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
