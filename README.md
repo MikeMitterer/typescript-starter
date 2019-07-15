@@ -58,7 +58,7 @@ Install:
 
     LICENCE anpassen
 
-    build.jenkins anpassen
+    build.jenkins anpassen (Builds in 'Test' können alle entfernt werden)
     
     Check ob die default-Dependencies benötigt werden
         

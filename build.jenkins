@@ -44,6 +44,9 @@ pipeline {
                     sh 'yarn run test'
 
                     // Builds werden getestet
+                    //      (Dieser Block kann in geklonten Projects entfernt werden)
+                    //      Das richtige 'build' wird in 'Build' ausgeführt
+                    //
                     sh 'yarn run build:ts'
                     sh 'yarn run build:types'
                     sh 'yarn run build:js'
