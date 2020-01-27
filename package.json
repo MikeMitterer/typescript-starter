@@ -10,9 +10,6 @@
     "type-check": "tsc",
     "main": "./lib/index.js",
     "typings": "./lib/index.d.ts",
-    "browserslist": [
-        "defaults"
-    ],
     "scripts": {
         "gen:barrels": "barrelsby --singleQuotes --delete -d src/main --exclude ConfigLog4j --exclude 'events/utils' -l top -s flat",
         "serve": "NODE_ENV=development webpack-dev-server --config webpack.web.js --mode development",

@@ -44,7 +44,7 @@ describe('branded_types', () => {
         return val;
     }
 
-    const convertArrayToObj = (data: Array<string | string[]>): { [key: string]: string } => {
+    const convertArrayToObj = (data: (string | string[])[]): { [key: string]: string } => {
         const formattedObj: { [key: string]: string } = {};
 
         data.forEach((val) => {
@@ -62,7 +62,10 @@ describe('branded_types', () => {
 
         expect(obj1.A).toBe('A');
 
-        const obj2 = convertArrayToObj([['A', 'B', 'C'], ['1', '2', '3']]);
+        const obj2 = convertArrayToObj([
+            ['A', 'B', 'C'],
+            ['1', '2', '3'],
+        ]);
         // tslint:disable-next-line:no-string-literal
         expect(obj2['A']).toBe('A');
         // tslint:disable-next-line:no-string-literal

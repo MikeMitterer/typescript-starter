@@ -48,6 +48,8 @@
             }
         ],
 
-        "typedef": [true, "call-signature", "arrow-call-signature", "property-declaration"]
+        // arrow-call-signature seit 27.1.2020 entfernt da sich das Ganze nicht feiner
+        // einstellen lässt und seit einem Versions-Update bei den Test warnings angezeigt werden
+        "typedef": [true, "call-signature", /* "arrow-call-signature",*/ "property-declaration"]
     }
 }
