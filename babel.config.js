@@ -2,8 +2,7 @@ module.exports = {
     "presets": [
         [
             // Mehr: https://babeljs.io/docs/en/babel-preset-env
-            "@babel/preset-env",
-            {
+            "@babel/preset-env", {
                 "targets": {
                     // When specifying this option, the browsers field will be ignored.
                     // "esmodules": true,

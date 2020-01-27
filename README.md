@@ -40,6 +40,14 @@ Install:
     # GH Repo anlegen e.g. ts-signer
     git remote add origin git@github.com:MikeMitterer/ts-signer.git
     
+    # Repo in package.json anpassen
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MikeMitterer/typescript-training"
+    },    
+    
+In README.md und package.json die GH-Url anpassen
+    
     # Version auf 0.1.0 ziehen
     sed -i '' -e "s/\"version\": \".*\"/\"version\": \"0.1.0\"/" package.json | cat package.json | grep '"version'
     
