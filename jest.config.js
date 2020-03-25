@@ -62,7 +62,11 @@ module.exports = {
     // globalTeardown: null,
 
     // A set of global variables that need to be available in all test environments
-    // globals: {},
+    globals: {
+        'ts-jest': {
+            babelConfig: 'babel.config.js',
+        }
+    },
 
     // An array of directory names to be searched recursively up from the requiring module's location
     // moduleDirectories: [
@@ -80,7 +84,8 @@ module.exports = {
     // A map from regular expressions to module names that allow to stub out resources with a single module
     moduleNameMapper: {
         "^@images(.*)$": "<rootDir>/src/site/images/$1",
-        "^@main(.*)$": "<rootDir>/src/main/$1",
+        "^@/(.*)$": "<rootDir>/src/main/$1",
+        "^@test/(.*)$": "<rootDir>/src/test/$1",
 
         // Config: https://jestjs.io/docs/en/webpack.html
         ".(scss)$": "identity-obj-proxy",
@@ -135,7 +140,7 @@ module.exports = {
     // setupTestFrameworkScriptFile: null,
 
     // https://www.npmjs.com/package/jest-extended#setup
-    // "setupFilesAfterEnv": [ "jest-extended" ],
+    "setupFilesAfterEnv": [ "jest-extended" ],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
@@ -187,6 +192,7 @@ module.exports = {
     // transform: null,
     transform: {
         '\\.jsx?$': 'babel-jest',
+        '^.+\\.js?$': require.resolve('babel-jest'),
 
         // Config: https://jestjs.io/docs/en/webpack.html
         ".(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
@@ -199,10 +205,9 @@ module.exports = {
     // matched files will skip transformation
     //
     // UNBEDINGT Notwendig für ES6 module!!!!
-    //
-    // transformIgnorePatterns: [
-    //      "<rootDir>/node_modules/(?!@mmit\/communication)"
-    // ],
+    transformIgnorePatterns: [
+        "<rootDir>/node_modules/(?!@mmit\/.*)"
+    ],
 
     // An array of regexp pattern strings that are matched against all
     // modules before the module loader will automatically return a mock for them

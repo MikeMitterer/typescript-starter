@@ -15,7 +15,7 @@
         // Da sonst die lib nur teilweise generiert wird
 
         "strict": true,
-        "target": "esnext",
+        "target": "es2020",
 
         "outDir": "./lib",
         "rootDir": "./src",
@@ -105,7 +105,7 @@
         // "src/index.ts",
         "src/main/**/*.ts",
 
-        // Damit funktioniert jest-extended
+        // Damit funktioniert jest-extended + qunit
         "src/types/global.d.ts"
     ],
     "exclude": ["lib", "node_modules"]

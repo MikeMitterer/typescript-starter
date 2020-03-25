@@ -8,11 +8,11 @@ module.exports = {
                     // "esmodules": true,
 
                     "node": "current",
-                    "browsers": [
-                        "last 2 Chrome versions",
-                        "last 1 Safari versions",
-                        "last 1 Firefox versions"
-                    ]
+                    // "browsers": [
+                    //     "last 2 Chrome versions",
+                    //     "last 1 Safari versions",
+                    //     "last 1 Firefox versions"
+                    // ]
                 },
                 // Enable transformation of ES6 module syntax to another module type.
                 // Setting this to false will not transform modules.
