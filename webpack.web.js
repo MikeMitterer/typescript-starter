@@ -105,7 +105,7 @@ module.exports = {
             // }},
 
             // Speed: ~400ms
-            { test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: [ /node_modules/ ]},
+            { test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: [/node_modules/] },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
@@ -204,7 +204,9 @@ module.exports = {
         //     filename: "[name].css"
         // }),
 
-        new CopyWebpackPlugin([{ from: 'src/site/images/static', to: 'images/static' }]),
+        new CopyWebpackPlugin({
+            patterns: [{ from: 'src/site/images/static', to: 'images/static' }],
+        }),
 
         // Multiple HTML-Pages
         //  https://extri.co/2017/07/11/generating-multiple-html-pages-with-htmlwebpackplugin/
