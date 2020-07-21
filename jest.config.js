@@ -6,7 +6,7 @@
 const isE2ETest = process.env.E2E_TEST === 'true';
 
 module.exports = {
-    preset: "ts-jest",
+    preset: 'ts-jest',
     // preset: "jest-puppeteer",
 
     // All imported modules in your tests should be mocked automatically
@@ -65,7 +65,7 @@ module.exports = {
     globals: {
         'ts-jest': {
             babelConfig: 'babel.config.js',
-        }
+        },
     },
 
     // An array of directory names to be searched recursively up from the requiring module's location
@@ -83,12 +83,12 @@ module.exports = {
 
     // A map from regular expressions to module names that allow to stub out resources with a single module
     moduleNameMapper: {
-        "^@images(.*)$": "<rootDir>/src/site/images/$1",
-        "^@/(.*)$": "<rootDir>/src/main/$1",
-        "^@test/(.*)$": "<rootDir>/src/test/$1",
+        '^@images(.*)$': '<rootDir>/src/site/images/$1',
+        '^@/(.*)$': '<rootDir>/src/main/$1',
+        '^@test/(.*)$': '<rootDir>/test/$1',
 
         // Config: https://jestjs.io/docs/en/webpack.html
-        ".(scss)$": "identity-obj-proxy",
+        '.(scss)$': 'identity-obj-proxy',
     },
 
     // An array of regexp pattern strings, matched against all module paths
@@ -126,9 +126,7 @@ module.exports = {
     // rootDir: null,
 
     // A list of paths to directories that Jest should use to search for files in
-    // roots: [
-    //   "<rootDir>"
-    // ],
+    // roots: ['<rootDir>/src'],
 
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",
@@ -140,7 +138,7 @@ module.exports = {
     // setupTestFrameworkScriptFile: null,
 
     // https://www.npmjs.com/package/jest-extended#setup
-    "setupFilesAfterEnv": [ "jest-extended" ],
+    setupFilesAfterEnv: ['jest-extended'],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
@@ -165,7 +163,7 @@ module.exports = {
         // "**/src/test/**/*.[jt]s?(x)"
 
         // Testet nur! TS-Files
-        '<rootDir>/src/test/**/*.(spec|specs|test).ts?(x)',
+        '<rootDir>/test/**/*.(spec|specs|test).ts?(x)',
     ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
@@ -195,19 +193,17 @@ module.exports = {
         '^.+\\.js?$': require.resolve('babel-jest'),
 
         // Config: https://jestjs.io/docs/en/webpack.html
-        ".(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-            "<rootDir>/__mocks__/fileTransformer.js",
+        '.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+            '<rootDir>/__mocks__/fileTransformer.js',
 
-        "^.+\\.(ts|tsx)$": "./node_modules/ts-jest",
+        '^.+\\.(ts|tsx)$': './node_modules/ts-jest',
     },
 
     // An array of regexp pattern strings that are matched against all source file paths,
     // matched files will skip transformation
     //
     // UNBEDINGT Notwendig für ES6 module!!!!
-    transformIgnorePatterns: [
-        "<rootDir>/node_modules/(?!@mmit\/.*)"
-    ],
+    transformIgnorePatterns: ['<rootDir>/node_modules/(?!@mmit/.*)'],
 
     // An array of regexp pattern strings that are matched against all
     // modules before the module loader will automatically return a mock for them
@@ -223,8 +219,8 @@ module.exports = {
     // watchman: true,
 };
 
-if(isE2ETest) {
-    module.exports.globalSetup = "jest-environment-puppeteer/setup";
-    module.exports.globalTeardown = "jest-environment-puppeteer/teardown";
-    module.exports.testEnvironment = "jest-environment-puppeteer";
+if (isE2ETest) {
+    module.exports.globalSetup = 'jest-environment-puppeteer/setup';
+    module.exports.globalTeardown = 'jest-environment-puppeteer/teardown';
+    module.exports.testEnvironment = 'jest-environment-puppeteer';
 }

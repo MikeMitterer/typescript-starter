@@ -23,7 +23,7 @@
         // Hier werden die auch die Tests eingebunden
         // Nur damit funktioniert das überschreiben in der "prototype"-chain
         // Nur damit funktioniert JEST richtig - bzw. die Kombi WS + JEST
-        "src/test/**/*.ts",
+        "test/**/*.ts",
 
         // Dieses includes müssen hier bleiben sonst kommt bei 'yarn build' die Fehlermeldung
         //      TS6059: File '.../src/browser/app.ts' is not under 'rootDir' '.../persistence/src/main'.
@@ -46,5 +46,6 @@
         //      "resolveJsonModule": true,
         // gesetzt sein
         // "src/test/integration/*.json"
+        
     ]
 }

@@ -18,7 +18,7 @@
         "target": "es2020",
 
         "outDir": "./lib",
-        "rootDir": "./src",
+        "rootDir": ".",
 
         // commonjs, amd oder es6 (esnext)
         // Beste Variante ist es6 (Vue esnext)
@@ -79,7 +79,7 @@
         "paths": {
             // Pfade müssen auch in WebPack entsprechend definiert sein!
             // Funktioniert nicht richtig!
-            //  https://github.com/Microsoft/TypeScript/issues/10866
+            //      https://github.com/Microsoft/TypeScript/issues/10866
             //
             // "@main/*": ["main/*"]
             // "@test/*":                     [ "test/ts/*"],
@@ -88,12 +88,18 @@
 
         // 'dom' muss drin bleiben da es sonst
         // Probleme bei compilieren mit "Puppeteer" gibt
-        "lib": ["esnext", "dom"]
+        "lib": ["esnext", "dom"],
         // "lib": [ "dom"],
+
+        // If types is specified, only packages listed will be included.
+        //      Mehr: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#types-typeroots-and-types
         // "types": ["node"],
 
         // Fallback wenn nach d.ts Files gesucht wird
-        // "typeRoots": ["./src/global.d.ts", "node_modules/@types"]
+        // "typeRoots": [
+        //     "./src/types",
+        //     "node_modules/@types"
+        // ]
     },
     // https://github.com/s-panferov/awesome-typescript-loader
     "awesomeTypescriptLoaderOptions": {
@@ -106,7 +112,7 @@
         "src/main/**/*.ts",
 
         // Damit funktioniert jest-extended + qunit
-        "src/types/global.d.ts"
+        // "src/types/*.ts"
     ],
-    "exclude": ["lib", "node_modules"]
+    "exclude": ["lib", "node_modules", "dist" ]
 }

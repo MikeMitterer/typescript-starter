@@ -1,5 +1,5 @@
 // import 'jest-extended';
-import { userName as uN } from '../../../main';
+import { userName as uN } from '../../../src/main';
 
 describe('Objects and types', () => {
     it('dynamic object', () => {

@@ -1,4 +1,4 @@
-import { endsWith, returnMyName } from '../../../main';
+import { endsWith, returnMyName } from '../../../src/main';
 
 describe('Some main functions 1', () => {
     test('should say Mike2', () => {

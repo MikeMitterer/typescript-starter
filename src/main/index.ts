@@ -3,6 +3,8 @@
  */
 
 export * from './address/Name';
+export * from './extensions/array.extensions';
+export * from './extensions/string.extensions';
 export * from './learn/function_exports';
 export * from './learn/objects_and_types';
 export * from './math/MyMath';
