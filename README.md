@@ -65,7 +65,14 @@ In README.md und package.json die GH-Url anpassen
     rm -rf .rsync tools TODO     
 
     LICENCE anpassen
-
+    > https://docs.npmjs.com/files/package.json#license
+    
+        # Evtl. (verhindert das publishen)    
+        "private": true,
+        
+        # Wenn die Licence private ist
+        "license": "UNLICENSED",
+               
     build.jenkins anpassen (Builds in 'Test' können alle entfernt werden)
     
     Check ob die default-Dependencies benötigt werden

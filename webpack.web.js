@@ -1,22 +1,22 @@
-const webpack = require('webpack');
-const path = require('path');
-const moment = require('moment');
-const package = require('./package');
+const webpack = require('webpack')
+const path = require('path')
+const moment = require('moment')
+const package = require('./package')
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
-const LiveReloadPlugin = require('webpack-livereload-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
+const LiveReloadPlugin = require('webpack-livereload-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const devMode = process.env.NODE_ENV !== 'production';
-const date = moment().format('YYYY.MM.DD HH:mm');
+const devMode = process.env.NODE_ENV !== 'production'
+const date = moment().format('YYYY.MM.DD HH:mm')
 
 // This helper function is not strictly necessary.
 // I just don't like repeating the path.join a dozen times.
 function srcPath(subdir) {
-    return path.join(__dirname, 'src', subdir);
+    return path.join(__dirname, 'src', subdir)
 }
 
 module.exports = {
@@ -35,7 +35,7 @@ module.exports = {
         index: [path.resolve(__dirname, 'src/browser/index.ts')],
 
         polyfills: path.resolve(__dirname, 'src/browser/polyfills.ts'),
-        mobile: path.resolve(__dirname, 'src/browser/mobile.ts'),
+        mobile: path.resolve(__dirname, 'src/browser/mobile.ts')
 
         // Wird per script-tag eingebunden (js/styles.js?...)
         // Es kann aber auch ein import über das index.ts-File gemacht werden
@@ -47,7 +47,7 @@ module.exports = {
         publicPath: '',
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js',
-        pathinfo: true,
+        pathinfo: true
     },
 
     // Mehr: https://webpack.js.org/configuration/devtool/#devtool
@@ -63,15 +63,15 @@ module.exports = {
         alias: {
             '@main': srcPath('main'),
             '@test': srcPath('test'),
-            '@images': srcPath('site/images'),
-        },
+            '@images': srcPath('site/images')
+        }
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
                 enforce: 'pre',
-                loader: 'tslint-loader',
+                loader: 'tslint-loader'
             },
             // {
             //     test: /\.ts?$/,
@@ -137,34 +137,40 @@ module.exports = {
                         : {
                               loader: MiniCssExtractPlugin.loader,
                               options: {
-                                  publicPath: '../',
-                              },
+                                  publicPath: '../'
+                              }
                           },
                     {
                         // translates CSS into CommonJS
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
-                        },
+                            sourceMap: true
+                        }
                     },
                     {
                         // Autoprefixer usw.
                         loader: 'postcss-loader',
                         options: {
-                            ident: 'postcss',
-                        },
+                            ident: 'postcss'
+                        }
                     },
                     {
                         // compiles Sass to CSS, using Node Sass by default
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true,
-                        },
-                    },
-                ],
+                            sourceMap: true
+                        }
+                    }
+                ]
             },
             {
-                test: /\.(png|jpg|gif)$/i,
+                // Ist notwendig sonst kommt
+                //      "Module parse failed: Unexpected character '' (1:0)..."
+                test: /\.(woff|woff2|eot|ttf)$/,
+                loader: 'url-loader?limit=100000'
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/i,
                 use: [
                     {
                         // https://github.com/webpack-contrib/url-loader
@@ -174,21 +180,21 @@ module.exports = {
                             limit: 8192,
 
                             // if more than 8 kb move to this folder in build using file-loader
-                            name: 'images/[name]-[hash:8].[ext]',
-                        },
-                    },
-                ],
+                            name: 'images/[name]-[hash:8].[ext]'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.html$/,
                 use: [
                     {
                         loader: 'html-loader',
-                        options: { minimize: false },
-                    },
-                ],
-            },
-        ],
+                        options: { minimize: false }
+                    }
+                ]
+            }
+        ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -205,7 +211,7 @@ module.exports = {
         // }),
 
         new CopyWebpackPlugin({
-            patterns: [{ from: 'src/site/images/static', to: 'images/static' }],
+            patterns: [{ from: 'src/site/images/static', to: 'images/static' }]
         }),
 
         // Multiple HTML-Pages
@@ -215,7 +221,7 @@ module.exports = {
             templateParameters: {
                 version: package.version,
                 devmode: devMode,
-                published: date,
+                published: date
             },
             hash: true,
             // Weitere Infos: https://goo.gl/wVG6wx
@@ -226,14 +232,14 @@ module.exports = {
             favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
             chunks: devMode
                 ? ['polyfills', 'mobile', 'index', 'styles']
-                : ['polyfills', 'mobile', 'index'],
+                : ['polyfills', 'mobile', 'index']
         }),
 
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
             filename: devMode ? 'styles/[name].css' : 'styles/[name].[contenthash].css',
-            chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[contenthash].css',
+            chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[contenthash].css'
         }),
 
         new HtmlBeautifyPlugin({
@@ -244,13 +250,13 @@ module.exports = {
                     indent_with_tabs: true,
                     indent_inner_html: true,
                     preserve_newlines: false,
-                    unformatted: ['p', 'i', 'b', 'span'],
-                },
+                    unformatted: ['p', 'i', 'b', 'span']
+                }
             },
-            replace: [' type="text/javascript"'],
+            replace: [' type="text/javascript"']
         }),
 
-        new LiveReloadPlugin(),
+        new LiveReloadPlugin()
     ],
 
     optimization: {
@@ -265,17 +271,17 @@ module.exports = {
             cacheGroups: {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
+                    priority: -10
                 },
                 default: {
                     minChunks: 2,
                     priority: -20,
-                    reuseExistingChunk: true,
-                },
-            },
-        },
-    },
-};
+                    reuseExistingChunk: true
+                }
+            }
+        }
+    }
+}
 
 // Reminder!
 // if (devMode) {
