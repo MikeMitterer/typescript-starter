@@ -149,10 +149,7 @@ module.exports = {
                     },
                     {
                         // Autoprefixer usw.
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss'
-                        }
+                        loader: 'postcss-loader'
                     },
                     {
                         // compiles Sass to CSS, using Node Sass by default
