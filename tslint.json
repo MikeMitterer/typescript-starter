@@ -10,8 +10,11 @@
         "one-line": [true, "check-catch", "check-finally", "check-open-brace", "check-whitespace"],
 
         "quotemark": false,
-        // "explicit-override": [true, "new-line-after-decorators-and-tags" ],
 
+        "semicolon":false,
+
+        "trailing-comma": [true, { "esSpecCompliant": true }],
+        
         "object-literal-sort-keys": false,
 
         "no-any": true,

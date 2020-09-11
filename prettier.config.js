@@ -5,5 +5,8 @@ module.exports = {
     singleQuote: true,
     printWidth: 100,
     arrowParens: 'always',
-    bracketSpacing: true
+    bracketSpacing: true,
+    htmlWhitespaceSensitivity: 'ignore',
+    bracketSameLine: true,
+    vueIndentScriptAndStyle: true
 }
