@@ -28,6 +28,9 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- Font für Logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- QUNIT -->
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
 
@@ -44,7 +47,9 @@
 <body class="loading">
 <div class="layout">
     <div class="layout__header">
-        <a class="branding logo" href="/"><img src="images/static/logo.png"></a>
+        <a class="branding logo" href="/">
+            <img src="images/static/logo.png"><span class="title"><span>Mobi</span>Template</span>
+        </a>
         ${require('./_partials/nav.html')}
         <span class="spacer"></span>
         <div class="demo_images">

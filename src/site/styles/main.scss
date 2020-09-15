@@ -1,4 +1,4 @@
-$header-background: #124da5;
+$branding-color: #ffbb00;
 @import "~@mmit/styles/src/mobiad";
 
 body {
@@ -7,6 +7,7 @@ body {
 
     .layout {
         &__header {
+
             .demo_images {
                 display: flex;
                 flex-direction: row;
