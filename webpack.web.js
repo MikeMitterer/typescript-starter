@@ -9,6 +9,7 @@ const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 const LiveReloadPlugin = require('webpack-livereload-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 const date = moment().format('YYYY.MM.DD HH:mm')
@@ -48,6 +49,20 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js',
         pathinfo: true
+    },
+
+    stats: {
+        // https://webpack.js.org/configuration/stats/
+        // assets: false,
+        assetsSort: '!size',
+        // builtAt: false,
+        // moduleAssets: false,
+        // children: false,
+        // chunkGroups: false,
+        // chunkModules: false,
+        // depth: true,
+        // entrypoints: false,
+        excludeModules: true
     },
 
     // Mehr: https://webpack.js.org/configuration/devtool/#devtool
@@ -99,13 +114,20 @@ module.exports = {
             // }}], exclude: /node_modules/ },
 
             // Speed: ~750ms
-            // { test: /\.tsx?$/, loader: 'ts-loader',
-            //      options: {
-            //          configFile: path.resolve(__dirname, 'tsconfig.lib.json')
-            // }},
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                options: {
+                    configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
+                    compilerOptions: {
+                        incremental: true
+                        // transpileOnly: true
+                    }
+                }
+            },
 
             // Speed: ~400ms
-            { test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: [/node_modules/] },
+            // { test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: [/node_modules/] },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
@@ -198,6 +220,9 @@ module.exports = {
 
         // clean dist folder
         new CleanWebpackPlugin(),
+
+        // Clean Terminal before next build
+        new CleanTerminalPlugin(),
 
         // Weitere Infos: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
         // load `moment/locale/en.js` and `moment/locale/de.js`

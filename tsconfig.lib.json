@@ -113,6 +113,9 @@
 
         // Damit funktioniert jest-extended + qunit
         // "src/types/*.ts"
+
+        // Damit können images (mit ts-loader) importiert werden
+        "src/site/images/typings.d.ts"
     ],
     "exclude": ["lib", "node_modules", "dist" ]
 }
