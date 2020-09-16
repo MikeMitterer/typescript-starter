@@ -1,8 +1,10 @@
-import { LoggerFactory } from '@mmit/logging';
-import lambi from '../site/images/lambi.png';
-import { testQUnit } from './test/qunit.test';
+import { LoggerFactory } from '@mmit/logging'
+import { format } from 'date-fns'
+import lambi from '../site/images/lambi.png'
+import { testQUnit } from './test/qunit.test'
 
-const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement;
+const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement
+const getLocale = (locale: string) => import(`date-fns/locale/${locale}/index.js`)
 
 /**
  * Start wird manuell durchgeführt - sonst kommt es immer wieder
@@ -15,44 +17,48 @@ const query = (selector: string): HTMLElement => document.querySelector(selector
  *      yarn test:e2e -
  */
 // @ts-ignore
-window.QUnit = { config: { autostart: false /* noglobals: true */ } };
+window.QUnit = { config: { autostart: false /* noglobals: true */ } }
 
 // Retrieve a logger (you can decide to use it per class and/or module or just
 // export it in the config above etc. Your loggers - your choice!).
 // This logger will fall in the first LogGroupRule from above.
-const logger = LoggerFactory.getLogger('main');
+const logger = LoggerFactory.getLogger('main')
 
 export function main(): void {
-    const test = QUnit.test;
-    const describe = QUnit.module;
+    const test = QUnit.test
+    const describe = QUnit.module
 
-    query('#tstest').onclick = (event: MouseEvent): void => {
-        alert(`Hi Mike, event '${event.type}' occurred!!`);
-    };
+    query('#tstest').onclick = async (event: MouseEvent): Promise<void> => {
+        const now = format(Date.now(), 'yyyy.MM.dd HH:mm', {
+            locale: await getLocale('de')
+        })
 
-    const divs = Array.from(document.getElementsByTagName('div'));
+        alert(`Hi Mike, event '${event.type}' occurred at ${now}!`)
+    }
+
+    const divs = Array.from(document.getElementsByTagName('div'))
 
     divs.forEach((div: HTMLDivElement): void => {
         div.addEventListener('click', (evt: MouseEvent): void => {
-            evt = new MouseEvent('aaa');
-            logger.info(JSON.stringify(evt));
-        });
-    });
+            evt = new MouseEvent('aaa')
+            logger.info(JSON.stringify(evt))
+        })
+    })
 
-    logger.debug(`Lambi: ${JSON.stringify(lambi)}`);
-    const img = query('#frontImg') as HTMLImageElement;
-    img.src = lambi;
+    logger.debug(`Lambi: ${JSON.stringify(lambi)}`)
+    const img = query('#frontImg') as HTMLImageElement
+    img.src = lambi
 
-    const body = query('body') as HTMLBodyElement;
-    body.classList.remove('loading');
-    body.classList.add('loaded');
+    const body = query('body') as HTMLBodyElement
+    body.classList.remove('loading')
+    body.classList.add('loaded')
 
-    QUnit.config.testTimeout = 30000;
+    QUnit.config.testTimeout = 30000
 
-    testQUnit(describe, test);
+    testQUnit(describe, test)
 
-    QUnit.start();
+    QUnit.start()
 
     // logger.info(`Done!!!! ${os.platform()}`);
-    logger.info(`Done!!!1`);
+    logger.info(`Done!!!1`)
 }

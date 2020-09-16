@@ -13,6 +13,7 @@ const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 const date = datefns.format(Date.now(), 'yyyy.MM.dd HH:mm')
+const supportedLocales = ['en', 'de']
 
 // This helper function is not strictly necessary.
 // I just don't like repeating the path.join a dozen times.
@@ -227,6 +228,13 @@ module.exports = {
         // Weitere Infos: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
         // load `moment/locale/en.js` and `moment/locale/de.js`
         // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|de/),
+
+        // Entfernt unnötige locales
+        // Weitere Infos: https://date-fns.org/docs/webpack
+        new webpack.ContextReplacementPlugin(
+            /date-fns[/\\]locale$/,
+            new RegExp(`(${supportedLocales.join('|')})($|\\.js$|\\/index\\.js$)`)
+        ),
 
         // new ExtractTextPlugin({
         //     filename: "[name].css"
