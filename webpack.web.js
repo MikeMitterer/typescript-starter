@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
-const moment = require('moment')
 const package = require('./package')
+const datefns = require('date-fns')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -12,7 +12,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
-const date = moment().format('YYYY.MM.DD HH:mm')
+const date = datefns.format(Date.now(), 'yyyy.MM.dd HH:mm')
 
 // This helper function is not strictly necessary.
 // I just don't like repeating the path.join a dozen times.
@@ -226,7 +226,7 @@ module.exports = {
 
         // Weitere Infos: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
         // load `moment/locale/en.js` and `moment/locale/de.js`
-        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|de/),
+        // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|de/),
 
         // new ExtractTextPlugin({
         //     filename: "[name].css"
