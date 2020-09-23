@@ -5,7 +5,8 @@ const datefns = require('date-fns')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
+const BeautifyHtmlWebpackPlugin = require('beautify-html-webpack-plugin')
+
 const LiveReloadPlugin = require('webpack-livereload-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -213,6 +214,19 @@ module.exports = {
                         options: { minimize: false }
                     }
                 ]
+            },
+            {
+                test: /\.ejs$/,
+                use: {
+                    loader: 'ejs-compiled-loader',
+                    options: {
+                        beautify: true,
+                        htmlmin: false,
+                        htmlminOptions: {
+                            removeComments: true
+                        }
+                    }
+                }
             }
         ]
     },
@@ -265,25 +279,22 @@ module.exports = {
                 : ['polyfills', 'mobile', 'index']
         }),
 
+        // Options: https://www.npmjs.com/package/js-beautify#css--html
+        new BeautifyHtmlWebpackPlugin({
+            end_with_newline: true,
+            indent_size: 4,
+            indent_with_tabs: true,
+            indent_inner_html: true,
+            preserve_newlines: false,
+            wrap_line_length: 100,
+            unformatted: ['i', 'b', 'span']
+        }),
+
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
             filename: devMode ? 'styles/[name].css' : 'styles/[name].[contenthash].css',
             chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[contenthash].css'
-        }),
-
-        new HtmlBeautifyPlugin({
-            config: {
-                html: {
-                    end_with_newline: true,
-                    indent_size: 4,
-                    indent_with_tabs: true,
-                    indent_inner_html: true,
-                    preserve_newlines: false,
-                    unformatted: ['p', 'i', 'b', 'span']
-                }
-            },
-            replace: [' type="text/javascript"']
         }),
 
         new LiveReloadPlugin()

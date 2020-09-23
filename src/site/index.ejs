@@ -50,7 +50,7 @@
         <a class="branding logo" href="/">
             <img src="images/static/logo.png"><span class="title"><span>Mobi</span>Template</span>
         </a>
-        ${require('./_partials/nav.html')}
+        <% include _partials/nav.ejs %>
         <span class="spacer"></span>
         <div class="demo_images">
             <img class="cat" src="images/static/cat.jpg">
@@ -66,12 +66,12 @@
                     <div class="button" id="tsexception">TS-Exception</div>
                 </div><br>
                 <div class="example">Test für PREFIXER!</div>
-                ${require('./_partials/lorem.html')}
-                ${require('./_partials/lorem.html')}
-                ${require('./_partials/lorem.html')}
-                ${require('./_partials/lorem.html')}
-                ${require('./_partials/lorem.html')}
-                ${require('./_partials/lorem.html')}
+                <% include _partials/lorem.html %>
+                <% include _partials/lorem.html %>
+                <% include _partials/lorem.html %>
+                <% include _partials/lorem.html %>
+                <% include _partials/lorem.html %>
+                <% include _partials/lorem.html %>
             </div>
             <div class="right">
                 <div id="unit-tests">
