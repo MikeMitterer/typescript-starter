@@ -207,15 +207,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: { minimize: false }
-                    }
-                ]
-            },
-            {
                 test: /\.ejs$/,
                 use: {
                     loader: 'ejs-compiled-loader',
@@ -227,6 +218,15 @@ module.exports = {
                         }
                     }
                 }
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: { minimize: false }
+                    }
+                ]
             }
         ]
     },
@@ -274,9 +274,7 @@ module.exports = {
             // Variablen funktionieren nicht
             // template: '!!html-loader?interpolate!src/web/index.ejs',
             favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
-            chunks: devMode
-                ? ['polyfills', 'mobile', 'index', 'styles']
-                : ['polyfills', 'mobile', 'index']
+            chunks: devMode ? ['polyfills', 'mobile', 'index', 'styles'] : ['polyfills', 'mobile', 'index']
         }),
 
         // Options: https://www.npmjs.com/package/js-beautify#css--html

@@ -10,21 +10,21 @@
         "one-line": [true, "check-catch", "check-finally", "check-open-brace", "check-whitespace"],
 
         "quotemark": false,
-        // "explicit-override": [true, "new-line-after-decorators-and-tags" ],
 
+        "semicolon":false,
+
+        "trailing-comma": [true, { "esSpecCompliant": true }],
+
+        "indent": [true, "spaces", 4],
+        "interface-name": false,
         "object-literal-sort-keys": false,
-
         "no-any": true,
-
-        "interface-name": [false, "always-prefix"],
+        "no-consecutive-blank-lines": false,
+        "max-classes-per-file": false,
 
         "class-name": false,
-
         "no-null-keyword": true,
-
         "no-unused-expression": [true, "allow-new"],
-        
-        "max-classes-per-file": false,
 
         "variable-name": [
             true, "ban-keywords", "check-format",
