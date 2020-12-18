@@ -2,12 +2,14 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Title <%= version %></title>
+    <title>Title <%= version %> --</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description"
           content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="manifest.json">
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -38,6 +40,16 @@
         <script src="http://localhost:35729/livereload.js"></script>
     <% } %>
 
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+    
     <style>
         .layout {
             opacity: 0;

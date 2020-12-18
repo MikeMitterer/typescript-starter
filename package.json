@@ -32,6 +32,7 @@
         "build:node:prod": "NODE_ENV=production webpack --config webpack.node.js --mode production",
         "build:web": "rm -rf dist && NODE_ENV=development webpack --config webpack.web.js --mode development",
         "build:web:prod": "rm -rf dist && NODE_ENV=production webpack --config webpack.web.js --mode production",
+        "build:pwa:local": "rm -f ./dist/service-worker.js &&  webpack --config webpack.web.js --progress --colors && node ./workbox-build-inject.js",
         "deploy": "yarn version --new-version patch && yarn publish --non-interactive",
         "doc": "typedoc --out doc --tsconfig tsconfig.lib.json",
         "clean": "rm -rf lib dist bin doc && jest --clearCache",
@@ -48,7 +49,17 @@
     "dependencies": {
         "@mmit/logging": "^0.1.5",
         "date-fns": "^2.16.1",
-        "path": "^0.12.7"
+        "path": "^0.12.7",
+        "workbox-background-sync": "6.0.2",
+        "workbox-broadcast-update": "6.0.2",
+        "workbox-cacheable-response": "6.0.2",
+        "workbox-core": "6.0.2",
+        "workbox-expiration": "6.0.2",
+        "workbox-navigation-preload": "6.0.2",
+        "workbox-precaching": "6.0.2",
+        "workbox-routing": "6.0.2",
+        "workbox-strategies": "6.0.2",
+        "workbox-window": "6.0.2"
     },
     "devDependencies": {
         "@babel/cli": "^7.12.10",
@@ -119,6 +130,8 @@
         "webpack-cli": "^3.3.12",
         "webpack-dev-server": "^3.11.0",
         "webpack-livereload-plugin": "^2.3.0",
-        "webpack-node-externals": "^2.5.2"
+        "webpack-node-externals": "^2.5.2",
+        "workbox-build": "5.0.0",
+        "workbox-webpack-plugin": "^6.0.2"
     }
 }

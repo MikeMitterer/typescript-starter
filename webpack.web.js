@@ -12,9 +12,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 const devMode = process.env.NODE_ENV !== 'production'
 const date = datefns.format(Date.now(), 'yyyy.MM.dd HH:mm')
+
 const supportedLocales = ['en', 'de']
+const targetServiceWorkerFilename = "service-worker.js";
 
 // This helper function is not strictly necessary.
 // I just don't like repeating the path.join a dozen times.
@@ -38,7 +42,9 @@ module.exports = {
         index: [path.resolve(__dirname, 'src/browser/index.ts')],
 
         polyfills: path.resolve(__dirname, 'src/browser/polyfills.ts'),
-        mobile: path.resolve(__dirname, 'src/browser/mobile.ts')
+        mobile: path.resolve(__dirname, 'src/browser/mobile.ts'),
+
+        // sw: path.resolve(__dirname, 'src/browser/service-worker.ts')
 
         // Wird per script-tag eingebunden (js/styles.js?...)
         // Es kann aber auch ein import über das index.ts-File gemacht werden
@@ -255,7 +261,11 @@ module.exports = {
         // }),
 
         new CopyWebpackPlugin({
-            patterns: [{ from: 'src/site/images/static', to: 'images/static' }]
+            patterns: [
+                { from: 'src/site/images/static', to: 'images/static' },
+                { from: 'src/site/images/favicon.ico', to: 'favicon.ico' },
+                { from: 'src/site/manifest.json', to: 'manifest.json' }
+            ]
         }),
 
         // Multiple HTML-Pages
@@ -275,6 +285,13 @@ module.exports = {
             // template: '!!html-loader?interpolate!src/web/index.ejs',
             favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
             chunks: devMode ? ['polyfills', 'mobile', 'index', 'styles'] : ['polyfills', 'mobile', 'index']
+        }),
+
+        new WorkboxPlugin.GenerateSW({
+            // these options encourage the ServiceWorkers to get in there fast
+            // and not allow any straggling "old" SWs to hang around
+            clientsClaim: true,
+            skipWaiting: true,
         }),
 
         // Options: https://www.npmjs.com/package/js-beautify#css--html
