@@ -1,35 +1,30 @@
 {
-    "extends": ["tslint:recommended", "tslint-consistent-codestyle"],
+    "extends": ["tslint:recommended"],
 
     "defaultSeverity": "error",
 
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**"
+        ]
+    },
+
     "rules": {
-        // "no-console": false
-        "no-trailing-whitespace": { "severity": "off" },
+        "no-trailing-whitespace": {  "severity": "off"  },
 
-        "one-line": [true, "check-catch", "check-finally", "check-open-brace", "check-whitespace"],
-
-        "quotemark": false,
-
-        "semicolon":false,
-
-        "trailing-comma": [true, { "esSpecCompliant": true }],
+        "quotemark": [true, "single"],
 
         "indent": [true, "spaces", 4],
+
         "interface-name": false,
+
         "object-literal-sort-keys": false,
+
         "no-any": true,
+
         "no-consecutive-blank-lines": false,
+
         "max-classes-per-file": false,
-
-        "class-name": false,
-        "no-null-keyword": true,
-        "no-unused-expression": [true, "allow-new"],
-
-        "variable-name": [
-            true, "ban-keywords", "check-format",
-            "allow-leading-underscore", "allow-pascal-case"
-        ],
 
         "member-ordering": [
             true,
@@ -48,8 +43,12 @@
             }
         ],
 
-        // arrow-call-signature seit 27.1.2020 entfernt da sich das Ganze nicht feiner
-        // einstellen lässt und seit einem Versions-Update bei den Test warnings angezeigt werden
-        "typedef": [true, "call-signature", /* "arrow-call-signature",*/ "property-declaration"]
+        "semicolon": [true, "never"],
+
+        "trailing-comma": [true, { "esSpecCompliant": true }],
+
+        "typedef": [true, "call-signature", "property-declaration"],
+
+        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
     }
 }

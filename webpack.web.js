@@ -277,6 +277,14 @@ module.exports = {
             chunks: devMode ? ['polyfills', 'mobile', 'index', 'styles'] : ['polyfills', 'mobile', 'index']
         }),
 
+
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: devMode ? 'styles/[name].css' : 'styles/[name].[contenthash].css',
+            chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[contenthash].css'
+        }),
+
         // Options: https://www.npmjs.com/package/js-beautify#css--html
         new BeautifyHtmlWebpackPlugin({
             end_with_newline: true,
@@ -286,13 +294,6 @@ module.exports = {
             preserve_newlines: false,
             wrap_line_length: 100,
             unformatted: ['i', 'b', 'span']
-        }),
-
-        new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
-            filename: devMode ? 'styles/[name].css' : 'styles/[name].[contenthash].css',
-            chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[contenthash].css'
         }),
 
         new LiveReloadPlugin()
