@@ -7,6 +7,8 @@
 //      https://www.typescriptlang.org/docs/handbook/compiler-options.html
 
 {
+    "extends": "./tsconfig.lib",
+
     "compilerOptions": {
         // Dient zum importieren von json-Files
         // In der "include"-Section müssen auch die *.json-Files
@@ -18,7 +20,7 @@
         "lib": ["esnext", "dom"]
     },
 
-    "extends": "./tsconfig.lib",
+
     "include": [
         // Hier werden die auch die Tests eingebunden
         // Nur damit funktioniert das überschreiben in der "prototype"-chain

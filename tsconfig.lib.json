@@ -93,7 +93,11 @@
 
         // If types is specified, only packages listed will be included.
         //      Mehr: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#types-typeroots-and-types
-        // "types": ["node"],
+        "types": [
+            "node",
+            "jest",
+            "jest-extended"
+        ]
 
         // Fallback wenn nach d.ts Files gesucht wird
         // "typeRoots": [
