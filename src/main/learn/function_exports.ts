@@ -12,17 +12,17 @@
 
 /// Hallo Tester
 export function endsWith(str: string, suffix: string): boolean {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+    return str.indexOf(suffix, str.length - suffix.length) !== -1
 }
 
 export function giveAge9(): number {
-    return 99;
+    return 99
 }
 
 export function returnMyName(): string {
-    return 'Mike';
+    return 'Mike'
 }
 
 export function returnGerdasName(): string {
-    return 'Gerda';
+    return 'Gerda'
 }

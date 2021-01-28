@@ -1,10 +1,10 @@
 // import 'jest-extended';
-import { userName as uN } from '../../../src/main';
+import { userName as uN } from '../../../src/main'
 
 describe('Objects and types', () => {
     it('dynamic object', () => {
-        expect(uN.name).toBe('Mike');
-    });
+        expect(uN.name).toBe('Mike')
+    })
 
     // it('type-save-object', () => {
     //     expect(oat.userData.name).toBe('Gerda');
@@ -34,4 +34,4 @@ describe('Objects and types', () => {
     // it('should not accept null', () => {
     //     expect(oat.tryToReturnNull('Mike')).not.toBeNull();
     // });
-});
+})

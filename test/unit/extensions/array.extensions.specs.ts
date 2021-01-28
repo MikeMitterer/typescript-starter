@@ -1,4 +1,4 @@
-import '../../../src/main/extensions/array.extensions';
+import '../../../src/main/extensions/array.extensions'
 
 describe('array.extensions', () => {
     // const logger = LoggerFactory.getLogger('test.array.extensions');
@@ -10,16 +10,16 @@ describe('array.extensions', () => {
     // });
 
     test('first element', /* async */ () => {
-        const name = ['Mike', 'Gerda', 'Sarah'];
+        const name = ['Mike', 'Gerda', 'Sarah']
 
-        expect(name.first()).toBe('Mike');
-        expect(name.last()).toBe('Sarah');
-    });
+        expect(name.first()).toBe('Mike')
+        expect(name.last()).toBe('Sarah')
+    })
 
     test('last element', /* async */ () => {
-        const name: string[] = [];
+        const name: string[] = []
 
-        expect(() => name.first()).toThrowError('Index out of range, array is empty!');
-        expect(() => name.last()).toThrowError('Index out of range, array is empty!');
-    });
-});
+        expect(() => name.first()).toThrowError('Index out of range, array is empty!')
+        expect(() => name.last()).toThrowError('Index out of range, array is empty!')
+    })
+})

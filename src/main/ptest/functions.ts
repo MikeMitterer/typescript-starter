@@ -1,5 +1,5 @@
 export function myCallback(): string {
-    return 'Mike6';
+    return 'Mike6'
 }
 
 /**
@@ -9,12 +9,12 @@ export function myCallback(): string {
  * @param age
  */
 export function functionWithOptionalParams(name: string, age?: number): string {
-    return `Hi ${name}, your age is ${age ? age : '<undefined>'}`;
+    return `Hi ${name}, your age is ${age ? age : '<undefined>'}`
 }
 
 export function functionWithDefaultParams(
     firstname: string,
     lastname: string = 'Mitterer',
 ): string {
-    return `Hi ${firstname} ${lastname}`;
+    return `Hi ${firstname} ${lastname}`
 }

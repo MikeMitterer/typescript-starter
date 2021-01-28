@@ -1,4 +1,4 @@
-import 'jest-extended';
+import 'jest-extended'
 
 describe('destructuring', () => {
     // const logger = LoggerFactory.getLogger('test.destructuring');
@@ -10,9 +10,9 @@ describe('destructuring', () => {
     // });
 
     test('Object', /* async */ () => {
-        const obj = { name: 'Mike', lastname: 'Mitterer', age: 99 };
-        const { age } = obj;
+        const obj = { name: 'Mike', lastname: 'Mitterer', age: 99 }
+        const { age } = obj
 
-        expect(age).toBe(99);
-    });
-});
+        expect(age).toBe(99)
+    })
+})
