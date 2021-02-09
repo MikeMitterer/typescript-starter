@@ -2,6 +2,7 @@ import { LoggerFactory } from '@mmit/logging'
 import { format } from 'date-fns'
 import lambi from '../site/images/lambi.png'
 import { testQUnit } from './test/qunit.test'
+import * as Qunit from 'qunit'
 
 const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement
 const getLocale = (locale: string) => import(`date-fns/locale/${locale}/index.js`)
