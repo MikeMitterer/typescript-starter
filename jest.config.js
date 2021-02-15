@@ -138,7 +138,7 @@ module.exports = {
     // setupTestFrameworkScriptFile: null,
 
     // https://www.npmjs.com/package/jest-extended#setup
-    setupFilesAfterEnv: ['jest-extended'],
+    "setupFilesAfterEnv": [ "jest-extended", './test/jest.setup.js' ],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
