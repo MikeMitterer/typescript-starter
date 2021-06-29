@@ -274,7 +274,9 @@ module.exports = {
             // Variablen funktionieren nicht
             // template: '!!html-loader?interpolate!src/web/index.ejs',
             favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
-            chunks: devMode ? ['polyfills', 'mobile', 'index', 'styles'] : ['polyfills', 'mobile', 'index']
+            chunks: devMode
+                ? ['polyfills', 'mobile', 'index', 'styles']
+                : ['polyfills', 'mobile', 'index']
         }),
 
 

@@ -46,6 +46,7 @@
         "url": "https://github.com/MikeMitterer/typescript-training"
     },
     "dependencies": {
+        "@mmit/check": "^0.2.18",
         "@mmit/logging": "^0.1.5",
         "date-fns": "^2.16.1",
         "path": "^0.12.7"
