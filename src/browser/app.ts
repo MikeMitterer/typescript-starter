@@ -58,7 +58,7 @@ export function main(): void {
 
     testQUnit(describe, test)
 
-    QUnit.start()
+    // QUnit.start()
 
     // logger.info(`Done!!!! ${os.platform()}`);
     logger.info(`Done!!!1`)

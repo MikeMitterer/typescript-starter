@@ -12,8 +12,26 @@
     "rules": {
         "no-trailing-whitespace": {  "severity": "off"  },
 
-        "quotemark": [true, "single"],
+        "one-line": [true, "check-catch", "check-finally", "check-open-brace", "check-whitespace"],
 
+        // Rule: https://palantir.github.io/tslint/rules/whitespace/
+        "whitespace": [
+            true,
+            // "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-module",
+            // "check-separator",
+            "check-rest-spread",
+            "check-type",
+            "check-typecast",
+            "check-type-operator",
+            "check-preblock"
+            // "check-postbrace"
+        ],
+
+        "quotemark": [true, "single"],
+        
         "indent": [true, "spaces", 4],
 
         "interface-name": false,

@@ -73,7 +73,7 @@ module.exports = {
     // devtool: devMode ? 'cheap-eval-source-map' : false,
 
     // cheap-module-eval-source-map is the best option
-    devtool: devMode ? 'cheap-module-eval-source-map' : false,
+    devtool: devMode ? 'inline-source-map' : false,
 
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.scss'],
@@ -184,12 +184,12 @@ module.exports = {
                     }
                 ]
             },
-            {
-                // Ist notwendig sonst kommt
-                //      "Module parse failed: Unexpected character '' (1:0)..."
-                test: /\.(woff|woff2|eot|ttf)$/,
-                loader: 'url-loader?limit=100000'
-            },
+            // {
+            //     // Ist notwendig sonst kommt
+            //     //      "Module parse failed: Unexpected character '' (1:0)..."
+            //     test: /\.(woff|woff2|eot|ttf)$/,
+            //     loader: 'url-loader?limit=100000'
+            // },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
                 use: [
@@ -302,25 +302,26 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'async',
-            minSize: 30000,
+            minSize: 20000,
+            minRemainingSize: 0,
             minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            name: true,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
+            enforceSizeThreshold: 50000,
             cacheGroups: {
-                vendors: {
+                defaultVendors: {
                     test: /[\\/]node_modules[\\/]/,
-                    priority: -10
+                    priority: -10,
+                    reuseExistingChunk: true,
                 },
                 default: {
                     minChunks: 2,
                     priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
-        }
-    }
+                    reuseExistingChunk: true,
+                },
+            },
+        },
+    },
 }
 
 // Reminder!
