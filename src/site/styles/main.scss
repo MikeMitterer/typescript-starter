@@ -1,5 +1,6 @@
 $branding-color: #ffbb00;
-@import "~@mmit/styles/src/mobiad";
+@import "~@mmit/styles/css/mobiad";
+@import "~@mmit/muni/css/muni.css";
 
 body {
     background-color: #dddddd;
