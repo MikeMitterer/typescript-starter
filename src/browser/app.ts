@@ -1,5 +1,6 @@
 import { LoggerFactory } from '@mmit/logging'
 import { format } from 'date-fns'
+import { de } from 'date-fns/locale'
 import lambi from '../site/images/lambi.png'
 import { testMUnit } from './test/muni.test'
 import * as muni from '@mmit/muni'
@@ -7,7 +8,6 @@ import logo from '@mmit/styles/images/logo.png'
 import { addLogoIcon } from '@mmit/styles'
 
 const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement
-const getLocale = (locale: string) => import(`date-fns/locale/${locale}/index.js`)
 
 // Retrieve a logger (you can decide to use it per class and/or module or just
 // export it in the config above etc. Your loggers - your choice!).
@@ -17,7 +17,7 @@ const logger = LoggerFactory.getLogger('main')
 export async function main(): Promise<void> {
     query('#tstest').onclick = async (event: MouseEvent): Promise<void> => {
         const now = format(Date.now(), 'yyyy.MM.dd HH:mm', {
-            locale: await getLocale('de')
+            locale: de
         })
 
         alert(`Hi Mike, event '${event.type}' occurred at ${now}!`)
@@ -53,5 +53,5 @@ export async function main(): Promise<void> {
     }})
 
     // logger.info(`Done!!!! ${os.platform()}`);
-    logger.info(`Done!!!1`)
+    logger.info(`Done!!`)
 }

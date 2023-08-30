@@ -72,7 +72,6 @@
         "@types/expect-puppeteer": "5.0.3",
         "@types/jest": "^29.5.4",
         "@types/node": "^20.5.7",
-        "@types/puppeteer": "^7.0.4",
         "@types/shelljs": "^0.8.12",
         "@types/ws": "^8.5.5",
         "autoprefixer": "^10.4.15",
@@ -120,7 +119,7 @@
         "url-loader": "^4.1.1",
         "webpack": "5.88.2",
         "webpack-cli": "5.1.4",
-        "webpack-dev-server": "^4.15.1",
+        "webpack-dev-server": "4.7.4",
         "webpack-livereload-plugin": "^3.0.1",
         "webpack-node-externals": "^3.0.0"
     }

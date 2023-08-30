@@ -29,7 +29,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Font für Logo -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <% if(devmode){ %>
         <script src="http://localhost:35729/livereload.js"></script>
@@ -55,22 +56,21 @@
         </div>
     </div>
     <div class="layout__content col-2">
-        <div class="content">
-            <div class="left">
-                <div class="toolbar">
-                    <div class="button" id="tstest">Click me</div>
-                    <div class="button" id="tsevent">TS-Event</div>
-                    <div class="button" id="tsexception">TS-Exception</div>
-                </div><br>
-                <div class="example">Test für PREFIXER!</div>
-                <% include _partials/lorem.html %>
-                <% include _partials/lorem.html %>
+        <div class="left">
+            <div class="toolbar">
+                <div class="button" id="tstest">Click me</div>
+                <div class="button" id="tsevent">TS-Event</div>
+                <div class="button" id="tsexception">TS-Exception</div>
             </div>
-            <div class="right">
-                <% include _partials/muni.html %>
-            </div>
+            <br>
+            <div class="example">Test für PREFIXER!</div>
+            <% include _partials/lorem.html %>
+            <% include _partials/lorem.html %>
+        </div>
+        <div class="right">
+            <% include _partials/muni.html %>
         </div>
     </div>
-    <% include _partials/footer.html  %>
+    <% include _partials/footer.html %>
 </div>
 </body>

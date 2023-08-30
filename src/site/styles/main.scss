@@ -26,52 +26,51 @@ body {
         }
 
         &__content {
-            .content {
-                // CSS-Grid: https://css-tricks.com/snippets/css/complete-guide-grid/
-                display: grid;
-                grid-gap: 10px;
-                grid-template-columns:  1fr 1fr;
-                // grid-template-rows: 220px auto; // 1fr 2fr;
+            // CSS-Grid: https://css-tricks.com/snippets/css/complete-guide-grid/
+            //display: grid;
+            //grid-gap: 10px;
+            //grid-template-columns:  1fr 1fr;
 
-                // justify-items: start | end | center | stretch; // ⇾
-                // align-items: start | end | center | stretch; // ↓
+            // grid-template-rows: 220px auto; // 1fr 2fr;
 
-                // justify-content: start | end | center | stretch | space-around | space-between | space-evenly; // ⇾
-                // align-content: start | end | center | stretch | space-around | space-between | space-evenly; // ↓
+            // justify-items: start | end | center | stretch; // ⇾
+            // align-items: start | end | center | stretch; // ↓
 
-                // grid-template-areas:
-                //     "map preview"
-                //     "map devices"
-                //     "map devices"
-                //;
+            // justify-content: start | end | center | stretch | space-around | space-between | space-evenly; // ⇾
+            // align-content: start | end | center | stretch | space-around | space-between | space-evenly; // ↓
 
-                .button {
-                    display: inline-block;
-                    border: 1px solid #b7b7b7 !important;
-                    border-radius: 3px;
-                    padding: 5px 10px;
-                    line-height: 15px;
-                    cursor: pointer;
-                    min-height: 27px;
+            // grid-template-areas:
+            //     "map preview"
+            //     "map devices"
+            //     "map devices"
+            //;
 
-                    &:focus {
-                        outline: 0;
-                    }
+            .button {
+                display: inline-block;
+                border: 1px solid #b7b7b7 !important;
+                border-radius: 3px;
+                padding: 5px 10px;
+                line-height: 15px;
+                cursor: pointer;
+                min-height: 27px;
+
+                &:focus {
+                    outline: 0;
                 }
+            }
 
-                #tstest {
-                    background-color: darkolivegreen;
-                }
+            #tstest {
+                background-color: darkolivegreen;
+            }
 
-                #tsevent {
-                    background-color: cornflowerblue;
-                    color: white;
-                }
+            #tsevent {
+                background-color: cornflowerblue;
+                color: white;
+            }
 
-                #tsexception {
-                    background-color: orangered;
-                    color: white;
-                }
+            #tsexception {
+                background-color: orangered;
+                color: white;
             }
         }
     }

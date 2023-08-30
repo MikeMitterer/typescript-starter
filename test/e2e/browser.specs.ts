@@ -43,7 +43,7 @@ describe('puppeteer.ts', () => {
 
     test('Test in Browser', async () => {
         const title = await page.title()
-        expect(title).toStartWith('✔ Title')
+        expect(title).toStartWith('✔ Tests were successful!')
         // await page.setContent(
         //     `
         //         <h1>Test</h1>
