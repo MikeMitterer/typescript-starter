@@ -62,11 +62,11 @@ module.exports = {
     // globalTeardown: null,
 
     // A set of global variables that need to be available in all test environments
-    globals: {
-        'ts-jest': {
-            babelConfig: 'babel.config.js',
-        },
-    },
+    // globals: {
+    //     'ts-jest': {
+    //         babelConfig: 'babel.config.js',
+    //     },
+    // },
 
     // An array of directory names to be searched recursively up from the requiring module's location
     // moduleDirectories: [
@@ -138,7 +138,7 @@ module.exports = {
     // setupTestFrameworkScriptFile: null,
 
     // https://www.npmjs.com/package/jest-extended#setup
-    "setupFilesAfterEnv": [ "jest-extended", './test/jest.setup.js' ],
+    "setupFilesAfterEnv": [ "jest-extended/all", './test/jest.setup.js' ],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
@@ -190,13 +190,17 @@ module.exports = {
     // transform: null,
     transform: {
         '\\.jsx?$': 'babel-jest',
-        '^.+\\.js?$': require.resolve('babel-jest'),
+
+        '^.+\\.js?$': 'babel-jest',
+
+        // '^.+\\.js?$': require.resolve('babel-jest'),
 
         // Config: https://jestjs.io/docs/en/webpack.html
-        '.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-            '<rootDir>/__mocks__/fileTransformer.js',
+        // '.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+        //     '<rootDir>/__mocks__/fileTransformer.js',
+        // '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
 
-        '^.+\\.(ts|tsx)$': './node_modules/ts-jest',
+        '^.+\\.(ts|tsx)$': 'ts-jest',
     },
 
     // An array of regexp pattern strings that are matched against all source file paths,

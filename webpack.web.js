@@ -5,7 +5,7 @@ const datefns = require('date-fns')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const BeautifyHtmlWebpackPlugin = require('beautify-html-webpack-plugin')
+// const BeautifyHtmlWebpackPlugin = require('beautify-html-webpack-plugin')
 
 const LiveReloadPlugin = require('webpack-livereload-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -28,7 +28,11 @@ module.exports = {
     //  - default "web"
     target: 'web',
 
-    // devServer: { port: 8080 },
+    devServer: {
+      // port: 8080
+      // hot: false,
+      // liveReload: false
+    },
 
     context: __dirname,
 
@@ -286,15 +290,15 @@ module.exports = {
         }),
 
         // Options: https://www.npmjs.com/package/js-beautify#css--html
-        new BeautifyHtmlWebpackPlugin({
-            end_with_newline: true,
-            indent_size: 4,
-            indent_with_tabs: true,
-            indent_inner_html: true,
-            preserve_newlines: false,
-            wrap_line_length: 100,
-            unformatted: ['i', 'b', 'span']
-        }),
+        // new BeautifyHtmlWebpackPlugin({
+        //     end_with_newline: true,
+        //     indent_size: 4,
+        //     indent_with_tabs: true,
+        //     indent_inner_html: true,
+        //     preserve_newlines: false,
+        //     wrap_line_length: 100,
+        //     unformatted: ['i', 'b', 'span']
+        // }),
 
         new LiveReloadPlugin()
     ],
