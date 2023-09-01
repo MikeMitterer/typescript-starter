@@ -5,7 +5,6 @@
 > [12 examples to play with](https://www.aymen-loukil.com/en/blog-en/google-puppeteer-tutorial-with-examples/)
 
 Read HTML: https://github.com/GoogleChrome/puppeteer/issues/2913
-Test
 
 ### Install
 
