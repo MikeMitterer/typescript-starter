@@ -33,5 +33,6 @@ module.exports = {
         "webpack.*.js",
         "jest.setup.js",
         "service-worker.js",
+        "*.config.js",
     ],
 };
