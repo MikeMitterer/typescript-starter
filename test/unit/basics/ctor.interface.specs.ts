@@ -12,7 +12,7 @@ interface ClockInterface {
 
 // Variante I
 class Surmer implements ClockInterface {
-    // tslint:disable-next-line:no-empty
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     constructor(h: number, m: number) {}
 
     public tick(): string {
@@ -23,7 +23,7 @@ class Surmer implements ClockInterface {
 // Variante II
 // tslint:disable-next-line
 const Clock1: ClockConstructor = class Clock implements ClockInterface {
-    // tslint:disable-next-line:no-empty
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     constructor(h: number, m: number) {}
 
     public tick(): string {

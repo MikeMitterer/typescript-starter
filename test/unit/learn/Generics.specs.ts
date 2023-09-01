@@ -5,9 +5,10 @@ describe('Function mit Return-Type', () => {
     })
 
     test('Mit return type', () => {
-        let gt: <T>(data: T) => string
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let gt1: <T>(data: T) => string
 
-        gt = <T>(data: T): string => {
+        const gt = <T>(data: T): string => {
             return `-${data}-`
         }
         expect(gt(10)).toBe('-10-')

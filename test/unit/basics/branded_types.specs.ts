@@ -18,10 +18,10 @@ describe('branded_types', () => {
     // https://medium.com/@KevinBGreene/surviving-the-typescript-ecosystem-branding-and-type-tagging-6cf6e516523d
     test('Branded number', () => {
         // tslint:disable-next-line:prefer-const
-        let usd: USD = 5 as USD
+        const usd: USD = 5 as USD
 
         // tslint:disable-next-line:prefer-const
-        let eur: EUR = 10 as EUR
+        const eur: EUR = 10 as EUR
 
         // Funktioniert nicht!
         // usd = eur;
@@ -39,7 +39,6 @@ describe('branded_types', () => {
 
     function thisIsATest(): number {
         // noinspection JSUnusedLocalSymbols
-        // @ts-ignore
         const val = 10 * 10
         return val
     }

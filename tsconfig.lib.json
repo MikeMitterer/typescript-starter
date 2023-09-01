@@ -1,12 +1,12 @@
 // -------------------------------------------------------------------------------------------------
-// Die .lib-Version exkludiert src/browser das dieses Dir nur zum testen
+// Die .lib-Version exkludiert src/browser das dieses Dir nur zum Testen
 // im browser benötigt wird
 //
-// Dieses File wird auch in packages#buidl.ts verwendet (zum erstellen der Lib)
+// Dieses File wird auch in packages#buidl.ts verwendet (zum Erstellen der Lib)
 //
 // Weitere Infos:
 //    https://marcobotto.com/blog/compiling-and-bundling-typescript-libraries-with-webpack/
-//      https://www.typescriptlang.org/docs/handbook/compiler-options.html
+//    https://www.typescriptlang.org/docs/handbook/compiler-options.html
 //
 {
     "compileOnSave": true,
@@ -18,6 +18,8 @@
         "target": "es2020",
 
         "outDir": "./lib",
+      
+        // wird in packages.json beim "build" überschrieben (src/main)
         "rootDir": ".",
 
         // commonjs, amd oder es6 (esnext)
@@ -59,7 +61,7 @@
         // Import von Images funkt nicht mehr
         // "esModuleInterop": true,
 
-        // Dient zum importieren von json-Files
+        // Dient zum Importieren von json-Files
         // In der "include"-Section müssen auch die *.json-Files
         // eingebunden werden
         // (Sollte in tsconfig.json eingeschaltet werden (wenn notwendig)!)
@@ -99,7 +101,7 @@
             "jest-extended"
         ]
 
-        // Fallback wenn nach d.ts Files gesucht wird
+        // Fallback, wenn nach d.ts Files gesucht wird
         // "typeRoots": [
         //     "./src/types",
         //     "node_modules/@types"
@@ -112,7 +114,6 @@
         // "reportFiles": ["src/**/*.{ts,tsx}"]
     },
     "include": [
-        // "src/index.ts",
         "src/main/**/*.ts",
 
         // Damit funktioniert jest-extended + qunit
