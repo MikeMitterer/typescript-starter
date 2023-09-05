@@ -22,7 +22,7 @@ FILES_TO_COPY["babel.config.js"]=""
 FILES_TO_COPY["postcss.config.js"]=""
 FILES_TO_COPY["prettier.config.js"]=""
 
-FILES_TO_COPY["jest.config.js"]=""
+FILES_TO_COPY["jest.config.lib.js"]="jest.config.js"
 FILES_TO_COPY["jest-puppeteer.config.js"]=""
 
 FILES_TO_COPY["tsconfig.json"]=""
