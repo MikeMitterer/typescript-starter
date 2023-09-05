@@ -45,26 +45,6 @@ module.exports = {
       //   enforce: 'pre',
       //   loader: 'tslint-loader',
       // },
-      /**
-       * ESLINT
-       * First, run the linter.
-       * It's important to do this before Babel processes the JS.
-       * Only testing .ts and .tsx files (React code)
-       */
-      // {
-      //   test: /\.(ts|tsx)$/,
-      //   enforce: 'pre',
-      //   // use: [
-      //   //   {
-      //   //     options: {
-      //   //       eslintPath: require.resolve('eslint'),
-      //   //
-      //   //     },
-      //   //     loader: require.resolve('eslint-loader'),
-      //   //   },
-      //   // ],
-      //   exclude: /node_modules/,
-      // },
       {
         // Include ts, tsx, js, and jsx files.
         test: /\.(ts|js)x?$/,

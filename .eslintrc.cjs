@@ -1,3 +1,12 @@
+/**
+ * ESLint für Type-Script
+ *
+ * Config:
+ *     https://typescript-eslint.io/getting-started/#step-2-configuration
+ *
+ * Installation:
+ *     yarn add --dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+ */
 /* eslint-env node */
 module.exports = {
     root: true,

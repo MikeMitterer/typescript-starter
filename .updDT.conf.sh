@@ -32,4 +32,6 @@ FILES_TO_COPY["webpack.node.js"]=""
 FILES_TO_COPY["webpack.ts.js"]=""
 FILES_TO_COPY["webpack.web.js"]=""
 
-
+# Die Files werden nur kopiert wenn sie noch nicht existieren
+# FILES_TO_UPDATE["static/config.lenovo.js"]="config.js"
+FILES_TO_UPDATE["webpack.web.local.js"]=""
