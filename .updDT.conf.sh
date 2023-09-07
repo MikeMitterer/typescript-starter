@@ -17,6 +17,7 @@ BASE_FOLDER="../.."
 
 FILES_TO_COPY[".eslintrc.cjs"]=""
 FILES_TO_COPY[".npmignore"]=""
+FILES_TO_COPY[".gitignore"]=""
 
 FILES_TO_COPY["babel.config.js"]=""
 FILES_TO_COPY["postcss.config.js"]=""
@@ -35,3 +36,12 @@ FILES_TO_COPY["webpack.web.js"]=""
 # Die Files werden nur kopiert wenn sie noch nicht existieren
 # FILES_TO_UPDATE["static/config.lenovo.js"]="config.js"
 FILES_TO_UPDATE["webpack.web.local.js"]=""
+
+# Wird mit
+#     echo "${GH_ORG_MM}" > .gitorg
+#     echo "${GH_ORG_MOBIAD}" > .gitorg
+#     echo "${GH_ORG_WZE}" > .gitorg
+#     echo "${GH_ORG_MANGO_LILA}" > .gitorg
+# erstellt.
+# Default ist GH_ORG_MM
+FILES_TO_UPDATE[".gitorg"]=""

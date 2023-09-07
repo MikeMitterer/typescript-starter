@@ -6,6 +6,11 @@
  *
  * Installation:
  *     yarn add --dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+ *
+ * Update:
+ *     pacakage.json:
+ *         "lint": "yarn eslint src tests",
+ *         "lint:fix": "yarn eslint src --fix",
  */
 /* eslint-env node */
 module.exports = {
@@ -22,7 +27,8 @@ module.exports = {
     ],
     "rules": {
         // disable the rule for all files
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-unused-vars": "off"
     },
     "overrides": [
         {
@@ -43,5 +49,8 @@ module.exports = {
         "jest.setup.js",
         "service-worker.js",
         "*.config.js",
+        "src/types/global.d.ts",
+        "src/global.d.ts",
+        "src/node/*"
     ],
 };
