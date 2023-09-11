@@ -44,4 +44,4 @@ FILES_TO_UPDATE["webpack.web.local.js"]=""
 #     echo "${GH_ORG_MANGO_LILA}" > .gitorg
 # erstellt.
 # Default ist GH_ORG_MM
-FILES_TO_UPDATE[".gitorg"]=""
+FILES_TO_UPDATE[".gitorg.mm"]=".gitorg"
