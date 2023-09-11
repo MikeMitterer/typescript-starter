@@ -10,7 +10,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const LiveReloadPlugin = require('webpack-livereload-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 const date = datefns.format(Date.now(), 'yyyy.MM.dd HH:mm')
@@ -23,6 +22,9 @@ function srcPath(subdir) {
 }
 
 module.exports = {
+    extends: [
+        path.resolve(__dirname, './webpack.web.local.js'),
+    ],
     cache: devMode,
     // https://webpack.js.org/configuration/target/
     //  - default "web"
@@ -32,6 +34,10 @@ module.exports = {
       // port: 8080
       // hot: false,
       // liveReload: false
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*'
+        }
     },
 
     context: __dirname,
@@ -54,7 +60,8 @@ module.exports = {
         publicPath: '',
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js',
-        pathinfo: true
+        pathinfo: true,
+        hashFunction: 'xxhash64'
     },
 
     stats: {
@@ -85,15 +92,56 @@ module.exports = {
             '@main': srcPath('main'),
             '@test': srcPath('test'),
             '@images': srcPath('site/images')
+
+            // Wegen Sinnlosigkeit (funkt nicht) wieder gestrichen
+            // '@mmit/mobicore': srcPath('main'),
+            // '@main': srcPath('main'),
+        },
+        fallback: {
+            // Can't resolve 'fs' in
+            "fs": false,
+
+            // "tls": false,
+            // "net": false,
+            // "path": false,
+            // "zlib": false,
+            // "http": false,
+            // "https": false,
+            // "stream": false,
+            // "crypto": false,
+            // "url": false,
+
+            // yarn add -D path-browserify crypto-browserify https-browserify stream-browserify stream-http browserify-zlib assert buffer
+            "path": require.resolve("path-browserify"), // yarn add path-browserify
+            "crypto": require.resolve("crypto-browserify"), // yarn add crypto-browserify
+            "stream": require.resolve("stream-browserify"), // yarn add stream-browserify
+
+            //     "path": require.resolve("path-browserify"), // yarn add path-browserify
+            //     "crypto": require.resolve("crypto-browserify"), // yarn add crypto-browserify
+            //     "stream": require.resolve("stream-browserify"), // yarn add stream-browserify
+            //     "https": require.resolve("https-browserify"), // yarn add https-browserify
+            //     "http": require.resolve("stream-http"), // yarn add stream-http
+            //     "zlib": require.resolve("browserify-zlib"), // yarn add browserify-zlib
+            //     "assert": require.resolve("assert/"), // yarn add assert
+            //     "url": require.resolve("url"), // yarn add url
+            //     "process": require.resolve("process"), // yarn add process
+
+            "buffer": require.resolve("buffer/") // yarn add buffer
+            // Muss bei "plugins" noch angegeben werden:
+            //
+            // new webpack.ProvidePlugin({
+            //    Buffer: ['buffer', 'Buffer'],
+            //    process: 'process/browser',
+            // }),
         }
     },
     module: {
         rules: [
-            {
-                test: /\.ts$/,
-                enforce: 'pre',
-                loader: 'tslint-loader'
-            },
+            // {
+            //     test: /\.ts$/,
+            //     enforce: 'pre',
+            //     loader: 'tslint-loader'
+            // },
             // {
             //     test: /\.ts?$/,
             //     // Hat probleme beim export (funkt nur einmal - dann ist Restart notwendig)
@@ -120,23 +168,32 @@ module.exports = {
             // }}], exclude: /node_modules/ },
 
             // Speed: ~750ms
+            // { test: /\.tsx?$/, loader: 'ts-loader',
+            //      options: {
+            //          configFile: path.resolve(__dirname, 'tsconfig.lib.json')
+            // }},
+
+            // Speed: ~400ms
+            // (exclude: /node_modules/, am 27.2.2020 entfernt da es sonst Probleme mit
+            // dem coalescing-operator aus anderen Modulen gibt)
             {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
+                test: /\.(ts|js)x?$/,
+                exclude: /node_modules\/(?!(@mmit)\/).*/,
+                loader: 'babel-loader',
                 options: {
-                    configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
-                    compilerOptions: {
-                        incremental: true
-                        // transpileOnly: true
-                    }
+                    cacheDirectory: true,
+                    // And replace .babelrc with babel.config.json...
+                    babelrc: false
                 }
             },
 
-            // Speed: ~400ms
-            // { test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: [/node_modules/] },
-
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                loader: 'source-map-loader',
+                exclude: [/node_modules\/typescript-collections/]
+            },
 
             // {
             //       // Include ts, tsx, js, and jsx files.
@@ -194,21 +251,25 @@ module.exports = {
             //     test: /\.(woff|woff2|eot|ttf)$/,
             //     loader: 'url-loader?limit=100000'
             // },
+            // {
+            //     test: /\.(png|jpg|gif|svg)$/i,
+            //     use: [
+            //         {
+            //             // https://github.com/webpack-contrib/url-loader
+            //             loader: 'url-loader',
+            //             options: {
+            //                 // if less than 8 kb, add base64 encoded image to css
+            //                 limit: 8192,
+            //
+            //                 // if more than 8 kb move to this folder in build using file-loader
+            //                 name: 'images/[name]-[hash:8].[ext]'
+            //             }
+            //         }
+            //     ]
+            // },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
-                use: [
-                    {
-                        // https://github.com/webpack-contrib/url-loader
-                        loader: 'url-loader',
-                        options: {
-                            // if less than 8 kb, add base64 encoded image to css
-                            limit: 8192,
-
-                            // if more than 8 kb move to this folder in build using file-loader
-                            name: 'images/[name]-[hash:8].[ext]'
-                        }
-                    }
-                ]
+                type: 'asset/resource'
             },
             {
                 test: /\.ejs$/,
@@ -235,13 +296,16 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer'],
+            process: 'process/browser',
+        }),
 
         // clean dist folder
         new CleanWebpackPlugin(),
 
         // Clean Terminal before next build
-        new CleanTerminalPlugin(),
+        // new CleanTerminalPlugin(),
 
         // Weitere Infos: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
         // load `moment/locale/en.js` and `moment/locale/de.js`
