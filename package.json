@@ -47,7 +47,8 @@
         "doc": "typedoc --out doc --tsconfig tsconfig.lib.json src/main/",
         "prettier": "onchange './src/**/*.ts'  -- prettier --write {{changed}}",
         "export": "yarn export:scripts",
-        "export:scripts": "jq -r '.scripts' < package.json > ${DEV_LOCAL}/Templates/Production/TypeScript/package/scripts.json"
+        "export:scripts": "jq -r '.scripts' < package.json > ${DEV_LOCAL}/Templates/Production/TypeScript/package/scripts.json",
+        "export:jenkins": "cp -f build.jenkins ${DEV_LOCAL}/Templates/Production/TypeScript"
     },
     "files": [
         "lib",
