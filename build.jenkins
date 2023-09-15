@@ -17,10 +17,17 @@ pipeline {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
                         script { if (env.REMOVE_NODE_MODULES) {
+<<<<<<< HEAD
                             sh 'rm -rf node_modules yarn.lock'
                         }}
 
                         sh 'yarn clean && yarn install'
+=======
+                                sh 'rm -rf node_modules yarn.lock'
+                        }}
+
+                        sh 'yarn'
+>>>>>>> b0c7824a21217d0d66ebd850f183065309222a78
 
                         // Repos von Amazon holen
                         // sh 'docker/_ci/run.sh --pull'

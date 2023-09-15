@@ -20,7 +20,7 @@
         "update:templates": "updateDevTemplates.sh -u",
         "clean": "rm -rf lib dist bin",
         "clean:jest": "jest --clearCache",
-        "clean:all": "yarn clean && yarn clean:jest && rm -f yarn.lock && rm -rf node_modules",
+        "clean:all": "yarn clean && yarn clean:jest && rm -f yarn.lock && rm -rf node_modules && yarn clean cache",
         "gen:barrels": "barrelsby --singleQuotes --delete -d src/main --exclude ConfigLog4j --exclude 'events/utils' -l top -s flat",
         "serve": "NODE_ENV=development webpack serve --config webpack.web.js --mode development",
         "start": "yarn serve --open",
@@ -46,7 +46,7 @@
         "deploy": "yarn version --new-version patch && yarn publish --non-interactive",
         "doc": "typedoc --out doc --tsconfig tsconfig.lib.json src/main/",
         "prettier": "onchange './src/**/*.ts'  -- prettier --write {{changed}}",
-        "export": "yarn save:scripts",
+        "export": "yarn export:scripts",
         "export:scripts": "jq -r '.scripts' < package.json > ${DEV_LOCAL}/Templates/Production/TypeScript/package/scripts.json"
     },
     "files": [
