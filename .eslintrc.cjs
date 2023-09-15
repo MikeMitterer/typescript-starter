@@ -20,7 +20,7 @@ module.exports = {
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        "project": ["./tsconfig.json"]
+        "project": ["./tsconfig.lib.json", "./tsconfig.json"]
     },
     plugins: [
         '@typescript-eslint'
@@ -28,7 +28,13 @@ module.exports = {
     "rules": {
         // disable the rule for all files
         "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/no-unused-vars": "off"
+        "@typescript-eslint/no-unused-vars": "off",
+
+        // Weitere Infos: https://stackoverflow.com/a/70131153/504184
+        '@typescript-eslint/ban-ts-comment': [
+            'error', { 'ts-ignore': 'allow-with-description' },
+        ],
+        "@typescript-eslint/no-explicit-any": "off"
     },
     "overrides": [
         {

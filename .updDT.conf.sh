@@ -5,11 +5,11 @@
 #------------------------------------------------------------------------------
 
 # Folder mit den Templates
-BASE_FOLDER="../.."
-# BASE_FOLDER="${DEV_LOCAL}/DevTypeScript/Templates"
+# BASE_FOLDER="."
+# BASE_FOLDER="${DEV_LOCAL}/Templates/Production"
 
 # Names des Template-Folders
-# TEMPLATE_FOLDER=".templates"
+TEMPLATE_FOLDER="TypeScript"
 
 # Der "Key" ist das Source-File und der "Value" ist das Remote-File
 # FILES_TO_COPY["jest.config.js"]="jest.config.js"
@@ -44,4 +44,4 @@ FILES_TO_UPDATE["webpack.web.local.js"]=""
 #     echo "${GH_ORG_MANGO_LILA}" > .gitorg
 # erstellt.
 # Default ist GH_ORG_MM
-FILES_TO_UPDATE[".gitorg"]=""
+FILES_TO_UPDATE[".gitorg.mm"]=".gitorg"
