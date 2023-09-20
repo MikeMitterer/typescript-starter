@@ -30,6 +30,8 @@
         // commonjs, amd oder es6 (esnext)
         // Beste Variante ist es6 (Vue esnext)
         // Mehr: http://www.geekabyte.io/2018/12/understanding-javascript-modules-as.html
+        //
+        // Rollup-Projekte überschreiben dieses Setting auf "esnext"!
         "module": "commonjs",
         "moduleResolution": "node",
 
@@ -126,7 +128,11 @@
         // "src/types/*.ts"
 
         // Damit können images (mit ts-loader) importiert werden
-        "src/site/images/typings.d.ts"
+        "src/site/images/typings.d.ts",
+
+        // Muss auch in tsconfig.lib.json definiert sein!
+        // Damit funktioniert z.B. 'const conf: MobiAdApp.Config' ohne import
+        "src/types/*.d.ts"
     ],
     "exclude": ["lib", "node_modules", "dist" ]
 }

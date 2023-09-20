@@ -101,6 +101,9 @@ module.exports = {
             // Can't resolve 'fs' in
             "fs": false,
 
+            // Die auskommentierten Module können im webpack.web.local.js
+            // wieder aktiviert werden
+
             // "tls": false,
             // "net": false,
             // "path": false,
@@ -125,6 +128,7 @@ module.exports = {
             //     "assert": require.resolve("assert/"), // yarn add assert
             //     "url": require.resolve("url"), // yarn add url
             //     "process": require.resolve("process"), // yarn add process
+            //     "os": require.resolve("os-browserify/browser"), // yarn add os-browserify
 
             "buffer": require.resolve("buffer/") // yarn add buffer
             // Muss bei "plugins" noch angegeben werden:

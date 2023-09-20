@@ -46,7 +46,9 @@
         "deploy": "yarn version --new-version patch && yarn publish --non-interactive",
         "doc": "typedoc --out doc --tsconfig tsconfig.lib.json src/main/",
         "prettier": "onchange './src/**/*.ts'  -- prettier --write {{changed}}",
-        "export:scripts": "jq -r '.scripts' package.json > \"${DEV_LOCAL}/Templates/Production/TypeScript/packages/scripts.json\""
+        "export": "yarn export:scripts",
+        "export:scripts": "jq -r '.scripts' < package.json > ${DEV_LOCAL}/Templates/Production/TypeScript/package/scripts.json",
+        "export:jenkins": "cp -f build.jenkins ${DEV_LOCAL}/Templates/Production/TypeScript"
     },
     "files": [
         "lib",
@@ -59,8 +61,7 @@
     "dependencies": {
         "@mmit/logging": "0.1.9",
         "date-fns": "^2.30.0",
-        "path": "^0.12.7",
-        "vite-plugin-ejs": "^1.6.4"
+        "path": "^0.12.7"
     },
     "devDependencies": {
         "@babel/cli": "^7.22.10",
@@ -75,7 +76,6 @@
         "@types/caniuse-lite": "^1",
         "@types/chai": "^4.3.5",
         "@types/core-js": "^2.5.4",
-        "@types/ejs": "^3.1.2",
         "@types/eslint": "^8",
         "@types/expect-puppeteer": "5.0.3",
         "@types/jest": "^29.5.4",
@@ -101,7 +101,6 @@
         "copy-webpack-plugin": "^11.0.0",
         "crypto-browserify": "^3.12.0",
         "css-loader": "^6.8.1",
-        "ejs": "^3.1.9",
         "ejs-compiled-loader": "^3.1.0",
         "eslint": "^8.48.0",
         "file-loader": "^6.2.0",
@@ -117,12 +116,10 @@
         "jest-puppeteer": "^9.0.0",
         "jest-resolve": "^29.6.4",
         "mini-css-extract-plugin": "^2.7.6",
-        "node-sass": "^9.0.0",
         "path-browserify": "^1.0.1",
         "postcss": "^8.4.29",
         "postcss-loader": "^7.3.3",
         "puppeteer": "^21.1.1",
-        "rollup-plugin-ejs": "^4.0.0",
         "sass": "^1.66.1",
         "sass-loader": "^13.3.2",
         "semver": "^7.5.4",
@@ -136,8 +133,6 @@
         "ts-node": "^10.0.0",
         "typedoc": "^0.25.0",
         "typescript": "^5.2.2",
-        "vite": "^4.4.9",
-        "vite-plugin-html": "^3.2.0",
         "webpack": "5.88.2",
         "webpack-cli": "5.1.4",
         "webpack-dev-server": "4.7.4",
