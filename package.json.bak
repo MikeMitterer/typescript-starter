@@ -3,7 +3,6 @@
     "author": "Mike Mitterer",
     "version": "0.6.33",
     "description": "This is a starter project for typescript projects",
-    "type": "module",
     "keywords": [
         "typescript"
     ],
@@ -40,8 +39,8 @@
         "build:js": "rm -rf lib && NODE_ENV=development webpack --config webpack.ts.cjs --mode development",
         "build:js:prod": "rm -rf lib && NODE_ENV=production webpack --config webpack.ts.cjs --mode production",
         "build:babel": "rm -rf lib && REQUIRE_TARGET='browser' babel src/main --out-dir lib --extensions \".ts,.tsx\" --source-maps",
-        "build:node": "rm -rf bin && NODE_ENV=development webpack --config webpack.node.cjs --mode development",
-        "build:node:prod": "NODE_ENV=production webpack --config webpack.node.cjs --mode production",
+        "build:node": "rm -rf bin && NODE_ENV=development webpack --config webpack.node.js --mode development",
+        "build:node:prod": "NODE_ENV=production webpack --config webpack.node.js --mode production",
         "build:web": "rm -rf dist && NODE_ENV=development webpack --config webpack.web.cjs --mode development",
         "build:web:prod": "rm -rf dist && NODE_ENV=production webpack --config webpack.web.cjs --mode production",
         "deploy": "yarn version --new-version patch && yarn publish --non-interactive",

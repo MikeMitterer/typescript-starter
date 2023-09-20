@@ -13,7 +13,7 @@
         // Dient zum Importieren von json-Files
         // In der "include"-Section müssen auch die *.json-Files
         // eingebunden werden
-        // "resolveJsonModule": true
+        "resolveJsonModule": true,
 
         "incremental": true,
 
@@ -48,6 +48,9 @@
         //      "resolveJsonModule": true,
         // gesetzt sein
         // "src/test/integration/*.json"
-        
+
+        // Muss auch in tsconfig.lib.json definiert sein!
+        // Damit funktioniert z.B. 'const conf: MobiAdApp.Config' ohne import
+        "src/types/*.d.ts"
     ]
 }

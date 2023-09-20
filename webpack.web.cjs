@@ -23,7 +23,7 @@ function srcPath(subdir) {
 
 module.exports = {
     extends: [
-        path.resolve(__dirname, './webpack.web.local.js'),
+        path.resolve(__dirname, './webpack.web.local.cjs'),
     ],
     cache: devMode,
     // https://webpack.js.org/configuration/target/
@@ -101,6 +101,9 @@ module.exports = {
             // Can't resolve 'fs' in
             "fs": false,
 
+            // Die auskommentierten Module können im webpack.web.local.js
+            // wieder aktiviert werden
+
             // "tls": false,
             // "net": false,
             // "path": false,
@@ -125,6 +128,7 @@ module.exports = {
             //     "assert": require.resolve("assert/"), // yarn add assert
             //     "url": require.resolve("url"), // yarn add url
             //     "process": require.resolve("process"), // yarn add process
+            //     "os": require.resolve("os-browserify/browser"), // yarn add os-browserify
 
             "buffer": require.resolve("buffer/") // yarn add buffer
             // Muss bei "plugins" noch angegeben werden:
@@ -173,18 +177,38 @@ module.exports = {
             //          configFile: path.resolve(__dirname, 'tsconfig.lib.json')
             // }},
 
+            // {
+            //     test: /\.m?js$/,
+            //     type: "javascript/auto",
+            // },
+            // {
+            //     test: /\.m?js$/,
+            //     resolve: {
+            //         fullySpecified: false,
+            //     },
+            // },
+            
             // Speed: ~400ms
             // (exclude: /node_modules/, am 27.2.2020 entfernt da es sonst Probleme mit
-            // dem coalescing-operator aus anderen Modulen gibt)
+            // dem coalescing-operator aus anderen Modulen gibt).
+            //
+            // Damit auch ES6 Module funktieren wurde am [ 2023 09 20]
+            // "type" und "resolve" hinzugefügt
+            //     https://stackoverflow.com/a/69519812/504184
+            //
             {
                 test: /\.(ts|js)x?$/,
+                type: "javascript/auto",
                 exclude: /node_modules\/(?!(@mmit)\/).*/,
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true,
                     // And replace .babelrc with babel.config.json...
                     babelrc: false
-                }
+                },
+                resolve: {
+                    fullySpecified: false,
+                },
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
