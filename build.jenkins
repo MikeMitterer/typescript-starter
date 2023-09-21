@@ -17,10 +17,10 @@ pipeline {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
                         script { if (env.REMOVE_NODE_MODULES) {
-                            sh 'rm -rf node_modules yarn.lock'
+                                sh 'rm -rf node_modules yarn.lock'
                         }}
 
-                        sh 'yarn clean && yarn install'
+                        sh 'yarn'
 
                         // Repos von Amazon holen
                         // sh 'docker/_ci/run.sh --pull'
@@ -97,7 +97,7 @@ pipeline {
                     sh 'yarn run deploy && git push origin HEAD:master'
 
                     // Zum LightSail-Server
-                    // sh 'deployWebApp.sh deploy'
+                    sh 'deployWebApp.sh deploy'
                 }
             }
         }
