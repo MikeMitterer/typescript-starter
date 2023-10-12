@@ -21,6 +21,16 @@ function srcPath(subdir) {
     return path.join(__dirname, 'src', subdir)
 }
 
+// docRoot und site können in packages.json mit:
+//      "wplocal": {
+//          "docRoot": "tests/e2e/browser",
+//              "site": "tests/e2e/site"
+//      },
+// überschrieben werden.
+//
+let docRoot = path.resolve(__dirname, package?.wplocal?.docRoot ?? 'src/browser')
+let site = package?.wplocal?.site ?? 'src/site'
+
 module.exports = {
     extends: [
         path.resolve(__dirname, './webpack.web.local.cjs'),
@@ -45,10 +55,10 @@ module.exports = {
     mode: process.env.NODE_ENV || 'development',
 
     entry: {
-        index: [path.resolve(__dirname, 'src/browser/index.ts')],
+        index: [path.resolve(__dirname, path.join(docRoot, 'index.ts'))],
 
-        polyfills: path.resolve(__dirname, 'src/browser/polyfills.ts'),
-        mobile: path.resolve(__dirname, 'src/browser/mobile.ts')
+        polyfills: path.resolve(__dirname, path.join(docRoot, 'polyfills.ts')),
+        mobile: path.resolve(__dirname, path.join(docRoot, 'mobile.ts'))
 
         // Wird per script-tag eingebunden (js/styles.js?...)
         // Es kann aber auch ein import über das index.ts-File gemacht werden
@@ -342,7 +352,7 @@ module.exports = {
         // }),
 
         new CopyWebpackPlugin({
-            patterns: [{ from: 'src/site/images/static', to: 'images/static' }]
+            patterns: [{ from: path.join(site,'images/static'), to: 'images/static' }]
         }),
 
         // Multiple HTML-Pages
@@ -356,11 +366,11 @@ module.exports = {
             },
             hash: true,
             // Weitere Infos: https://goo.gl/wVG6wx
-            template: path.resolve(__dirname, 'src/site/index.ejs'),
+            template: path.resolve(__dirname, path.join(site,'index.ejs')),
 
             // Variablen funktionieren nicht
             // template: '!!html-loader?interpolate!src/web/index.ejs',
-            favicon: path.resolve(__dirname, 'src/site/images/favicon.ico'),
+            favicon: path.resolve(__dirname, path.join(site,'images/favicon.ico')),
             chunks: devMode ? ['polyfills', 'mobile', 'index', 'styles'] : ['polyfills', 'mobile', 'index']
         }),
 

@@ -17,11 +17,18 @@
 
         "incremental": true,
 
-        "lib": ["esnext", "dom"]
+        "lib": [
+            "esnext",
+            "dom",
+            //  error TS2488: Type 'FileList | never[]' must have a '[Symbol.iterator]()' method that returns an iterator.
+            "dom.iterable"
+        ]
     },
 
 
     "include": [
+        "src/main/index.ts",
+
         // Hier werden die auch die Tests eingebunden
         // Nur damit funktioniert das Überschreiben in der "prototype"-chain
         // Nur damit funktioniert JEST richtig - bzw. die Kombi WS + JEST

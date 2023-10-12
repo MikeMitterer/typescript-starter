@@ -14,6 +14,8 @@ JENKINS_JOB_TOKEN="typescript-starter"
 
 # Parameter werden bei manchen builds benötigt
 JENKINS_PARAMS=(
-    # "PUBLISH_TO_NMP=true"
+    "RUN_TESTS=true"
+    "REMOVE_NODE_MODULES=false"
+    "PUBLISH_TO_NMP=false"
     # "delay=1"
 )

@@ -16,8 +16,7 @@
 # Files die umbenannt werden müssen -------------------------------------------
 
 # Files die gelöscht werden ---------------------------------------------------
-
-FILES_TO_REMOVE+=("jest-puppeteer.config.cjs")
+# FILES_TO_REMOVE+=("jest-puppeteer.config.cjs")
 
 # Files die kopiert werden -----------------------------------------------------
 
@@ -26,7 +25,7 @@ FILES_TO_REMOVE+=("jest-puppeteer.config.cjs")
 # FILES_TO_COPY["static/config.lenovo.js"]=""
 
 # Hängt von dem jeweiligen Projekt ab ob puppeteer benötigt wird oder nicht
-FILES_TO_COPY["jest-puppeteer.config.cjs"]="false"
+# FILES_TO_COPY["jest-puppeteer.config.cjs"]="false"
 
 # Scripts ---------------------------------------------------------------------
 

@@ -54,6 +54,7 @@ module.exports = {
         "webpack.*.js",
         "jest.setup.js",
         "service-worker.js",
+        "vite.config.ts",
         "*.config.js",
         "src/types/global.d.ts",
         "src/global.d.ts",
